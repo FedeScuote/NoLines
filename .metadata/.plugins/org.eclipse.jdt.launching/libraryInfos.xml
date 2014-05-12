@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libraryInfos>
+<libraryInfo home="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre" version="1.5.0_12">
+<bootpath>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\rt.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\i18n.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\sunrsasign.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\jsse.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\jce.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\charsets.jar"/>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="D:\Program Files\EasyEclipse Expert Java 1.4.0\jre\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

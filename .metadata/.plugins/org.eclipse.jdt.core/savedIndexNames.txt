@@ -1,0 +1,4 @@
+INDEX VERSION 1.125+C:\Martin\um\ing de sfw 2\workspace\.metadata\.plugins\org.eclipse.jdt.core
+3861880823.index
+2216486044.index
+3624757343.index

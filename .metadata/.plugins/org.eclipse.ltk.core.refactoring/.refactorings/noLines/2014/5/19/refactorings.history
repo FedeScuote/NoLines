@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 1 elements(s) to &apos;BUS/src/entity&apos;&#x0D;&#x0A;- Original project: &apos;noLines&apos;&#x0D;&#x0A;- Destination element: &apos;BUS/src/entity&apos;&#x0D;&#x0A;- Original element: &apos;principal.Shop.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="=BUS/src&lt;entity" element1="/src&lt;principal{Shop.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1399848536200" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,284 @@
+!SESSION 2014-05-07 21:09:36.728 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_12
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_UY
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.update.configurator 4 0 2014-05-07 21:09:42.139
+!MESSAGE D:\Users\Martin\plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.ui 2 0 2014-05-07 21:11:16.491
+!MESSAGE Warnings while parsing the view contributions from the 'org.eclipse.ui.viewActions' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.491
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction1'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.491
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction2'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.491
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction3'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.492
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction4'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.492
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction1'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.492
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction2'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.492
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction3'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-07 21:11:16.492
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction4'
+!SESSION 2014-05-11 17:18:24.859 -----------------------------------------------
+eclipse.buildId=I20080617-2000
+java.version=1.5.0_12
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=es_UY
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.393
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.394
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.402
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.402
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.403
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.403
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.405
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.405
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.414
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.414
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.445
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.445
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.446
+!MESSAGE Error occurred while comparing repository locations.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: Location: file:/D:/Users/Martin/ is not a valid extension location.
+	at org.eclipse.equinox.internal.p2.extensionlocation.ExtensionLocationMetadataRepository.getBaseDirectory(ExtensionLocationMetadataRepository.java:145)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.getMatchingRepo(PlatformXmlListener.java:152)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:175)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.extensionlocation 4 1000 2014-05-11 17:18:29.447
+!MESSAGE Location: file:/D:/Users/Martin/ is not a valid extension location.
+
+!ENTRY org.eclipse.equinox.p2.reconciler.dropins 4 0 2014-05-11 17:18:29.790
+!MESSAGE Error occurred while loading repository at file:\D:\Users\Martin\.
+!STACK 1
+org.eclipse.equinox.internal.provisional.p2.core.ProvisionException: No repository found at file:/D:/Users/Martin/.eclipseextension
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:471)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:435)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.loadMetadataRepository(Activator.java:82)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.synchronizeConfiguration(PlatformXmlListener.java:191)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.PlatformXmlListener.stopPoll(PlatformXmlListener.java:120)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.stopPoll(DirectoryWatcher.java:172)
+	at org.eclipse.equinox.internal.provisional.p2.directorywatcher.DirectoryWatcher.poll(DirectoryWatcher.java:109)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.watchConfiguration(Activator.java:449)
+	at org.eclipse.equinox.internal.p2.reconciler.dropins.Activator.start(Activator.java:159)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:1009)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.startActivator(BundleContextImpl.java:1003)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.start(BundleContextImpl.java:984)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.startWorker(BundleHost.java:346)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.resume(AbstractBundle.java:355)
+	at org.eclipse.osgi.framework.internal.core.Framework.resumeBundle(Framework.java:1074)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.resumeBundles(StartLevelManager.java:616)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.incFWSL(StartLevelManager.java:508)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:299)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.dispatchEvent(StartLevelManager.java:489)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:211)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:321)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 0 1000 2014-05-11 17:18:29.790
+!MESSAGE No repository found at file:/D:/Users/Martin/.eclipseextension
+
+!ENTRY org.eclipse.update.configurator 4 0 2014-05-11 17:18:35.143
+!MESSAGE D:\Users\Martin\plugins is not a valid plugins directory.
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-05-11 17:23:24.211
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Warnings while parsing the view contributions from the 'org.eclipse.ui.viewActions' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction1'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction2'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction3'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewResourceNavigator/eclipseutilplugins.ResourceAction4'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction1'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction2'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction3'
+!SUBENTRY 1 org.eclipse.ui 2 0 2014-05-11 17:23:26.481
+!MESSAGE Actions require a non-empty label or definitionId: plug-in='ru.nlmk.eclipseutilplugins', id='AUTOGEN:::eclipseutilplugins.viewPackageExplorer/eclipseutilplugins.PackageAction4'
