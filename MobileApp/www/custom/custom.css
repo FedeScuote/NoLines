@@ -1,0 +1,66 @@
+@CHARSET "ISO-8859-1";
+body {
+	font-family: "Helvetica Neue", HelveticaNeue, "Helvetica-Neue",
+		Helvetica, "BBAlpha Sans", sans-serif;
+}
+
+ul{
+    list-style-type: none;
+}
+
+div#mui-viewport {
+	top: 0px;
+	bottom: 44px;
+}
+
+div.mui-page-header {
+	background-color: #e04a59;
+}
+div.mui-page-header .mui-leftarrow {
+    height: 37px;
+    padding-left: 30px;
+    padding-top: 12px;
+    position: relative;
+    margin: 0px auto;
+    color: #ffffff;
+    background-image: url('images/leftarrow.png');
+    background-repeat: no-repeat;
+    background-position: 10px 10.5px;
+}
+
+/* Principal Title */
+
+div#mui-viewport-page1 div.mui-page-header {
+	background-color: #e04a59;
+	background-image: url('../images/NoLinesLogoWhite.png');
+	background-position: center;
+	background-repeat: no-repeat, repeat-x;
+	background-size: 121px 28px;
+}
+
+.default-button {
+    border: medium none;
+    border-radius: 6px 6px 6px 6px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: all 0.25s linear 0s;
+    font-size: 1.35em;
+    line-height: 1.35emx;
+    padding: 15px 20px 16px;
+}
+.main-list{
+    padding-left: 0px;
+}
+.main-list .default-button{
+    width:100%;
+}
+.restaurant-button {
+    width:32%;
+    float: left;
+}
+.resized-image{
+    width:100%;
+}
+
+
+
