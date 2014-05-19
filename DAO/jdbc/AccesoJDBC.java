@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
 
-import dao.exception.DaoException;
+import dao.DaoException;
 
 
 
