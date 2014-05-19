@@ -17,8 +17,7 @@ public class ConexionDB {
   private static final String DRIVER = rb.getString("DRIVER");
   private static final String URL = rb.getString("URL");
   private static final String USER = rb.getString("USER");
-  //private static final String PASSW = rb.getString("PASSW");
-  private static final String PASSW = "";
+  private static final String PASSW = rb.getString("PASSW");
 
   static {
     try {
