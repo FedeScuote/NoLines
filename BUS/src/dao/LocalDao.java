@@ -6,4 +6,5 @@ import entity.Shop;
 
 public interface LocalDao {
 	Shop getByName(String name) throws NoDataFoundException, DaoException;
+
 }

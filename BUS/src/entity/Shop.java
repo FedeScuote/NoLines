@@ -49,12 +49,12 @@ public class Shop {
 		this.location = location;
 	}
  public static void main(String[] args){
-	 
-	 Shop shop;
+
 	 try {
 		LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
-	} catch (InstantiationException | IllegalAccessException
-			| ClassNotFoundException e) {
+		Shop shop = local.getByName("Taco Bell");
+		System.out.println(shop.getLocation());
+	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
