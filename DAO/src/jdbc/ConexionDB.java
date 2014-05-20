@@ -8,17 +8,23 @@ import java.util.ResourceBundle;
 
 public class ConexionDB {
   private Connection con;
-  private static final String RESOURCE_NAME_DAO_PROPERTIES = "conf.dao_properties";
+  //private static final String RESOURCE_NAME_DAO_PROPERTIES = "conf.dao_properties";
 
 	// resource bundle del properties definido arriba
-	private static ResourceBundle rb = ResourceBundle
-			.getBundle(RESOURCE_NAME_DAO_PROPERTIES);
+	//private static ResourceBundle rb = ResourceBundle
+	//		.getBundle(RESOURCE_NAME_DAO_PROPERTIES);
 
-  private static final String DRIVER = rb.getString("DRIVER");
-  private static final String URL = rb.getString("URL");
-  private static final String USER = rb.getString("USER");
-  private static final String PASSW = rb.getString("PASSW");
-
+ 
+  //private static final String DRIVER = rb.getString("DRIVER");
+  //private static final String URL = rb.getString("URL");
+  //private static final String USER = rb.getString("USER");
+  //private static final String PASSW = rb.getString("PASSW");
+  
+  private static final String DRIVER="com.mysql.jdbc.Driver";
+  private static final String URL="jdbc:mysql://localhost/noLines";
+  private static final String USER="root";
+  private static final String PASSW="";
+  
   static {
     try {
       // Load the jdbc-odbc bridge driver
@@ -26,7 +32,7 @@ public class ConexionDB {
     }
     catch (ClassNotFoundException cnfe) {
       cnfe.printStackTrace();
-      System.exit( -1);
+      System.exit(-1);
 
     }
 

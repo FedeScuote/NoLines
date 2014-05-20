@@ -2,7 +2,7 @@ package dao;
 
 import java.util.ResourceBundle;
 
-import dao.DaoException;
+import dao.exception.DaoException;
 
 public class CreaterDAO {
 
@@ -18,7 +18,7 @@ public class CreaterDAO {
 	// Sera dependencia cclica y el compilador no tendra por donde
 	// empezar. Se usa esto.
 
-	public static Object getDao(String dao) throws DaoException {
+/*	public static Object getDao(String dao) throws DaoException {
 		try {
 			// Tiene que tener a Dao en el ClassPath al ejecutar esto.
 			return Class.forName(dao).newInstance();
@@ -36,5 +36,5 @@ public class CreaterDAO {
 			throw new DaoException(rb.getString(DAOEXCEPTION_K));
 		}
 	}
-
+*/
 }

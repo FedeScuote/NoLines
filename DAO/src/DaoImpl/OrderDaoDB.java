@@ -1,11 +1,12 @@
 package DaoImpl;
 
 import java.util.ResourceBundle;
+
+import dao.OrderDao;
 import jdbc.AccesoJDBC;
 import jdbc.ConexionDB;
 import jdbc.NoDatabaseConexionException;
 
-import org.apache.log4j.Logger;
 
 public class OrderDaoDB implements OrderDao{
 	private static final String RESOURCE_NAME_DAO_PROPERTIES = "conf.dao_properties";
@@ -13,5 +14,4 @@ public class OrderDaoDB implements OrderDao{
 	// resource bundle del properties definido arriba
 	private static ResourceBundle rb = ResourceBundle.getBundle(RESOURCE_NAME_DAO_PROPERTIES);
 
-	private static Logger logger = Logger.getLogger("OrderDaoDB.class");
 }

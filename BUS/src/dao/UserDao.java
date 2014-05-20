@@ -2,6 +2,8 @@ package dao;
 
 import java.util.LinkedList;
 
+import dao.exception.DaoException;
+import dao.exception.NoDataFoundException;
 import entity.User;
 
 public interface UserDao {

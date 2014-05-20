@@ -1,5 +1,8 @@
 package entity;
 
+import dao.LocalDao;
+
+
 public class Shop {
 	String id;
 	String name;
@@ -45,5 +48,15 @@ public class Shop {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+ public static void main(String[] args){
+	 
+	 Shop shop;
+	 try {
+		LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+	} catch (InstantiationException | IllegalAccessException
+			| ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+ }
 }
