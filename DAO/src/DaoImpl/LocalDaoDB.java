@@ -11,7 +11,7 @@ import dao.LocalDao;
 import dao.exception.DaoException;
 import dao.exception.NoDataFoundException;
 import entity.Shop;
-import entity.plate;
+import entity.Plate;
 
 public class LocalDaoDB implements LocalDao {
 	
@@ -52,7 +52,7 @@ public class LocalDaoDB implements LocalDao {
 	}
 
 	//Metodo que devuelve todos los platos de un restaurante segun su nombre.
-	public LinkedList<plate> getMenu(String name) throws NoDataFoundException,
+	public LinkedList<Plate> getMenu(String name) throws NoDataFoundException,
 			DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -65,10 +65,10 @@ public class LocalDaoDB implements LocalDao {
 		String getPlates = "SELECT * FROM plate WHERE plate.restaurant_name='"+name+"'";
 
 		ResultSet rsPlates = jdbc.select(getPlates);
-		LinkedList<plate> plates = new LinkedList<>();
+		LinkedList<Plate> plates = new LinkedList<>();
 		try{
 			while (rsPlates.next()){
-				plate platito=loadPlate(rsPlates,jdbc);
+				Plate platito=loadPlate(rsPlates,jdbc);
 				plates.add(platito);
 			}
 			return plates;
@@ -80,8 +80,8 @@ public class LocalDaoDB implements LocalDao {
 	}
 
 	//submetodo para setear todos los atributos a un Plate
-	private plate loadPlate(ResultSet rsPlates, AccesoJDBC jdbc) throws SQLException {
-		plate plate = new plate();
+	private Plate loadPlate(ResultSet rsPlates, AccesoJDBC jdbc) throws SQLException {
+		Plate plate = new Plate();
 		plate.setName(rsPlates.getString("name"));
 		plate.setId(rsPlates.getString("plate_id"));
 		plate.setPicture(rsPlates.getString("foto"));
@@ -94,7 +94,7 @@ public class LocalDaoDB implements LocalDao {
 	public static void main(String[] args){
 		LocalDaoDB prueba =new LocalDaoDB();
 		Shop shopPrueba = new Shop();
-		LinkedList<plate> menu = new LinkedList();
+		LinkedList<Plate> menu = new LinkedList();
 		try {
 			shopPrueba = prueba.getByName("Mc Donalds");
 			menu=prueba.getMenu("Mc Donalds");
