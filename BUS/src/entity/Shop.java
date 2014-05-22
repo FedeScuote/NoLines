@@ -48,15 +48,20 @@ public class Shop {
 	public void setLocation(String location) {
 		this.location = location;
 	}
- public static void main(String[] args){
-
-	 try {
-		LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
-		Shop shop = local.getByName("Taco Bell");
-		System.out.println(shop.getLocation());
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	
+	public String buscarTaco(){
+		 try {
+				LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+				Shop shop = local.getByName("Taco Bell");
+				return(shop.getLocation());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return "fallo";
 	}
+ public static void main(String[] args){
+	Shop shop1 = new Shop();
+	System.out.println(shop1.buscarTaco());
  }
 }
