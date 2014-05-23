@@ -2,6 +2,7 @@ package DaoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import jdbc.AccesoJDBC;
 import jdbc.ConexionDB;
@@ -10,15 +11,11 @@ import dao.LocalDao;
 import dao.exception.DaoException;
 import dao.exception.NoDataFoundException;
 import entity.Shop;
+import entity.Plate;
 
 public class LocalDaoDB implements LocalDao {
-	//private static final String RESOURCE_NAME_DAO_PROPERTIES = "conf.dao_properties";
-
-	// resource bundle del properties definido arriba
-	//private static ResourceBundle rb = ResourceBundle.getBundle(RESOURCE_NAME_DAO_PROPERTIES);
-
-	//private static Logger logger = Logger.getLogger("LocalDaoDB.class");
 	
+	//Metodo para buscar un local por su nombre, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
 	public Shop getByName(String name) throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -42,20 +39,65 @@ public class LocalDaoDB implements LocalDao {
 		}
 		return null;
 	}
+	
 	//submetodo para setear todos los atributos a un Shop.
 	private Shop loadShop(String name,ResultSet rsShop,AccesoJDBC jdbc) throws SQLException{
 		Shop shop = new Shop();
 		shop.setName(name);
-		
+		shop.setId(rsShop.getString("id_local"));
+		shop.setHorario(rsShop.getString("horario"));
+		shop.setLogo(rsShop.getString("logo"));		
 		shop.setLocation(rsShop.getString("location"));
 		return shop;
+	}
+
+	//Metodo que devuelve todos los platos de un restaurante segun su nombre.
+	public LinkedList<Plate> getMenu(String name) throws NoDataFoundException,
+			DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		String getPlates = "SELECT * FROM plate WHERE plate.restaurant_name='"+name+"'";
+
+		ResultSet rsPlates = jdbc.select(getPlates);
+		LinkedList<Plate> plates = new LinkedList<>();
+		try{
+			while (rsPlates.next()){
+				Plate platito=loadPlate(rsPlates,jdbc);
+				plates.add(platito);
+			}
+			return plates;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
+	//submetodo para setear todos los atributos a un Plate
+	private Plate loadPlate(ResultSet rsPlates, AccesoJDBC jdbc) throws SQLException {
+		Plate plate = new Plate();
+		plate.setName(rsPlates.getString("name"));
+		plate.setId(rsPlates.getString("plate_id"));
+		plate.setPicture(rsPlates.getString("foto"));
+		plate.setDescription(rsPlates.getString("description"));
+		plate.setTime(rsPlates.getInt("cook_time"));
+		plate.setPrice(rsPlates.getDouble("price"));
+		return plate;
 	}
 	
 	public static void main(String[] args){
 		LocalDaoDB prueba =new LocalDaoDB();
 		Shop shopPrueba = new Shop();
+		LinkedList<Plate> menu = new LinkedList();
 		try {
 			shopPrueba = prueba.getByName("Mc Donalds");
+			menu=prueba.getMenu("Mc Donalds");
 		} catch (NoDataFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +106,12 @@ public class LocalDaoDB implements LocalDao {
 			e.printStackTrace();
 		}
 		System.out.println(shopPrueba.getLocation());
+		System.out.println(shopPrueba.getHorario());
+		System.out.println(shopPrueba.getId());
+		
+		System.out.println("El largo deberia ser 2 y es"+menu.size());
+		System.out.println(menu.getFirst().getDescription());
+		System.out.println(menu.getLast().getDescription());
 	}
-	
 }
 

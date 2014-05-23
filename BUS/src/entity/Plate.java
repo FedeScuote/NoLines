@@ -6,8 +6,17 @@ public class Plate {
 	String name;
 	String description;
 	String picture;
+	double price;
 	int time;
 
+	public double getPrice(){
+		return price;
+	}
+	
+	public void setPrice(double price){
+		this.price=price;
+	}
+	
 	public String getId() {
 		return id;
 	}
