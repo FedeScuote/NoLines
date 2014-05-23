@@ -42,7 +42,7 @@ public class LocalDaoDB implements LocalDao {
 		}
 	}
 	
-	//Metodo para buscar un local por su nombre, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
+	//Metodo para buscar un local por su id, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
 	public Shop getById(int id) throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();

@@ -11,7 +11,7 @@ public interface LocalDao {
 	//Obtener una lista de todos los locales que son restaurantes.
 	List getRestaurants() throws NoDataFoundException, DaoException;
 	
-	//Obtener un Local por su nombre
+	//Obtener un Local por su id
 	Shop getById(int id) throws NoDataFoundException, DaoException;
 
 	
