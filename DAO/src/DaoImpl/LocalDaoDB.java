@@ -10,13 +10,14 @@ import jdbc.NoDatabaseConexionException;
 import dao.LocalDao;
 import dao.exception.DaoException;
 import dao.exception.NoDataFoundException;
+import entity.Restaurant;
 import entity.Shop;
 import entity.Plate;
 
 public class LocalDaoDB implements LocalDao {
 	
-	//Metodo para buscar un local por su nombre, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
-	public Shop getByName(String name) throws NoDataFoundException, DaoException{
+	//Metodo para obtener todos los restaurantes de la base de datos.
+	public LinkedList<Restaurant> getRestaurants() throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
 		AccesoJDBC jdbc = null;
@@ -26,11 +27,37 @@ public class LocalDaoDB implements LocalDao {
 			throw new DaoException();
 		}
 		
-		String getShop = "SELECT * FROM local WHERE local.name='"+name+"'";
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local IN (SELECT id_restaurant from restaurant)";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Restaurant> restaurantes = new LinkedList<Restaurant>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add((Restaurant)loadShop(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+	
+	//Metodo para buscar un local por su nombre, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
+	public Shop getById(int id) throws NoDataFoundException, DaoException{
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getShop = "SELECT * FROM local WHERE local.id_local='"+id+"'";
 		ResultSet rsShop = jdbc.select(getShop);
 		try{
 			if (rsShop.next()){
-				return loadShop(name,rsShop,jdbc);
+				return loadShop(id,rsShop,jdbc);
 			}
 		}catch (SQLException ex) {
 			throw new DaoException();
@@ -41,10 +68,10 @@ public class LocalDaoDB implements LocalDao {
 	}
 	
 	//submetodo para setear todos los atributos a un Shop.
-	private Shop loadShop(String name,ResultSet rsShop,AccesoJDBC jdbc) throws SQLException{
+	private Shop loadShop(int id,ResultSet rsShop,AccesoJDBC jdbc) throws SQLException{
 		Shop shop = new Shop();
-		shop.setName(name);
-		shop.setId(rsShop.getString("id_local"));
+		shop.setId(id);
+		shop.setName(rsShop.getString("name"));
 		shop.setHorario(rsShop.getString("horario"));
 		shop.setLogo(rsShop.getString("logo"));		
 		shop.setLocation(rsShop.getString("location"));
@@ -94,9 +121,9 @@ public class LocalDaoDB implements LocalDao {
 	public static void main(String[] args){
 		LocalDaoDB prueba =new LocalDaoDB();
 		Shop shopPrueba = new Shop();
-		LinkedList<Plate> menu = new LinkedList();
+		LinkedList<Plate> menu = new LinkedList<Plate>();
 		try {
-			shopPrueba = prueba.getByName("Mc Donalds");
+			shopPrueba = prueba.getById(1);
 			menu=prueba.getMenu("Mc Donalds");
 		} catch (NoDataFoundException e) {
 			// TODO Auto-generated catch block

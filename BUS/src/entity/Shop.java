@@ -4,17 +4,17 @@ import dao.LocalDao;
 
 
 public class Shop {
-	String id;
+	int id;
 	String name;
 	String logo;
 	String horario;
 	String location;
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -52,7 +52,7 @@ public class Shop {
 	public String buscarTaco(){
 		 try {
 				LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
-				Shop shop = local.getByName("Taco Bell");
+				Shop shop = local.getById(2);
 				return(shop.getLocation());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
