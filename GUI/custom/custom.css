@@ -61,6 +61,73 @@ div#mui-viewport-page1 div.mui-page-header {
 .resized-image{
     width:100%;
 }
+/* Tabbar */
+div.mui-tabbar {
+    width: 100%;
+    height: 3em;
+    position: absolute;
+    bottom: 0px;
+    background-color: #ecf0f1;
+    z-index: 10;
+}
 
+div.mui-tabbar ul.mui-tabbar-list {
+    list-style: none;
+    padding: 0px;
+    margin: auto;
+}
+
+div.mui-tabbar ul.mui-tabbar-list li.muy-tabbar-button {
+    height: 2.75em;
+    padding: 0px;
+    margin: 0px;
+    /*border: #3498db solid 1px;*/
+    float: left;
+}
+/*Botones del tabbar*/
+div.mui-tabbar ul.mui-tabbar-list {
+    max-width: 480px;
+}
+
+div.mui-tabbar ul.mui-tabbar-list li {
+    width: 25%;
+    background-repeat: no-repeat;
+    background-position: center 5px;
+    text-align: center;
+    margin: auto;
+
+    /*inner width*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div.mui-tabbar ul.mui-tabbar-list li:HOVER {
+    /*background-position: center -40px;*/
+    background-color: #CDD8DA;
+}
+
+div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {
+    background-image: url('../images/home.png');
+}
+
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {
+    background-image: url('../images/agenda.png');
+}
+
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {
+    background-image: url('../images/tramite.png');
+}
+
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {
+    background-image: url('../images/contacto.png');
+}
+
+div.mui-tabbar ul.mui-tabbar-list li span {
+    font-size: 0.75em;
+    position: relative;
+    top: 28px;
+    color: #0B6CFE;
+}
 
 
