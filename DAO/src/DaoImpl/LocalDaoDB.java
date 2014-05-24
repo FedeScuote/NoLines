@@ -32,7 +32,7 @@ public class LocalDaoDB implements LocalDao {
 		LinkedList<Restaurant> restaurantes = new LinkedList<Restaurant>();
 		try{
 			while (rsRestaurants.next()){
-				restaurantes.add((Restaurant)loadShop(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+				restaurantes.add(loadRestaurant(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
 			}
 			return restaurantes;
 		}catch (SQLException ex) {
@@ -42,6 +42,17 @@ public class LocalDaoDB implements LocalDao {
 		}
 	}
 	
+	private Restaurant loadRestaurant(int id, ResultSet rsRestaurants,
+			AccesoJDBC jdbc) throws SQLException {
+		Restaurant shop = new Restaurant();
+		shop.setId(id);
+		shop.setName(rsRestaurants.getString("name"));
+		shop.setHorario(rsRestaurants.getString("horario"));
+		shop.setLogo(rsRestaurants.getString("logo"));		
+		shop.setLocation(rsRestaurants.getString("location"));
+		return shop;
+	}
+
 	//Metodo para buscar un local por su id, devuelve el local si lo encuentra sino tira la exception de NoDataFound.
 	public Shop getById(int id) throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
@@ -79,7 +90,7 @@ public class LocalDaoDB implements LocalDao {
 	}
 
 	//Metodo que devuelve todos los platos de un restaurante segun su nombre.
-	public LinkedList<Plate> getMenu(String name) throws NoDataFoundException,
+	public LinkedList<Plate> getMenu(int id) throws NoDataFoundException,
 			DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -89,7 +100,7 @@ public class LocalDaoDB implements LocalDao {
 		} catch (NoDatabaseConexionException ex) {
 			throw new DaoException();
 		}
-		String getPlates = "SELECT * FROM plate WHERE plate.restaurant_name='"+name+"'";
+		String getPlates = "SELECT * FROM plate WHERE plate.id_restaurant='"+id+"'";
 
 		ResultSet rsPlates = jdbc.select(getPlates);
 		LinkedList<Plate> plates = new LinkedList<>();
@@ -124,7 +135,7 @@ public class LocalDaoDB implements LocalDao {
 		LinkedList<Plate> menu = new LinkedList<Plate>();
 		try {
 			shopPrueba = prueba.getById(1);
-			menu=prueba.getMenu("Mc Donalds");
+			menu=prueba.getMenu(1);
 		} catch (NoDataFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

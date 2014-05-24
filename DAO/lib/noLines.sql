@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2014 at 04:27 AM
+-- Generation Time: May 24, 2014 at 04:48 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.19
 
@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `local` (
   `description` varchar(200) DEFAULT NULL,
   `horario` varchar(20) DEFAULT NULL,
   `location` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`name`)
+  `id_local` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_local`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -94,9 +95,9 @@ CREATE TABLE IF NOT EXISTS `plate` (
   `foto` varchar(200) DEFAULT NULL,
   `cook_time` int(11) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
-  `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`plate_id`,`restaurant_name`),
-  KEY `fk_plate_restaurant1_idx` (`restaurant_name`)
+  `id_restaurant` varchar(45) NOT NULL,
+  PRIMARY KEY (`plate_id`,`id_restaurant`),
+  KEY `fk_plate_restaurant1_idx` (`id_restaurant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -120,9 +121,9 @@ CREATE TABLE IF NOT EXISTS `plate_has_type` (
 --
 
 CREATE TABLE IF NOT EXISTS `restaurant` (
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`name`),
-  KEY `fk_restaurant_local1_idx` (`name`)
+  `id_restaurant` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_restaurant`),
+  KEY `fk_restaurant_local1_idx` (`id_restaurant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -132,9 +133,8 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
 --
 
 CREATE TABLE IF NOT EXISTS `shop` (
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`name`),
-  KEY `fk_shop_local1_idx` (`name`)
+  `id_shop` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_shop`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -201,9 +201,9 @@ CREATE TABLE IF NOT EXISTS `voucher` (
   `create_time` datetime DEFAULT NULL,
   `used_time` datetime DEFAULT NULL,
   `expiration_date` datetime DEFAULT NULL,
-  `local_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`voucher_id`,`local_name`),
-  KEY `fk_voucher_local1_idx` (`local_name`)
+  `id_local` varchar(45) NOT NULL,
+  PRIMARY KEY (`voucher_id`,`id_local`),
+  KEY `fk_voucher_local1_idx` (`id_local`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
@@ -234,7 +234,7 @@ ALTER TABLE `paying_account`
 -- Constraints for table `plate`
 --
 ALTER TABLE `plate`
-  ADD CONSTRAINT `fk_plate_restaurant1` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_plate_restaurant1` FOREIGN KEY (`id_restaurant`) REFERENCES `restaurant` (`id_restaurant`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `plate_has_type`
@@ -247,13 +247,13 @@ ALTER TABLE `plate_has_type`
 -- Constraints for table `restaurant`
 --
 ALTER TABLE `restaurant`
-  ADD CONSTRAINT `fk_restaurant_local1` FOREIGN KEY (`name`) REFERENCES `local` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_restaurant_local1` FOREIGN KEY (`id_restaurant`) REFERENCES `local` (`id_local`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `shop`
 --
 ALTER TABLE `shop`
-  ADD CONSTRAINT `fk_shop_local1` FOREIGN KEY (`name`) REFERENCES `local` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_shop_local1` FOREIGN KEY (`id_shop`) REFERENCES `local` (`id_local`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user_has_taste`
@@ -266,7 +266,7 @@ ALTER TABLE `user_has_taste`
 -- Constraints for table `voucher`
 --
 ALTER TABLE `voucher`
-  ADD CONSTRAINT `fk_voucher_local1` FOREIGN KEY (`local_name`) REFERENCES `local` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_voucher_local1` FOREIGN KEY (`id_local`) REFERENCES `local` (`id_local`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
