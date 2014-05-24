@@ -7,6 +7,6 @@ import entity.Plate;
 
 public interface PlateDao {
 
-	//Obtener un Plate por su id
+	//Get a plate from dataBase by it's Id.
 	Plate getById(int id) throws NoDataFoundException, DaoException;
 }

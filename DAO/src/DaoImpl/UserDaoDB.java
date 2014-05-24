@@ -27,7 +27,7 @@ public class UserDaoDB implements UserDao {
 		return null;
 	}
 
-	public User findByName(String name) throws NoDataFoundException,
+	public User findByEMail(String mail) throws NoDataFoundException,
 			DaoException {
 		// TODO Auto-generated method stub
 		return null;

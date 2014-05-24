@@ -23,6 +23,13 @@ CREATE DATABASE IF NOT EXISTS `noLines` DEFAULT CHARACTER SET utf8 COLLATE utf8_
 USE `noLines`;
 
 --
+-- Dumping data for table `restaurant`
+--
+
+INSERT INTO `restaurant` (`id_restaurant`) VALUES
+('1'),
+('2');
+--
 -- Dumping data for table `local`
 --
 
@@ -38,13 +45,7 @@ INSERT INTO `plate` (`plate_id`, `price`, `description`, `foto`, `cook_time`, `n
 (1, 195, 'Big Mc con papas y bebida.', 'http://localhost/image/plate/mcdonalds1.png', 4, 'Combo Big Mc', '1'),
 (2, 205, 'Cuarto de libra con papas y bebida.', 'http://localhost/image/plate/mcdonalds2.png', 5, 'Combo Cuarto de Libra', '1');
 
---
--- Dumping data for table `restaurant`
---
 
-INSERT INTO `restaurant` (`id_restaurant`) VALUES
-('1'),
-('2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

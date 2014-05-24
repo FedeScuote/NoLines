@@ -103,7 +103,7 @@ public class LocalDaoDB implements LocalDao {
 		String getPlates = "SELECT * FROM plate WHERE plate.id_restaurant='"+id+"'";
 
 		ResultSet rsPlates = jdbc.select(getPlates);
-		LinkedList<Plate> plates = new LinkedList<>();
+		LinkedList<Plate> plates = new LinkedList<Plate>();
 		try{
 			while (rsPlates.next()){
 				Plate platito=loadPlate(rsPlates,jdbc);

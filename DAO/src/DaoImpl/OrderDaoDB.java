@@ -3,15 +3,26 @@ package DaoImpl;
 import java.util.ResourceBundle;
 
 import dao.OrderDao;
+import entity.Order;
 import jdbc.AccesoJDBC;
 import jdbc.ConexionDB;
 import jdbc.NoDatabaseConexionException;
 
 
 public class OrderDaoDB implements OrderDao{
-	private static final String RESOURCE_NAME_DAO_PROPERTIES = "conf.dao_properties";
 
-	// resource bundle del properties definido arriba
-	private static ResourceBundle rb = ResourceBundle.getBundle(RESOURCE_NAME_DAO_PROPERTIES);
+	@Override
+	public void submitOrder(String userEmail, int restaurant, int[][] plates) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Order retrieveOrder(int orderId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
