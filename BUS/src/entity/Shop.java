@@ -1,6 +1,11 @@
 package entity;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import dao.LocalDao;
+import dao.exception.DaoException;
+import dao.exception.NoDataFoundException;
 
 
 public class Shop {
@@ -60,8 +65,23 @@ public class Shop {
 			}
 		return "fallo";
 	}
+	
+	public static final List getAllRestaurants(){ //tirar excepxiones y en lo otro decir que no se encontraron
+		try {
+			List restaurants = new LinkedList<Restaurant>();
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			restaurants = local.getRestaurants();
+			return restaurants;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
  public static void main(String[] args){
-	Shop shop1 = new Shop();
-	System.out.println(shop1.buscarTaco());
+	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();
+	 System.out.print(lista.getFirst().getName());
  }
 }
