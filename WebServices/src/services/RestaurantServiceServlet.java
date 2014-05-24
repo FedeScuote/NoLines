@@ -49,7 +49,7 @@ public class RestaurantServiceServlet extends HttpServlet {
 			restaurant.put("name", lista.get(i).getName());
 			restaurant.put("logo", lista.get(i).getLogo());
 			restaurant.put("horario", lista.get(i).getHorario());
-			restaurant.put("location", lista.get(i).getLogo());
+			restaurant.put("location", lista.get(i).getLocation());
 			wrapper.add(restaurant)	;
 		}
 		writer.append(wrapper.toJSONString());
