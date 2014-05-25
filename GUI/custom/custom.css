@@ -11,10 +11,12 @@ ul{
 div#mui-viewport {
 	top: 0px;
 	bottom: 44px;
+    background-color: #EDEDED;
 }
 
 div.mui-page-header {
 	background-color: #e04a59;
+    height: 3em;
 }
 div.mui-page-header .mui-leftarrow {
     height: 37px;
@@ -22,7 +24,7 @@ div.mui-page-header .mui-leftarrow {
     padding-top: 12px;
     position: relative;
     margin: 0px auto;
-    color: #ffffff;
+    color: #EDEDED;
     background-image: url('images/leftarrow.png');
     background-repeat: no-repeat;
     background-position: 10px 10.5px;
@@ -41,22 +43,18 @@ div#mui-viewport-page1 div.mui-page-header {
 .default-button {
     border: medium none;
     border-radius: 6px 6px 6px 6px;
-    color: #FFFFFF;
     text-decoration: none;
     transition: all 0.25s linear 0s;
     font-size: 1.35em;
     line-height: 1.35emx;
     padding: 15px 20px 16px;
+    background-color: #FFFFFF;
 }
 .main-list{
     padding-left: 0px;
 }
 .main-list .default-button{
     width:100%;
-}
-.restaurant-button {
-    width:32%;
-    float: left;
 }
 .resized-image{
     width:100%;
@@ -130,4 +128,27 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     color: #0B6CFE;
 }
 
+/* Restaurant info buttons*/
+#restaurant-list{
+	padding: 0px;
+}
+.restaurant-selector{
+    margin-bottom: 0.5em;
+}
+.restaurant-selector .default-button{
+    text-align: left;
+    width: 100%;
+    font-size: 1em;
+    height: 5em;
+}
+.restaurant-selector .restaurant-title{
+	position: relative;
+    left: 60px;
+    bottom: 50px;
+}
+.restaurant-selector .restaurant-info{
+    position: relative;
+    left: 60px;
+    bottom: 50px;
+}
 

@@ -13,7 +13,10 @@ function deviceReady() {
                 var obj=JSON.parse(data);
                 var ret = "";
                 for(var i = 0 ; i < obj.length ; i++){
-                	ret = ret + "<li><img src="+obj[i].logo+" width='50' height='50'><div> "+obj[i].name+"<br> </div></li>";
+                	ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button'><img src="
+                	+obj[i].logo+" width='50' height='50'><div class='restaurant-title'> "+obj[i].name+"<br> </div>" +
+                        "<div class='restaurant-info'>"+obj[i].location+"<br>"+obj[i].horario+"</div>" +
+                        "</button></li>";
                 }
                 $("#restaurant-list").html(ret);
                 mui.viewPort.iScrollRefresh();
