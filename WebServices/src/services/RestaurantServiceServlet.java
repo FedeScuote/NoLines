@@ -47,6 +47,7 @@ public class RestaurantServiceServlet extends HttpServlet {
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < lista.size(); i++) {
 				JSONObject restaurant = new JSONObject();
+				restaurant.put("id", lista.get(i).getId());
 				restaurant.put("name", lista.get(i).getName());
 				restaurant.put("logo", lista.get(i).getLogo());
 				restaurant.put("horario", lista.get(i).getHorario());
