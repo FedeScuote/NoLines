@@ -2,6 +2,7 @@ package services;
 
 import java.util.List;
 
+import entity.Restaurant;
 import entity.Shop;
 
 public class RestaurantServiceImpl implements RestaurantService {
@@ -9,10 +10,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public String Hola(){
 		
 		return "Hola";
-	}
-	public List getMenu(String idRestaurant) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public int getRanking(String idRestaurant) {
@@ -33,6 +30,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	public List getRestaurants() {
 		return Shop.getAllRestaurants();
+	}
+
+	public List getMenu(int idRestaurant) {
+		return Restaurant.getMenu(idRestaurant);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.junit.Test;
 import DaoImpl.LocalDaoDB;
 import dao.exception.DaoException;
 import dao.exception.NoDataFoundException;
+import entity.Plate;
 import entity.Restaurant;
 import entity.Shop;
 
@@ -33,6 +34,19 @@ public class TestLocalDaoDBB {
 			Shop shop = localDaoDB.getById(1);
 			assertEquals("8:00 a 00:00", shop.getHorario());
 		} catch (NoDataFoundException | DaoException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Test
+	public void getMenu(){
+		try {
+			LinkedList<Plate> menu = localDaoDB.getMenu(1);
+			assertEquals("Combo Big Mc",menu.getFirst().getName());
+			assertEquals("http://localhost/image/plate/mcdonalds5.png", menu.getLast().getPicture());
+		} catch (NoDataFoundException | DaoException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
