@@ -151,7 +151,11 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     left: 60px;
     bottom: 60px;
 }
+.my-cart{
+    min-height: 150px;
+}
 #menu-list{
     margin-left: 10%;
     margin-right: 10%;
+    background-color: #FFFFFF;
 }
