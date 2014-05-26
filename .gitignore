@@ -1,2 +1,8 @@
 .idea
 *.class
+.metadata
+.project
+
+.metadata/.mylyn/repositories.xml.zip
+
+*.snap
