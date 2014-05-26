@@ -7,6 +7,7 @@ function deviceReady() {
             url:'http://localhost:8080/WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data:{
+            	ws:1
             }
         })
             .done(function(data){
