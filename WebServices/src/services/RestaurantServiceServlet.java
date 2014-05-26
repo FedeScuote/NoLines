@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import entity.Plate;
 import entity.Restaurant;
 
 /**
@@ -40,19 +41,36 @@ public class RestaurantServiceServlet extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("text/event-stream");
 		response.setCharacterEncoding("UTF-8");
-		
 		final java.io.Writer writer = response.getWriter();
-		LinkedList<Restaurant> lista = (LinkedList<Restaurant>) restaurantService.getRestaurants();
-		JSONArray wrapper = new JSONArray();
-		for (int i = 0; i < lista.size(); i++) {
-			JSONObject restaurant = new JSONObject();
-			restaurant.put("name", lista.get(i).getName());
-			restaurant.put("logo", lista.get(i).getLogo());
-			restaurant.put("horario", lista.get(i).getHorario());
-			restaurant.put("location", lista.get(i).getLocation());
-			wrapper.add(restaurant)	;
+		if(request.getParameter("ws").equals("1")){
+			LinkedList<Restaurant> lista = (LinkedList<Restaurant>) restaurantService.getRestaurants();
+			JSONArray wrapper = new JSONArray();
+			for (int i = 0; i < lista.size(); i++) {
+				JSONObject restaurant = new JSONObject();
+				restaurant.put("name", lista.get(i).getName());
+				restaurant.put("logo", lista.get(i).getLogo());
+				restaurant.put("horario", lista.get(i).getHorario());
+				restaurant.put("location", lista.get(i).getLocation());
+				wrapper.add(restaurant)	;
+			}
+			writer.append(wrapper.toJSONString());
+		}else if(request.getParameter("ws").equals("2")){
+			String idRestaurant = request.getParameter("idRestaurant");
+			LinkedList<Plate> menu = (LinkedList<Plate>) restaurantService.getMenu(Integer.parseInt(idRestaurant));
+			JSONArray wrapper = new JSONArray();
+			for (int i = 0; i < menu.size(); i++) {
+				JSONObject plate = new JSONObject();
+				plate.put("name", menu.get(i).getId());
+				plate.put("logo", menu.get(i).getName());
+				plate.put("horario", menu.get(i).getDescription());
+				plate.put("location", menu.get(i).getPicture());
+				plate.put("location", menu.get(i).getPrice());
+				plate.put("location", menu.get(i).getTime());
+				wrapper.add(plate);
+			}
+			writer.append(wrapper.toJSONString());
 		}
-		writer.append(wrapper.toJSONString());
+		
 	}
 
 	/**
