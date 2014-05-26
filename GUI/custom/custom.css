@@ -159,3 +159,6 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     margin-right: 10%;
     background-color: #FFFFFF;
 }
+.menu-selector{
+    border-bottom: solid 2px black;
+}

@@ -39,7 +39,7 @@ function restaurantSelection(param) {
                 var obj=JSON.parse(data);
                 var ret = "";
                 for(var i = 0 ; i < obj.length ; i++){
-                    ret = ret + "<li class='menu-selector'>"+ obj[i].logo+"</li>";
+                    ret = ret + "<li class='menu-selector'>"+ obj[i].name+"<br>"+obj[i].description+"</li>";
                 }
                 $("#menu-list").html(ret);
                 mui.viewPort.iScrollRefresh();
