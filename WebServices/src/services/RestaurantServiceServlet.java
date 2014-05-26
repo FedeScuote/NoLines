@@ -61,12 +61,12 @@ public class RestaurantServiceServlet extends HttpServlet {
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < menu.size(); i++) {
 				JSONObject plate = new JSONObject();
-				plate.put("name", menu.get(i).getId());
-				plate.put("logo", menu.get(i).getName());
-				plate.put("horario", menu.get(i).getDescription());
-				plate.put("location", menu.get(i).getPicture());
-				plate.put("location", menu.get(i).getPrice());
-				plate.put("location", menu.get(i).getTime());
+				plate.put("id", menu.get(i).getId());
+				plate.put("name", menu.get(i).getName());
+				plate.put("description", menu.get(i).getDescription());
+				plate.put("picture", menu.get(i).getPicture());
+				plate.put("price", menu.get(i).getPrice());
+				plate.put("time", menu.get(i).getTime());
 				wrapper.add(plate);
 			}
 			writer.append(wrapper.toJSONString());
