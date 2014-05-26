@@ -25,7 +25,7 @@ div.mui-page-header .mui-leftarrow {
     position: relative;
     margin: 0px auto;
     color: #EDEDED;
-    background-image: url('images/leftarrow.png');
+    background-image: url('images/leftarrowblackWhite.png');
     background-repeat: no-repeat;
     background-position: 10px 10.5px;
 }
@@ -46,7 +46,7 @@ div#mui-viewport-page1 div.mui-page-header {
     text-decoration: none;
     transition: all 0.25s linear 0s;
     font-size: 1.35em;
-    line-height: 1.35emx;
+    line-height: 1.35em;
     padding: 15px 20px 16px;
     background-color: #FFFFFF;
 }
@@ -144,11 +144,14 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 .restaurant-selector .restaurant-title{
 	position: relative;
     left: 60px;
-    bottom: 50px;
+    bottom: 60px;
 }
 .restaurant-selector .restaurant-info{
     position: relative;
     left: 60px;
-    bottom: 50px;
+    bottom: 60px;
 }
-
+#menu-list{
+    margin-left: 10%;
+    margin-right: 10%;
+}
