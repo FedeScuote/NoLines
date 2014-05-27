@@ -1,9 +1,11 @@
 package services;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import entity.Restaurant;
 import entity.Shop;
+import entity.exception.getMenuException;
 
 public class RestaurantServiceImpl implements RestaurantService {
 
@@ -33,7 +35,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	public List getMenu(int idRestaurant) {
-		return Restaurant.getMenu(idRestaurant);
+		try {
+			return Restaurant.getMenu(idRestaurant);
+		} catch (getMenuException e) {
+			e.printStackTrace();
+			return new LinkedList();
+		}
 	}
 
 }
