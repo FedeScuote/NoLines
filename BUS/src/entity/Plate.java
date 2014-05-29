@@ -10,7 +10,7 @@ public class Plate {
 	int time;
 	
 	public boolean equals(Plate plate){
-			return(this.getId()==plate.getId() && this.getName()==plate.getName() && this.getDescription()==plate.getDescription() && this.getPicture()==plate.getPicture() && this.getTime()==plate.getTime() && this.getPrice()==plate.getPrice());
+			return(this.getId().equals(plate.getId()) && this.getName().equals(plate.getName()) && this.getDescription().equals(plate.getDescription()) && this.getPicture().equals(plate.getPicture()) && this.getTime()==plate.getTime() && this.getPrice()==plate.getPrice());
 		}
 	public Plate() {
 		super();

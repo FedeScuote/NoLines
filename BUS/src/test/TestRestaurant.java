@@ -22,6 +22,10 @@ public class TestRestaurant {
 		lista.add(plato2);
 		try {
 			List menu = Restaurant.getMenu(1);
+			for (int i = 0; i < lista.size(); i++) {
+				((Plate)lista.get(i)).getName();
+				assertEquals(((Plate)lista.get(i)).getName(), ((Plate)menu.get(i)).getName());
+			}
 			assertEquals(lista.size(), menu.size());
 		} catch (getMenuException e) {
 			// TODO Auto-generated catch block
