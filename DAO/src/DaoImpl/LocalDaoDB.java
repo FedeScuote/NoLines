@@ -130,26 +130,19 @@ public class LocalDaoDB implements LocalDao {
 	}
 	
 	public static void main(String[] args){
-		LocalDaoDB prueba =new LocalDaoDB();
-		Shop shopPrueba = new Shop();
-		LinkedList<Plate> menu = new LinkedList<Plate>();
+		OrderDaoDB orderDao=new OrderDaoDB();
+		int[][] platos = new int[2][2];
+		platos[0][0]=1;
+		platos[0][1]=1;
+		platos[1][0]=3;
+		platos[1][1]=2;
 		try {
-			shopPrueba = prueba.getById(1);
-			menu=prueba.getMenu(1);
-		} catch (NoDataFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			orderDao.submitOrder("jt.tejeria@gmail.com", 123456, 1, platos);
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(shopPrueba.getLocation());
-		System.out.println(shopPrueba.getHorario());
-		System.out.println(shopPrueba.getId());
-		
-		System.out.println("El largo deberia ser 2 y es"+menu.size());
-		System.out.println(menu.getFirst().getDescription());
-		System.out.println(menu.getLast().getDescription());
+	
 	}
 }
 
