@@ -10,9 +10,9 @@ import jdbc.NoDatabaseConexionException;
 import dao.LocalDao;
 import dao.exception.DaoException;
 import dao.exception.NoDataFoundException;
+import entity.Plate;
 import entity.Restaurant;
 import entity.Shop;
-import entity.Plate;
 
 public class LocalDaoDB implements LocalDao {
 	
@@ -127,22 +127,6 @@ public class LocalDaoDB implements LocalDao {
 		plate.setTime(rsPlates.getInt("cook_time"));
 		plate.setPrice(rsPlates.getDouble("price"));
 		return plate;
-	}
-	
-	public static void main(String[] args){
-		OrderDaoDB orderDao=new OrderDaoDB();
-		int[][] platos = new int[2][2];
-		platos[0][0]=1;
-		platos[0][1]=1;
-		platos[1][0]=3;
-		platos[1][1]=2;
-		try {
-			orderDao.submitOrder("jt.tejeria@gmail.com", 123456, 1, platos);
-		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
 	}
 }
 

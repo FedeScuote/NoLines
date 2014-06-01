@@ -67,18 +67,15 @@ public class Shop {
 	}
 	
 	public static final List getAllRestaurants(){ //tirar excepxiones y en lo otro decir que no se encontraron
+		List restaurants = new LinkedList<Restaurant>();
 		try {
-			List restaurants = new LinkedList<Restaurant>();
 			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
 			restaurants = local.getRestaurants();
 			return restaurants;
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NoDataFoundException | DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return restaurants;
 		}
-		return null;
-		
 	}
  public static void main(String[] args){
 	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();

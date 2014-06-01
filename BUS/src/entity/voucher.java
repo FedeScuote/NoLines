@@ -1,18 +1,20 @@
 package entity;
 
+import java.util.Date;
+
 public class voucher {
 	int id;
-	int discount;
-	String generatedTime;
-	String usedTime;
-	String expirationTime;
-	String restaurantId;
+	double discount;
+	Date generatedTime;
+	Date usedTime;
+	Date expirationTime;
+	int restaurantId;
 
-	public String getRestaurantId() {
+	public int getRestaurantId() {
 		return restaurantId;
 	}
 
-	public void setRestaurantId(String restaurantId) {
+	public void setRestaurantId(int restaurantId) {
 		this.restaurantId = restaurantId;
 	}
 
@@ -24,35 +26,35 @@ public class voucher {
 		this.id = id;
 	}
 
-	public int getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(int discount) {
+	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
 
-	public String getGeneratedTime() {
+	public Date getGeneratedTime() {
 		return generatedTime;
 	}
 
-	public void setGeneratedTime(String generatedTime) {
+	public void setGeneratedTime(Date generatedTime) {
 		this.generatedTime = generatedTime;
 	}
 
-	public String getUsedTime() {
+	public Date getUsedTime() {
 		return usedTime;
 	}
 
-	public void setUsedTime(String usedTime) {
+	public void setUsedTime(Date usedTime) {
 		this.usedTime = usedTime;
 	}
 
-	public String getExpirationTime() {
+	public Date getExpirationTime() {
 		return expirationTime;
 	}
 
-	public void setExpirationTime(String expirationTime) {
+	public void setExpirationTime(Date expirationTime) {
 		this.expirationTime = expirationTime;
 	}
 

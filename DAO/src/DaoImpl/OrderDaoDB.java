@@ -2,7 +2,7 @@ package DaoImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+
 
 import dao.OrderDao;
 import dao.exception.DaoException;
@@ -12,7 +12,7 @@ import jdbc.ConexionDB;
 import jdbc.NoDatabaseConexionException;
 
 
-public class OrderDaoDB implements OrderDao{
+public abstract class OrderDaoDB implements OrderDao{
 	
 	//Submits an orden in the DataBase, 
 	//requires the user that is submiting the order, the id of the restaurant, and the id's and quantities of each plate.
@@ -36,6 +36,8 @@ public class OrderDaoDB implements OrderDao{
 			}
 		} catch (DaoException e) {
 			throw new DaoException();
+		} finally {
+			conexion.disconnect();
 		}
 	}
 
@@ -58,7 +60,7 @@ public class OrderDaoDB implements OrderDao{
 		}
 	}
 
-	@Override
+	
 	public Order retrieveOrder(int orderId) {
 		// TODO Auto-generated method stub
 		return null;
