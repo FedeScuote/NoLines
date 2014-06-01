@@ -48,7 +48,7 @@ function restaurantSelection(param) {
                         ret = ret + "<li class='menu-selector'>"+ obj[i].name+"<br>"+obj[i].description+"</li>";
                     }
                 }else{
-                	ret="No hay restaurantes disponibles, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
+                	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
                 }
                 $("#menu-list").html(ret);
                 mui.viewPort.iScrollRefresh();

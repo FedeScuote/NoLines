@@ -38,7 +38,8 @@ public class VoucherDaoDB implements VoucherDao{
 	private double calculateDiscount() {
 		//devuelve un numero random entre 10 y 20.
 		double random=(Math.random()*10)+10;
-		return random;
+		int numero = (int) Math.round(random);
+		return (numero);
 	}
 
 	//Creates a voucher for each user.
@@ -59,8 +60,6 @@ public class VoucherDaoDB implements VoucherDao{
 				jdbc.modify(stat);
 			} catch (DaoException e) {
 				throw new DaoException();
-			} finally {
-				conexion.disconnect();
 			}
 		}
 	}
@@ -102,7 +101,11 @@ public class VoucherDaoDB implements VoucherDao{
 				if(rsVoucher.next()){
 					Date date=new Date();
 					java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-					if(rsVoucher.getDate("used_time").equals(null) && rsVoucher.getDate("expiration_date").after(sqlDate)){
+					try{
+						if(rsVoucher.getString("used_time").equals(null)){
+							//Hago tirar la nullpointer exception en caso de que used time sea null en la base de datos.
+						}
+					}catch(NullPointerException e){
 						if(rsVoucher.getString("email").equals(email)){
 							String modify="UPDATE  `noLines`.`voucher` SET  `used_time` = NOW( ) WHERE  `voucher`.`voucher_id` ='"+idVoucher+"'";
 							jdbc.modify(modify);
@@ -133,7 +136,10 @@ public class VoucherDaoDB implements VoucherDao{
 		}
 		Date date= new Date();
 		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-		String getVouchers = "SELECT * FROM voucher WHERE voucher.email ='"+email+"' AND voucher.used_time =NULL AND voucher.expiration_date < '"+sqlDate+"'";
+		int hora = date.getHours();
+		int minutos = date.getMinutes();
+		int segundos = date.getSeconds();
+		String getVouchers = "SELECT * FROM voucher WHERE voucher.email ='"+email+"' AND voucher.used_time IS NULL AND voucher.expiration_date > '"+sqlDate+" "+hora+":"+minutos+":"+segundos+"'";
 		ResultSet rsVouchers = jdbc.select(getVouchers);
 		LinkedList<voucher> vouchers = new LinkedList<voucher>();
 		try{
