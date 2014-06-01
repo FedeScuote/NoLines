@@ -9,10 +9,6 @@ import entity.exception.getMenuException;
 
 public class RestaurantServiceImpl implements RestaurantService {
 
-	public String Hola(){
-		
-		return "Hola";
-	}
 
 	public int getRanking(String idRestaurant) {
 		// TODO Auto-generated method stub

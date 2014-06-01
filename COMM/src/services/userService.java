@@ -14,10 +14,10 @@ public interface userService {
 	public void changePassword(String username, String oldPassword, String newPassword);
 	public void rankPlate(String idPlate, int ranking);
 	public void rankRestauran(String idRestaurant, int ranking);
-	public void order(String idRestaurant, List plates); //esto obviamente no devuelve void, devuelve algun tipo de OrderVo, en realida devuelve Json, no se como hacerlo :(
 	public void addLike();
 	public void removeLike();
 	public List getVoucher(); //quizas devuelve un voucherVO??
+	void order(String idRestaurant, List plates, List amounts);
 
 
 }

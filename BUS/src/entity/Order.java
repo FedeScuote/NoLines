@@ -1,10 +1,36 @@
 package entity;
 
+import java.util.LinkedList;
 import java.util.List;
+
+import dao.LocalDao;
+import dao.OrderDao;
+import dao.exception.DaoException;
+import dao.exception.NoDataFoundException;
+import entity.exception.PersistException;
 
 public class Order {
 	int id;
 	List items;
+	List<Integer> amounts;
+	
+	public List getAmounts() {
+		return amounts;
+	}
+
+	public void setAmounts(List amounts) {
+		this.amounts = amounts;
+	}
+
+	String idReastaurant;
+
+	public String getIdReastaurant() {
+		return idReastaurant;
+	}
+
+	public void setIdReastaurant(String idReastaurant) {
+		this.idReastaurant = idReastaurant;
+	}
 
 	public int getId() {
 		return id;
@@ -22,8 +48,12 @@ public class Order {
 		this.items = items;
 	}
 
-	public void addItem() {
-
+	public void addItem(String id) {
+		items.add(id);
+	}
+	
+	public void addIAmount(int a) {
+		amounts.add(new Integer(a));
 	}
 
 	public int calculatePrice() {
@@ -33,5 +63,45 @@ public class Order {
 	public int calculateTime() {
 		return 0;
 	}
+	
+	public void persistOrder() throws PersistException{
+		try {
+			int largo = items.size();
+			int[][] plates = new int[largo][2];
+			for (int i = 0; i < largo; i++) {
+					plates[i][0] = Integer.parseInt(items.get(i).toString());
+					plates[i][1] = amounts.get(i);
+			}
+			OrderDao orderDao = (OrderDao) Class.forName("DaoImpl.OrderDaoDB").newInstance();
+			orderDao.submitOrder("mmanasliski", 44, Integer.parseInt(this.getIdReastaurant()), plates);
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NumberFormatException | DaoException e) {
+			throw new PersistException();
+		}
+	}
+	
+	 public static void main(String[] args){
+		 String plato1 = "1";
+		 String plato2 = "2";
+		 String am1= "3";
+		 String am2= "6";
+		 String rest="1";
+		 List platos = new LinkedList<>();
+		 List cants = new LinkedList<Integer>();
+		 platos.add(plato1);
+		 platos.add(plato2);
+		 cants.add(Integer.parseInt(am1));
+		 cants.add(Integer.parseInt(am2));
+		 Order order = new Order();
+		 order.setAmounts(cants);
+		 order.setItems(platos);
+		 order.setIdReastaurant(rest);
+		 try {
+			order.persistOrder();
+		} catch (PersistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }
 
 }
