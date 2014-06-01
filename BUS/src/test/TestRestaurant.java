@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 public class TestRestaurant {
@@ -33,5 +35,13 @@ public class TestRestaurant {
 		}
 	}
 	
+	@Test
+	public void getMenuExc(){
+		try {
+			List menu = Restaurant.getMenu(91);
+		} catch (getMenuException e) {
+			assertTrue(e instanceof getMenuException);
+		}
+	}
 
 }
