@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 24, 2014 at 04:48 PM
+-- Generation Time: Jun 02, 2014 at 12:52 AM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.19
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `local` (
 --
 
 CREATE TABLE IF NOT EXISTS `order` (
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(255) NOT NULL,
   `paying_account_number` varchar(255) NOT NULL,
   `restaurant_name` varchar(50) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   PRIMARY KEY (`order_id`),
   KEY `fk_order_user1_idx` (`user_email`),
   KEY `fk_order_paying_account1_idx` (`paying_account_number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `order` (
 CREATE TABLE IF NOT EXISTS `order_has_plate` (
   `order_id` int(11) NOT NULL,
   `plate_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   PRIMARY KEY (`order_id`,`plate_id`),
   KEY `fk_order_has_plate_plate1_idx` (`plate_id`),
   KEY `fk_order_has_plate_order1_idx` (`order_id`)
@@ -202,9 +203,10 @@ CREATE TABLE IF NOT EXISTS `voucher` (
   `used_time` datetime DEFAULT NULL,
   `expiration_date` datetime DEFAULT NULL,
   `id_local` varchar(45) NOT NULL,
+  `email` varchar(255) NOT NULL,
   PRIMARY KEY (`voucher_id`,`id_local`),
   KEY `fk_voucher_local1_idx` (`id_local`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
 
 --
 -- Constraints for dumped tables
@@ -214,8 +216,8 @@ CREATE TABLE IF NOT EXISTS `voucher` (
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `fk_order_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_order_paying_account1` FOREIGN KEY (`paying_account_number`) REFERENCES `paying_account` (`number`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_order_paying_account1` FOREIGN KEY (`paying_account_number`) REFERENCES `paying_account` (`number`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_order_user1` FOREIGN KEY (`user_email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `order_has_plate`
@@ -259,8 +261,8 @@ ALTER TABLE `shop`
 -- Constraints for table `user_has_taste`
 --
 ALTER TABLE `user_has_taste`
-  ADD CONSTRAINT `fk_user_has_taste_user1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_user_has_taste_taste1` FOREIGN KEY (`taste_id`) REFERENCES `taste` (`taste_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_user_has_taste_taste1` FOREIGN KEY (`taste_id`) REFERENCES `taste` (`taste_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_user_has_taste_user1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `voucher`
