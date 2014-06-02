@@ -73,9 +73,10 @@ public class Order {
 					plates[i][1] = amounts.get(i);
 			}
 			OrderDao orderDao = (OrderDao) Class.forName("DaoImpl.OrderDaoDB").newInstance();
-			orderDao.submitOrder("mmanasliski", 44, Integer.parseInt(this.getIdReastaurant()), plates);
+			orderDao.submitOrder("jt.tejeria@gmail.com", 123456, Integer.parseInt(this.getIdReastaurant()), plates);
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NumberFormatException | DaoException e) {
+			e.printStackTrace();
 			throw new PersistException();
 		}
 	}
