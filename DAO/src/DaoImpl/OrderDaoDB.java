@@ -12,7 +12,7 @@ import jdbc.ConexionDB;
 import jdbc.NoDatabaseConexionException;
 
 
-public abstract class OrderDaoDB implements OrderDao{
+public class OrderDaoDB implements OrderDao{
 	
 	//Submits an orden in the DataBase, 
 	//requires the user that is submiting the order, the id of the restaurant, and the id's and quantities of each plate.

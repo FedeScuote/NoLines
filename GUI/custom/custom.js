@@ -1,3 +1,4 @@
+var cart="";
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -12,7 +13,7 @@ function deviceReady() {
                 var ret = "";
                 if(obj.length > 0){
                 	for (var i = 0; i < obj.length; i++) {
-                        ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick=restaurantSelection(" + obj[i].id + ")><img src="
+                        ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick=restaurantSelection(" + obj[i].id +")><img src="
                             + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
                             "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
                             "</button></li>";
@@ -45,7 +46,7 @@ function restaurantSelection(param) {
                 var ret = "";
                 if(obj.length > 0){
                 	for(var i = 0 ; i < obj.length ; i++){
-                        ret = ret + "<li class='menu-selector'>"+ obj[i].name+"<br>"+obj[i].description+"</li>";
+                        ret = ret + "<li class='menu-selector'>"+obj[i].name+"<img src='images/disclosure1.png' onclick=addPlate("+obj[i].id+","+param+")>"+"<br>"+obj[i].description+"</li>";
                     }
                 }else{
                 	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
@@ -58,6 +59,14 @@ function restaurantSelection(param) {
             .fail(function(jqXHR, textStatus, errorThrown){
 
             })
+}
+
+function addPlate(param,id){
+	ret='<form action="http://localhost:8080/WebServices/UserServiceServlet" method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
+	cart=cart+param+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
+	ret=ret+cart+'<input type="submit" />';
+	$("#cart-display").html(ret);
+	
 }
 
 

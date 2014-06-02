@@ -12,7 +12,7 @@ import entity.exception.PersistException;
 public class Order {
 	int id;
 	List items;
-	List<Integer> amounts;
+	List amounts;
 	
 	public List getAmounts() {
 		return amounts;
@@ -53,7 +53,7 @@ public class Order {
 	}
 	
 	public void addIAmount(int a) {
-		amounts.add(new Integer(a));
+		amounts.add(a);
 	}
 
 	public int calculatePrice() {
@@ -70,7 +70,7 @@ public class Order {
 			int[][] plates = new int[largo][2];
 			for (int i = 0; i < largo; i++) {
 					plates[i][0] = Integer.parseInt(items.get(i).toString());
-					plates[i][1] = amounts.get(i);
+					plates[i][1] = Integer.parseInt((amounts.get(i).toString()));
 			}
 			OrderDao orderDao = (OrderDao) Class.forName("DaoImpl.OrderDaoDB").newInstance();
 			orderDao.submitOrder("jt.tejeria@gmail.com", 123456, Integer.parseInt(this.getIdReastaurant()), plates);
