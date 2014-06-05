@@ -1,4 +1,4 @@
-var cart=null;
+var cart;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -42,17 +42,13 @@ function restaurantSelection(param) {
             }
         })
             .done(function(data){
-            	
-            	//magia juanchi despues se vera si es lo mejor.
-            	cart=null;
+            	cart=" ";
             	$("#cart-display").html("");
-            	//termina magia juanchi.
-            	
                 var obj=JSON.parse(data);
                 var ret = "";
                 if(obj.length > 0){
                 	for(var i = 0 ; i < obj.length ; i++){
-                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br><br>"+obj[i].description+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick=addPlate("+obj[i].id+","+param+")>+</button></div></li>";
+                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br><br>"+obj[i].description+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
                 }else{
                 	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
@@ -67,9 +63,9 @@ function restaurantSelection(param) {
             })
 }
 
-function addPlate(param,id){
+function addPlate(param,id,name){
 	ret='<form action="http://localhost:8080/WebServices/UserServiceServlet" method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
-	cart=cart+param+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
+	cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
 	ret=ret+cart+'<input type="submit" />';
 	$("#cart-display").html(ret);
 	
