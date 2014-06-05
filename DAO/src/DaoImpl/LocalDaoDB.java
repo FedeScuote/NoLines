@@ -3,6 +3,7 @@ package DaoImpl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 
 import jdbc.AccesoJDBC;
 import jdbc.ConexionDB;
@@ -128,5 +129,31 @@ public class LocalDaoDB implements LocalDao {
 		plate.setPrice(rsPlates.getDouble("price"));
 		return plate;
 	}
+
+	@Override
+	public List getLocals() throws NoDataFoundException, DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		String getLocales = "SELECT * FROM local";
+		ResultSet rsLocales = jdbc.select(getLocales);
+		LinkedList<Shop> locales = new LinkedList<Shop>();
+		try{
+			while (rsLocales.next()){
+				locales.add(loadShop(rsLocales.getInt("id_local"),rsLocales,jdbc));		
+			}
+			return locales;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
 }
 

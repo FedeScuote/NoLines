@@ -18,7 +18,7 @@ import entity.voucher;
 public class VoucherDaoDB implements VoucherDao{
 	
 	//Creates a unique voucher for only one user.
-	public void createVoucherForUser(String email, int idLocal) throws DaoException {
+	public voucher createVoucherForUser(String email, int idLocal) throws DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
 		AccesoJDBC jdbc = null;
@@ -33,6 +33,19 @@ public class VoucherDaoDB implements VoucherDao{
 		} catch (DaoException e) {
 			throw new DaoException();
 		}
+		voucher vo= new voucher();
+		String stat2="SELECT * from voucher WHERE email='"+email+"' ORDER BY(create_time) DESC LIMIT 1";
+		ResultSet rsVouchers = jdbc.select(stat2);
+		try {
+			if(rsVouchers.next()){
+				vo=loadVoucher(rsVouchers);
+			}
+		} catch (SQLException e) {
+			throw new DaoException();
+		}finally{
+			conexion.disconnect();
+		}
+		return vo;
 	}
 
 	private double calculateDiscount() {
