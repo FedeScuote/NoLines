@@ -132,6 +132,10 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #restaurant-list{
 	padding: 0px;
 }
+
+#confirmar{
+	text-align:right;
+}
 .restaurant-selector{
     margin-bottom: 0.5em;
 }
@@ -169,11 +173,11 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 .menu-selector-div{
     text-align: right;
     position: relative;
-    bottom: 25px;
 }
 .menu-selector-btn{
     background-color: #e04a59;
-    font-size: 32px;
+    height: 100%;
+    font-size:1.5em;
 
 
 }
