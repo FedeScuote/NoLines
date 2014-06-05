@@ -1,17 +1,19 @@
 package entity;
 
+import java.util.List;
+
 public class User {
 	String userName;
-	String name;
+	String email;
 	String password;
 	String facebook;
-	Account account;
+	List<Account> account;
 
-	public Account getAccount() {
+	public List<Account> getAccount() {
 		return account;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(List<Account> account) {
 		this.account = account;
 	}
 
@@ -23,12 +25,12 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getName() {
-		return name;
+	public String getEMail() {
+		return email;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setEMail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
