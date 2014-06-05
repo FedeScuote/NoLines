@@ -42,6 +42,12 @@ function restaurantSelection(param) {
             }
         })
             .done(function(data){
+            	
+            	//magia juanchi despues se vera si es lo mejor.
+            	cart=null;
+            	$("#cart-display").html("");
+            	//termina magia juanchi.
+            	
                 var obj=JSON.parse(data);
                 var ret = "";
                 if(obj.length > 0){
