@@ -153,12 +153,27 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 }
 .my-cart{
     min-height: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
 }
 #menu-list{
     margin-left: 10%;
     margin-right: 10%;
     background-color: #FFFFFF;
+    padding-left: 1%;
 }
 .menu-selector{
     border-bottom: solid 2px black;
+}
+.menu-selector-div{
+    text-align: right;
+    position: relative;
+    bottom: 25px;
+}
+.menu-selector-btn{
+    background-color: #e04a59;
+    font-size: 32px;
+
+
 }
