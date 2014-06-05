@@ -2,6 +2,8 @@ package services;
 
 import java.util.List;
 
+import entity.voucher;
+
 public interface userService {
 
 	public void login(String username, String password);
@@ -16,8 +18,8 @@ public interface userService {
 	public void rankRestauran(String idRestaurant, int ranking);
 	public void addLike();
 	public void removeLike();
-	public List getVoucher(); //quizas devuelve un voucherVO??
 	void order(String idRestaurant, List plates, List amounts);
+	public voucher getVoucher(String user);
 
 
 }

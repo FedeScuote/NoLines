@@ -77,6 +77,19 @@ public class Shop {
 			return restaurants;
 		}
 	}
+	
+	public static final List getAllShops(){ //tirar excepxiones y en lo otro decir que no se encontraron
+		List shops = new LinkedList<>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			shops = local.getLocals();
+			return shops;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return shops;
+		}
+	}
+	
  public static void main(String[] args){
 	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();
 	 System.out.print(lista.getFirst().getName());

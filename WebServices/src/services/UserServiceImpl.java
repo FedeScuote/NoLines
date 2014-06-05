@@ -6,7 +6,9 @@ import java.util.List;
 import entity.Order;
 import entity.Restaurant;
 import entity.Shop;
+import entity.voucher;
 import entity.exception.PersistException;
+import entity.exception.voucherErrorException;
 
 public class UserServiceImpl implements userService {
 
@@ -99,11 +101,25 @@ public class UserServiceImpl implements userService {
 	}
 
 	@Override
-	public List getVoucher() {
-		// TODO Auto-generated method stub
-		return null;
+	public voucher getVoucher(String user) {
+		 Shop shopRandom = getRandomShop();
+		 try {
+			voucher voucherNew = voucher.createVoucherForUser(user, shopRandom.getId());
+			return voucherNew;
+		} catch (voucherErrorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
-
+	
+	
+	private Shop getRandomShop(){
+		int indiceRandom;
+		List shops = Shop.getAllShops();
+		indiceRandom = (int)(Math.random()*(shops.size()));
+		return (Shop) shops.get(indiceRandom);
+	}
 	 public static void main(String[] args){
 		 String plato1 = "1";
 		 String plato2 = "2";

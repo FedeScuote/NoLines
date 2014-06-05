@@ -1,6 +1,15 @@
 package entity;
 
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import dao.LocalDao;
+import dao.VoucherDao;
+import dao.exception.DaoException;
+import dao.exception.NoDataFoundException;
+import entity.exception.getMenuException;
+import entity.exception.voucherErrorException;
 
 public class voucher {
 	int id;
@@ -56,6 +65,20 @@ public class voucher {
 
 	public void setExpirationTime(Date expirationTime) {
 		this.expirationTime = expirationTime;
+	}
+	
+	public static final voucher createVoucherForUser(String email,int idLocal) throws voucherErrorException{
+		try {
+			voucher v = new voucher();
+			VoucherDao voucherDao = (VoucherDao) Class.forName("DaoImpl.VoucherDaoDB").newInstance();
+			v = voucherDao.createVoucherForUser(email, idLocal);
+			return v;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new voucherErrorException();
+		}
 	}
 
 }
