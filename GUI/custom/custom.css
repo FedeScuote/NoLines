@@ -181,3 +181,9 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 
 
 }
+#menu-list-div{
+	top: 25%;
+	margin-left: 5%;
+	height: 60%;
+	width: 90%;
+}
