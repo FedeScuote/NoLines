@@ -132,6 +132,10 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #restaurant-list{
 	padding: 0px;
 }
+
+#confirmar{
+	text-align:right;
+}
 .restaurant-selector{
     margin-bottom: 0.5em;
 }
@@ -153,12 +157,33 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 }
 .my-cart{
     min-height: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
 }
 #menu-list{
     margin-left: 10%;
     margin-right: 10%;
     background-color: #FFFFFF;
+    padding-left: 1%;
 }
 .menu-selector{
     border-bottom: solid 2px black;
+}
+.menu-selector-div{
+    text-align: right;
+    position: relative;
+}
+.menu-selector-btn{
+    background-color: #e04a59;
+    height: 100%;
+    font-size:1.5em;
+
+
+}
+#menu-list-div{
+	top: 25%;
+	margin-left: 5%;
+	height: 60%;
+	width: 90%;
 }
