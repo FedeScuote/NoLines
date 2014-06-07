@@ -50,6 +50,7 @@ public class LocalDaoDB implements LocalDao {
 		shop.setHorario(rsRestaurants.getString("horario"));
 		shop.setLogo(rsRestaurants.getString("logo"));		
 		shop.setLocation(rsRestaurants.getString("location"));
+		shop.setDescription(rsRestaurants.getString("description"));
 		return shop;
 	}
 

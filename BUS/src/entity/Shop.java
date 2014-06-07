@@ -14,6 +14,15 @@ public class Shop {
 	String logo;
 	String horario;
 	String location;
+	String description;
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public int getId() {
 		return id;
