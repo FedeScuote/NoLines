@@ -2,8 +2,13 @@ package entity;
 
 import java.util.List;
 
+import dao.UserDao;
+import dao.VoucherDao;
+import dao.exception.DaoException;
+import entity.exception.voucherErrorException;
+
 public class User {
-	String userName;
+	String name;
 	String email;
 	String password;
 	String facebook;
@@ -17,12 +22,12 @@ public class User {
 		this.account = account;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String userName) {
+		this.name = userName;
 	}
 
 	public String getEMail() {
@@ -47,6 +52,21 @@ public class User {
 
 	public void setFacebook(String facebook) {
 		this.facebook = facebook;
+	}
+	
+	public static boolean register(User user){
+			UserDao userDao;
+			try {
+				userDao = (UserDao) Class.forName("DaoImpl.UserDaoDB").newInstance();
+				userDao.registerUser(user.getEMail(), user.getFacebook(), user.getName(), user.getPassword());
+				return true;
+			} catch (InstantiationException | IllegalAccessException
+					| ClassNotFoundException | DaoException e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		
 	}
 
 }

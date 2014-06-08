@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import com.sun.net.httpserver.Authenticator.Success;
 
 import dao.exception.DaoException;
 import entity.voucher;
@@ -29,7 +28,7 @@ public class TestVoucherDaoDB {
 			//Busquemos en base de datos si existe un voucher nuevo para ese usuario en ese restaurante en esta hora.
 			LinkedList<voucher> vouchers = voucherDao.getVouchers("jt.tejeria@gmail.com");
 			for (voucher vo : vouchers) {
-				if(vo.getRestaurantId() == 2){
+				if(vo.getShopId() == 2){
 					resultado=true;
 				}
 			}
@@ -53,12 +52,12 @@ public class TestVoucherDaoDB {
 			boolean ingreso1=false;
 			boolean ingreso2=false;
 			for (voucher vo : vouchers) {
-				if(vo.getRestaurantId() == 3){	
+				if(vo.getShopId() == 3){	
 					ingreso1=true;
 				}
 			}
 			for (voucher vou : vouchersPepe) {
-				if(vou.getRestaurantId() == 3){
+				if(vou.getShopId() == 3){
 					ingreso2=true;
 				}
 			}
