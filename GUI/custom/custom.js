@@ -31,6 +31,14 @@ function deviceReady() {
 
             })
     });
+
+    //muestra el panel con info del restaurant
+    $("#info").on("click", function(e) {
+        if (mui.viewPort.panelIsOpen())
+            mui.viewPort.closePanel();
+        else
+            mui.viewPort.showPanel('panel1', 'SLIDE_RIGHT');
+    });
 }
 function restaurantSelection(param) {
         $.ajax({

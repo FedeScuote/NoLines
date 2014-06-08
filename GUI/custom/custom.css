@@ -105,21 +105,21 @@ div.mui-tabbar ul.mui-tabbar-list li:HOVER {
     background-color: #CDD8DA;
 }
 
-div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {
-    background-image: url('../images/home.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {*/
+    /*background-image: url('../images/home.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {
-    background-image: url('../images/agenda.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {*/
+    /*background-image: url('../images/agenda.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {
-    background-image: url('../images/tramite.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {*/
+    /*background-image: url('../images/tramite.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {
-    background-image: url('../images/contacto.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {*/
+    /*background-image: url('../images/contacto.png');*/
+/*}*/
 
 div.mui-tabbar ul.mui-tabbar-list li span {
     font-size: 0.75em;
@@ -186,4 +186,32 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 	margin-left: 5%;
 	height: 60%;
 	width: 90%;
+}
+
+.mui-panel {
+    color: #EDEDED;
+    width: 70%;
+    max-width: 320px;
+    top: 0px;
+    bottom: 0px;
+    background-color: black;
+    opacity: 0.7;
+    bgOpacity: 0.7;
+    filter: alpha(opacity =   90); /* For IE8 and earlier */
+    background-color: black;
+    z-index: 10;
+    text-align: center;
+}
+#info{
+    color: #EDEDED;
+    position:absolute;
+    width: 2%;
+    top: 40%;
+    text-align: center;
+    background-color: black;
+    opacity: 0.7;
+    bgOpacity: 0.7;
+    filter: alpha(opacity =   90); /* For IE8 and earlier */
+    background-color: black;
+    z-index: 10;
 }
