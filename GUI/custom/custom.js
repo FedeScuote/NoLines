@@ -134,11 +134,32 @@ function verifyOrder(){
      }
  })
  	.done(function(data){
+
+         mui.viewPort.iScrollRefresh();
+         mui.viewPort.showPage("mui-viewport-page4", "SLIDE_LEFT");
 	 
  })
  .fail(function(jqXHR, textStatus, errorThrown){
 
         })
  
+}
+
+function getRandomVoucher(){
+    $.ajax({
+        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        type: "GET",
+        crossDomain: true,
+        data:{
+            ws: 4
+        }
+    })
+    .done(function(data){
+
+            var obj = JSON.parse(data);
+            var ret = obj.name;
+            $.("#thanks-voucher").html(ret);
+
+    })
 }
 
