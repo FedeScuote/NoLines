@@ -131,7 +131,6 @@ public class LocalDaoDB implements LocalDao {
 		return plate;
 	}
 
-	@Override
 	public List getLocals() throws NoDataFoundException, DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();

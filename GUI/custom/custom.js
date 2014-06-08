@@ -1,4 +1,9 @@
 var cart;
+var cantidades;
+var platos;
+var idRest;
+var yaAgregados;
+var ret2;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -42,8 +47,16 @@ function restaurantSelection(param) {
             }
         })
             .done(function(data){
+            	//reinicio variables de carrito.
             	cart=" ";
-            	$("#cart-display").html("");
+            	ret2=" ";
+            	idRest="";
+            	cantidades=" ";
+            	platos=" ";
+            	yaAgregados=0;
+            	//termino de reiniciar variables de carrito
+         
+            	$("#my-cart-list").html(""); //se limpia la lista del carrito.
                 var obj=JSON.parse(data);
                 var ret = "";
                 if(obj.length > 0){
@@ -64,11 +77,58 @@ function restaurantSelection(param) {
 }
 
 function addPlate(param,id,name){
-	ret='<form action="http://localhost:8080/WebServices/UserServiceServlet" method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
-	cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
-	ret=ret+cart+'<div id="confirmar"><input type="submit" value="Confirmar" /></div>';
-	$("#cart-display").html(ret);
+	idRest=id;
+	ret2=ret2+"<li class='cart-item'><div class='cart-item-div'>"+name+"</div></li>";
+	if(yaAgregados>0){
+		platos=platos+","+param;
+		cantidades=cantidades+",1";
+	}else{
+		cantidades="1";
+		platos=param;
+	}
+	yaAgregados=yaAgregados+1;
 	
+	/*var encontre=0;
+	for(var i=0 ; i<yaAgregados ; i++){
+		if(platos[i]==param){
+			cantidades[i]=cantidades[i]+1;
+			encontre=1;
+		}
+	}
+	if(encontre == 0){
+		platos[yaAgregados]=param;
+		cantidades[yaAgregados]=1;
+		yaAgregados=yaAgregados+1;
+	}*/
+	
+	$("#my-cart-list").html(ret2);
+
+	//ret='<form method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
+	//cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
+	//ret=ret+cart+'<div id="confirmar"><input type="buttom" onclick=verifyOrder() value="Confirmar" /></div>';
+	//$("#cart-display").html(ret);
+	
+}
+
+function verifyOrder(){
+	 $.ajax({
+         url:"http://localhost:8080/WebServices/UserServiceServlet",
+         type: "POST",
+         crossDomain: true,
+         data:{
+        	 ws : 3,
+             plato: platos,
+             cantidad: cantidades,
+             idRest: idRest
+         }
+     })
+     	.done(function(data){
+		 
+	 })
+	 .fail(function(jqXHR, textStatus, errorThrown){
+
+            })
+	 
 }
 
 

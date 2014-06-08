@@ -44,13 +44,14 @@ public class UserServiceServlet extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("text/html");
 		UserServiceImpl userServiceImpl = new UserServiceImpl();
-		String[] plato= request.getParameterValues("plato");
-		String[] cantidad= request.getParameterValues("cantidad");
-		
+		String platito=request.getParameter("plato");
+		String cantidades=request.getParameter("cantidad");
+		String[] plato= platito.split(",");
+		String[] cantidad= cantidades.split(",");
 		String idRestaurant = request.getParameter("idRest");
 		List plates = new LinkedList<>();
 		List cants = new LinkedList<>();
-		
+
 		final java.io.Writer writer = response.getWriter();
 		for (int i = 0; i < plato.length; i++) {
 			if(plates.contains(plato[i])){

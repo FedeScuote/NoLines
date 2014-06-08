@@ -133,9 +133,19 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 	padding: 0px;
 }
 
-#confirmar{
-	text-align:right;
+#confirm-cart {
+    background-color: #e04a59;
+    font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	font-style:normal;
+	color:#ffffff;
+	left:80%;
+	position:absolute;
+	top:10%;
+	padding:5px;
 }
+
 .restaurant-selector{
     margin-bottom: 0.5em;
 }
@@ -155,17 +165,22 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     left: 60px;
     bottom: 60px;
 }
-.my-cart{
-    min-height: 150px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top:5%;
+#cart-display{
+	position:absolute;
+    height: 25%;
+    margin-right: 0%;
+    top:1%;
+    left:10%;
+    width:50%;
+}
+#my-cart-list{
+	width:60%;
+	position:absolute;
 }
 #menu-list{
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
     background-color: #FFFFFF;
-    padding-left: 1%;
 }
 .menu-selector{
     border-bottom: solid 2px black;
@@ -174,16 +189,51 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     text-align: right;
     position: relative;
 }
-.menu-selector-btn{
-    background-color: #e04a59;
-    height: 100%;
-    font-size:1.5em;
-
-
+.cart-item-div{
+    text-align: left;
+    position: relative;
 }
+
+.menu-selector-btn{
+	background-color:#f24537;
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+	border-bottom-right-radius:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:2px solid #d02718;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:24px;
+	font-weight:bold;
+	font-style:normal;
+	height:20px;
+	line-height:20px;
+	width:30px;
+	text-decoration:none;
+	text-align:center;
+	
+	height: 100%;
+    font-size:1.5em;
+    background-color: #e04a59;
+    
+}.confirm-cart:hover {
+	background-color:#e04a59;
+}.confirm-cart:active {
+	position:relative;
+	top:1px;
+}
+
 #menu-list-div{
 	top: 25%;
-	margin-left: 5%;
-	height: 60%;
-	width: 90%;
+	margin-left: 0;
+	height: 80%;
+	width: 100%;
+	padding-leff:0%
+}
+
+#div-confirm-cart{
+	position:relative;
+	margin-left:60%;
 }
