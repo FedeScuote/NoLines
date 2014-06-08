@@ -17,14 +17,14 @@ public class voucher {
 	Date generatedTime;
 	Date usedTime;
 	Date expirationTime;
-	int restaurantId;
+	int shoptId;
 
-	public int getRestaurantId() {
-		return restaurantId;
+	public int getShopId() {
+		return shoptId;
 	}
 
-	public void setRestaurantId(int restaurantId) {
-		this.restaurantId = restaurantId;
+	public void setShoptId(int shoptId) {
+		this.shoptId = shoptId;
 	}
 
 	public int getId() {
@@ -73,6 +73,20 @@ public class voucher {
 			VoucherDao voucherDao = (VoucherDao) Class.forName("DaoImpl.VoucherDaoDB").newInstance();
 			v = voucherDao.createVoucherForUser(email, idLocal);
 			return v;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new voucherErrorException();
+		}
+	}
+	
+	public static final List showVouchers(String email) throws voucherErrorException{
+		try {
+			List lista;
+			VoucherDao voucherDao = (VoucherDao) Class.forName("DaoImpl.VoucherDaoDB").newInstance();
+			lista = voucherDao.getVouchers(email);
+			return lista;
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | DaoException e) {
 			// TODO Auto-generated catch block

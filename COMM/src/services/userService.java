@@ -8,7 +8,7 @@ public interface userService {
 
 	public void login(String username, String password);
 	public void logout(String username);
-	public void register(String username, String password, String name, String fbAccount);
+	public boolean register(String username, String password, String name, String fbAccount);
 	public void locate(String username); //aca seguramente no sea void, devuelva algun tipo de coordeneadas, investigar
 	public void saveParking(String place);
 	public String showParking();

@@ -78,7 +78,7 @@ public class UserDaoDB implements UserDao {
 		User user = new User();
 		user.setEMail(rsUser.getString("email"));
 		//user.setPassword(rsUser.getString("password"));
-		user.setUserName(rsUser.getString("name"));
+		user.setName(rsUser.getString("name"));
 		user.setAccount(getAccounts(user.getEMail(),jdbc));
 		//user.setFacebook(rsUser.getString("facebook"));
 		return user;
@@ -122,7 +122,7 @@ public class UserDaoDB implements UserDao {
 			user.setEMail(email);
 			user.setFacebook(facebook);
 			user.setPassword(password);
-			user.setUserName(name);
+			user.setName(name);
 			return user;
 		} catch (DaoException e) {
 			throw new DaoException();
@@ -166,13 +166,13 @@ public class UserDaoDB implements UserDao {
 	UserDaoDB prueba = new UserDaoDB();
 	try {
 		User pruebito =prueba.findByEMail("jt.tejeria@gmail.com");
-		System.out.println(pruebito.getUserName());
+		System.out.println(pruebito.getName());
 		System.out.println(pruebito.getEMail());
 		System.out.println(pruebito.getAccount().size());
 		System.out.println(pruebito.getAccount().get(0).getNumber());
 		
 		User ingreso = prueba.registerUser("pipin@gmail.com", "pipin@gmail.com", "pipe", "minombre");
-		System.out.println(ingreso.getUserName());
+		System.out.println(ingreso.getName());
 		System.out.println(ingreso.getEMail());
 		
 		User valido = prueba.validateLogin("pipin@gmail.com","minombre");

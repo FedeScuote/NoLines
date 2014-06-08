@@ -173,7 +173,7 @@ public class VoucherDaoDB implements VoucherDao{
 		vo.setExpirationTime(rsVouchers.getDate("expiration_date"));
 		vo.setGeneratedTime(rsVouchers.getDate("create_time"));
 		vo.setId(rsVouchers.getInt("voucher_id"));
-		vo.setRestaurantId(rsVouchers.getInt("id_local"));
+		vo.setShoptId(rsVouchers.getInt("id_local"));
 		return vo;
 	}
 

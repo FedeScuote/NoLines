@@ -6,6 +6,7 @@ import java.util.List;
 import entity.Order;
 import entity.Restaurant;
 import entity.Shop;
+import entity.User;
 import entity.voucher;
 import entity.exception.PersistException;
 import entity.exception.voucherErrorException;
@@ -25,9 +26,14 @@ public class UserServiceImpl implements userService {
 	}
 
 	@Override
-	public void register(String username, String password, String name,
+	public boolean register(String username, String password, String name,
 			String fbAccount) {
-		// TODO Auto-generated method stub
+		User user = new User();
+		user.setEMail(username);
+		user.setPassword(password);
+		user.setName(name);
+		user.setFacebook(fbAccount);
+		return(User.register(user));
 
 	}
 
@@ -51,8 +57,14 @@ public class UserServiceImpl implements userService {
 
 	@Override
 	public List showVouchers() {
-		// TODO Auto-generated method stub
-		return null;
+		List listVouchers;
+		try {
+			listVouchers=voucher.showVouchers("jt.tejeria@gmail.com");
+			return listVouchers;
+		} catch (voucherErrorException e) {
+			e.printStackTrace();
+			return new LinkedList<>();
+		}
 	}
 
 	@Override
@@ -120,17 +132,18 @@ public class UserServiceImpl implements userService {
 		indiceRandom = (int)(Math.random()*(shops.size()));
 		return (Shop) shops.get(indiceRandom);
 	}
+	
 	 public static void main(String[] args){
-		 String plato1 = "1";
+		 UserServiceImpl userServiceImpl = new UserServiceImpl();
+		 /*	 String plato1 = "1";
 		 String plato2 = "2";
 		 String am1= "3";
 		 String am2= "6";
 		 String rest="1";
 		 List platos = new LinkedList<>();
 		 List cants = new LinkedList<>();
-		 UserServiceImpl userServiceImpl = new UserServiceImpl();
-		 userServiceImpl.order(rest, platos, cants);
-		 
+		 userServiceImpl.order(rest, platos, cants);*/
+		 userServiceImpl.register("pepegrillo@adinet.com.uy","pepepepito", "Ing. Pepe Grillo", "http://facebook.com/elGrilloDelCap");
 	 }
 
 }
