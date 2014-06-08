@@ -105,21 +105,21 @@ div.mui-tabbar ul.mui-tabbar-list li:HOVER {
     background-color: #CDD8DA;
 }
 
-/*div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {*/
-    /*background-image: url('../images/home.png');*/
-/*}*/
+div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {
+    background-image: url('../images/home.png');
+}
 
-/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {*/
-    /*background-image: url('../images/agenda.png');*/
-/*}*/
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {
+    background-image: url('../images/agenda.png');
+}
 
-/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {*/
-    /*background-image: url('../images/tramite.png');*/
-/*}*/
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {
+    background-image: url('../images/tramite.png');
+}
 
-/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {*/
-    /*background-image: url('../images/contacto.png');*/
-/*}*/
+div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {
+    background-image: url('../images/contacto.png');
+}
 
 div.mui-tabbar ul.mui-tabbar-list li span {
     font-size: 0.75em;
@@ -133,19 +133,9 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 	padding: 0px;
 }
 
-#confirm-cart {
-    background-color: #e04a59;
-    font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	font-style:normal;
-	color:#ffffff;
-	left:80%;
-	position:absolute;
-	top:10%;
-	padding:5px;
+#confirmar{
+	text-align:right;
 }
-
 .restaurant-selector{
     margin-bottom: 0.5em;
 }
@@ -165,22 +155,17 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     left: 60px;
     bottom: 60px;
 }
-#cart-display{
-	position:absolute;
-    height: 25%;
-    margin-right: 0%;
-    top:1%;
-    left:10%;
-    width:50%;
-}
-#my-cart-list{
-	width:60%;
-	position:absolute;
+.my-cart{
+    min-height: 150px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
 }
 #menu-list{
-    margin-left: 1%;
-    margin-right: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
     background-color: #FFFFFF;
+    padding-left: 1%;
 }
 .menu-selector{
     border-bottom: solid 2px black;
@@ -189,42 +174,13 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     text-align: right;
     position: relative;
 }
-.cart-item-div{
-    text-align: left;
-    position: relative;
-}
-
 .menu-selector-btn{
-	background-color:#f24537;
-	border-top-left-radius:0px;
-	border-top-right-radius:0px;
-	border-bottom-right-radius:0px;
-	border-bottom-left-radius:0px;
-	text-indent:0px;
-	border:2px solid #d02718;
-	display:inline-block;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:24px;
-	font-weight:bold;
-	font-style:normal;
-	height:20px;
-	line-height:20px;
-	width:30px;
-	text-decoration:none;
-	text-align:center;
-	
-	height: 100%;
-    font-size:1.5em;
     background-color: #e04a59;
-    
-}.confirm-cart:hover {
-	background-color:#e04a59;
-}.confirm-cart:active {
-	position:relative;
-	top:1px;
-}
+    height: 100%;
+    font-size:1.5em;
 
+
+}
 #menu-list-div{
 	top: 25%;
 	margin-left: 5%;
@@ -233,38 +189,30 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 }
 
 .mui-panel {
-    color: #EDEDED;
-    width: 70%;
-    max-width: 320px;
-    top: 0px;
-    bottom: 0px;
-    background-color: black;
-    opacity: 0.7;
-    bgOpacity: 0.7;
-    filter: alpha(opacity =   90); /* For IE8 and earlier */
-    background-color: black;
-    z-index: 10;
-    text-align: center;
+	color: #EDEDED;
+	width: 70%;
+	max-width: 320px;
+	top: 0px;
+	bottom: 0px;
+	background-color: black;
+	opacity: 0.7;
+	bgOpacity: 0.7;
+	filter: alpha(opacity =   90); /* For IE8 and earlier */
+	background-color: black;
+	z-index: 10;
+	text-align: center;
 }
 #info{
-    color: #EDEDED;
-    position:absolute;
-    width: 2%;
-    top: 40%;
-    text-align: center;
-    background-color: black;
-    opacity: 0.7;
-    bgOpacity: 0.7;
-    filter: alpha(opacity =   90); /* For IE8 and earlier */
-    background-color: black;
-    z-index: 10;
-	margin-left: 0;
-	height: 80%;
-	width: 100%;
-	padding-leff:0%
-}
-
-#div-confirm-cart{
-	position:relative;
-	margin-left:60%;
+	color: #EDEDED;
+	position:absolute;
+	width: 2%;
+	top: 40%;
+	text-align: center;
+	background-color: black;
+	opacity: 0.7;
+	bgOpacity: 0.7;
+	filter: alpha(opacity =   90); /* For IE8 and earlier */
+	background-color: black;
+	z-index: 10;
+	
 }
