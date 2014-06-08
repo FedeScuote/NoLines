@@ -134,6 +134,34 @@ public class UserDaoDB implements UserDao {
 	public void setAccountNumber(String user,String password,int account){
 		
 	}
+	
+
+	public User validateLogin(String email, String password) throws DaoException, NoDataFoundException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		User user = new User();
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		String getUser = "SELECT * FROM user WHERE user.email='"+email+"' AND user.password=PASSWORD('"+password+"')";
+		ResultSet rsUser = jdbc.select(getUser);
+		try{
+			if (rsUser.next()){
+				user= loadUser(rsUser,jdbc);
+			}else{
+				throw new NoDataFoundException();
+			}
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+		return user;
+	}
+
 	public static void main(String[] args){
 	UserDaoDB prueba = new UserDaoDB();
 	try {
@@ -142,6 +170,13 @@ public class UserDaoDB implements UserDao {
 		System.out.println(pruebito.getEMail());
 		System.out.println(pruebito.getAccount().size());
 		System.out.println(pruebito.getAccount().get(0).getNumber());
+		
+		User ingreso = prueba.registerUser("pipin@gmail.com", "pipin@gmail.com", "pipe", "minombre");
+		System.out.println(ingreso.getUserName());
+		System.out.println(ingreso.getEMail());
+		
+		User valido = prueba.validateLogin("pipin@gmail.com","minombre");
+		System.out.println("valido correcto si piping@gmail.com = "+valido.getEMail());
 	} catch (NoDataFoundException | DaoException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -149,5 +184,6 @@ public class UserDaoDB implements UserDao {
 		
 	
 }
+
 
 }

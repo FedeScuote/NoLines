@@ -17,4 +17,8 @@ public interface UserDao {
     User updatePassword(String usuario, String password) throws NoDataFoundException, DaoException;
 
     User registerUser(String email,String facebook,String name,String password) throws DaoException;
+    
+    //throws noDataFoundException if the user was not validated correctly.
+    User validateLogin(String email,String password) throws DaoException, NoDataFoundException;
+    
 }
