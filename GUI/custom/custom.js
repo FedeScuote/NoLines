@@ -7,6 +7,7 @@ var yaAgregados;
 var ret2;
 var timeTotal;
 var priceTotal;
+var username;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -72,7 +73,7 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             	
             	$("#my-cart-list").html(""); //se limpia la lista del carrito.
             	var btnUNO = document.getElementById("confirm-cart");
-            	btnUNO.style.visibility  = 'visible'; // No se ve
+            	btnUNO.style.visibility  = 'hidden'; // No se ve
             	
                 var obj=JSON.parse(data);
                 var ret = "";
@@ -81,7 +82,6 @@ function restaurantSelection(param, name, location, hr, description, logo) {
                         ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
                 }else{
-                	btnUNO.style.visibility  = 'hidden'; // No se ve
                 	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
                 }
                 $("#menu-list").html(ret);
@@ -105,6 +105,8 @@ function addPlate(param,id,time,price,name){
 	}else{
 		cantidades="1";
 		platos=param;
+        var btnUNO = document.getElementById("confirm-cart");
+        btnUNO.style.visibility  = 'visible'; // No se ve
 	}
 	yaAgregados=yaAgregados+1;
 	
@@ -175,4 +177,30 @@ function getRandomVoucher(){
 
         })
 
+}
+function login(){
+    $.ajax({
+        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        type: "POST",
+        crossDomain: true,
+        data:{
+            ws : 6,
+            username: "jtejeria",//$("#username-input").html(),
+            password: "jhpxoepn"//$("#password-input").html()
+        }
+    })
+       .done(function(data){
+            var obj = JSON.parse(data);
+            if(obj=="1"){
+                $("#error-tag").html("Error en el servidor pruebe mas tarde");
+            }else if(obj=="0"){
+                $("#error-tag").html("Datos incorrectos, ingrese de nuevo");
+            }else{
+                username=obj;
+                mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
+            }
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
 }
