@@ -41,6 +41,36 @@ function deviceReady() {
             })
     });
     
+    
+    $("#click3").on("click", function (e) {
+        $.ajax({
+            url: 'http://localhost:8080/WebServices/UserServiceServlet',
+            crossDomain: true,
+            data: {
+                ws: 5
+            }
+        })
+            .done(function (data) {
+                var obj = JSON.parse(data);
+                var ret = "";
+                if(obj.length > 0){
+                	for (var i = 0; i < obj.length; i++) {
+                        ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
+                    }
+                }else{
+                	ret = "No tiene vouchers";
+                }
+                
+                $("#voucher-list").html(ret);
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+
+            })
+    });
+    
   //muestra el panel con info del restaurant
     $("#info").on("click", function(e) {
     	if (mui.viewPort.panelIsOpen())
@@ -146,7 +176,6 @@ function verifyOrder(){
             }
         })
             .done(function(data){
-
                 mui.viewPort.iScrollRefresh();
                 mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
 
@@ -171,6 +200,7 @@ function getRandomVoucher(){
 
             var obj = JSON.parse(data);
             var ret = obj.id;
+            alert(obj.id);
             $("#thanks-voucher").html(ret);
         })
         .fail(function(jqXHR, textStatus, errorThrown){
