@@ -39,15 +39,37 @@
                     <div id="login" class="mui-page-body">
                         <div class="container">
                             <img src="images/NoLinesLogoWhite.png"><br>
-                            <input id="username-input" type="text" value="Username"><br>
+                            <input id="username-input" type="text" value="EMail"><br>
                             <br>
-                            <input type="password" value="password"><br>
+                            <input id="password-input" type="password" value="password"><br>
                             <br>
                             <button onclick="login()">Login</button><br>
                             <br>
-                            <p id="error-tag" hidden>ERROR</p>
+                            <p class="error-tag" hidden>ERROR</p>
 
-                            <button id="register">Register</button>
+                            <button id="register" onclick="goToRegister()">Register</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="mui-viewport-page6" class="mui-page">
+                    <div class="mui-page-header"></div>
+                    <div id="register-div" class="mui-page-body">
+                        <div class="container">
+                            <img src="images/NoLinesLogoWhite.png"><br>
+                            <p>Insert Email</p>
+                            <input id="register-email" type="text" value="EMail"><br>
+                            <br>
+                            <p>Insert Password</p>
+                            <input type="password" value="password"><br>
+                            <br>
+                            <p>Confirm Password</p>
+                            <input type="password" value="password"><br>
+                            <button onclick="confirmRegister()">Register</button><br>
+                            <br>
+                            <p class="error-tag" hidden>ERROR</p>
+
+                            <button id="login-back" onclick="goBackLogin()">Login</button>
                         </div>
                     </div>
                 </div>

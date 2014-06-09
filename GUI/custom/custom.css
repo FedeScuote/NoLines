@@ -324,3 +324,6 @@ display: -moz-inline-block;
 #register{
     margin-bottom: -5px;
 }
+.error-tag {
+    color : #FFFFFF;
+}

@@ -7,7 +7,7 @@ var yaAgregados;
 var ret2;
 var timeTotal;
 var priceTotal;
-var username;
+var mail;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -179,28 +179,37 @@ function getRandomVoucher(){
 
 }
 function login(){
+    var retrievedMail = $("#username-input").val();
+    var retrievedPass = $("#password-input").val();
+    alert(retrievedMail + retrievedPass );
     $.ajax({
         url:"http://localhost:8080/WebServices/UserServiceServlet",
         type: "POST",
         crossDomain: true,
         data:{
-            ws : 6,
-            username: "jtejeria",//$("#username-input").html(),
-            password: "jhpxoepn"//$("#password-input").html()
+            ws : 7,
+            mail: retrievedMail,
+            password: retrievedPass
         }
     })
        .done(function(data){
+
             var obj = JSON.parse(data);
-            if(obj=="1"){
-                $("#error-tag").html("Error en el servidor pruebe mas tarde");
-            }else if(obj=="0"){
-                $("#error-tag").html("Datos incorrectos, ingrese de nuevo");
+            if(obj.id==1){
+                $(".error-tag").gethtml("Error en el servidor pruebe mas tarde");
+                $(".error-tag").visibility = "visible"
+            }else if(obj.id==0){
+                $(".error-tag").html("Datos incorrectos, ingrese de nuevo");
+                $(".error-tag").visibility = "visible"
             }else{
-                username=obj;
+                mail=obj.id;
                 mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
 
         })
+}
+function goToRegister() {
+    mui.viewPort.showPage("mui-viewport-page1", "SLIDE_RIGHT");
 }
