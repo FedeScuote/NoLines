@@ -231,8 +231,14 @@ function doRegistration() {
             }
         })
             .done(function (data) {
+                var obj = JSON.parse(data);
+                if(obj.registro==1){
+                    alert("Registro completo!");
+                    mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
+                }else{
+                    alert("ese mail ya esta en uso");
+                }
 
-                mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
 
@@ -244,4 +250,28 @@ function doRegistration() {
 }
 function goBackLogin() {
     mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
+}
+function getRandomVoucher(){
+    $.ajax({
+        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        type: "GET",
+        crossDomain: true,
+        data:{
+            ws : 4
+        }
+    })
+        .done(function(data){
+
+            var obj = JSON.parse(data);
+            var ret = obj.id;
+            $("#thanks-voucher").html(ret);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+
+}
+function goHome(){
+    mui.history.reset();
+    mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
 }

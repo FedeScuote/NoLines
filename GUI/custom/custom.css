@@ -370,3 +370,21 @@ display: -moz-inline-block;
 .error-tag {
     color : #FFFFFF;
 }
+.voucher{
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    border: black solid 1px;
+    text-align: center;
+}
+
+#voucher-list{
+    padding-left:0px;
+}
+
+.descuento{
+    font-size: 25px;
+    color: #f24537;
+    font-style: inherit;
+}
