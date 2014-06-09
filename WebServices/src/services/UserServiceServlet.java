@@ -103,7 +103,14 @@ public class UserServiceServlet extends HttpServlet {
 			String password=request.getParameter("password");
 			String name=request.getParameter("name");
 			String fbAccount=request.getParameter("fb");
-			userServiceImpl.register(username, password, name, fbAccount);
+			boolean registro =userServiceImpl.register(username, password, name, fbAccount);
+			JSONObject registroJson= new JSONObject();
+			if(registro){
+				registroJson.put("registro", "1");
+			}else{
+				registroJson.put("registro", "0");
+			}
+			writer.append(registroJson.toJSONString());
 			
 		}else if(request.getParameter("ws").equals("7")){
 			String username=request.getParameter("mail");
