@@ -99,6 +99,17 @@ public class Shop {
 		}
 	}
 	
+	public static final Shop getShop(int id){ //tirar excepxiones y en lo otro decir que no se encontraron
+		Shop shop;
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			shop = local.getById(id);
+			return shop;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return new Shop();
+		}
+	}
  public static void main(String[] args){
 	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();
 	 System.out.print(lista.getFirst().getName());

@@ -16,6 +16,7 @@ import org.json.simple.JSONObject;
 
 import dao.exception.NoDataFoundException;
 import entity.Restaurant;
+import entity.Shop;
 import entity.User;
 import entity.voucher;
 import entity.exception.loginException;
@@ -56,10 +57,14 @@ public class UserServiceServlet extends HttpServlet {
 		JSONObject vjson = new JSONObject();
 		vjson.put("id", v.getId());
 		vjson.put("discount", v.getDiscount());
-		vjson.put("generetedTime", v.getGeneratedTime());
-		vjson.put("expirationTime", v.getExpirationTime());
-		vjson.put("shopId", v.getShopId());
-		vjson.put("usedTime", v.getUsedTime());
+		vjson.put("generetedTime", v.getGeneratedTime().toString());
+		vjson.put("expirationTime", v.getExpirationTime().toString());
+		vjson.put("shop", (Shop.getShop(v.getShopId())).getName());
+		if(v.getUsedTime() == null){
+			vjson.put("usedTime", "Sin usar");
+		}else{
+			vjson.put("usedTime", v.getUsedTime().toString());
+		}
 		return vjson;
 	}
 	
