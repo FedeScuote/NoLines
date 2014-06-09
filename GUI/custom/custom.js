@@ -181,7 +181,6 @@ function getRandomVoucher(){
 function login(){
     var retrievedMail = $("#username-input").val();
     var retrievedPass = $("#password-input").val();
-    alert(retrievedMail + retrievedPass );
     $.ajax({
         url:"http://localhost:8080/WebServices/UserServiceServlet",
         type: "POST",
@@ -211,5 +210,38 @@ function login(){
         })
 }
 function goToRegister() {
-    mui.viewPort.showPage("mui-viewport-page1", "SLIDE_RIGHT");
+    mui.viewPort.showPage("mui-viewport-page6", "SLIDE_RIGHT");
+}
+function doRegistration() {
+    var retrievedMail = $("#register-email").val();
+    var retrievedPass = $("#register-password").val();
+    var retrievedName = $("#register-name").val();
+    var retrievedConfirm = $("#register-confirm").val();
+    if (retrievedPass == retrievedConfirm) {
+        $.ajax({
+            url: "http://localhost:8080/WebServices/UserServiceServlet",
+            type: "POST",
+            crossDomain: true,
+            data: {
+                ws: 6,
+                mail: retrievedMail,
+                password: retrievedPass,
+                name: retrievedName,
+                fb: "hola"
+            }
+        })
+            .done(function (data) {
+
+                mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+
+            })
+    }else{
+        alert("Los passwords son diferentes");
+    }
+
+}
+function goBackLogin() {
+    mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
 }

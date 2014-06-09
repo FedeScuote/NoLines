@@ -318,8 +318,51 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #login button > span {
 display: -moz-inline-block;
 }
+#register{
+    background-color: #e04a59;
+    text-align: center;
+}
+#register p{
+    width: 100%;
+    margin-top: 20px;
+}
+#register-div button {
+    display: -moz-inline-stack;
+    display: inline-block;
+    width: 50%;
+    height: 38px;
+    line-height: 38px;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffffff;
+    font-family: Calibri;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    text-shadow: none;
+
+    border:1px solid #72021c;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #a90329;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a90329), to(#6d0019));
+    background-image: -webkit-linear-gradient(top, #a90329, #6d0019);
+    background-image: -moz-linear-gradient(top, #a90329, #6d0019);
+    background-image: -ms-linear-gradient(top, #a90329, #6d0019);
+    background-image: -o-linear-gradient(top, #a90329, #6d0019);
+    background-image: linear-gradient(to bottom, #a90329, #6d0019);
+    filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a90329, endColorstr=#6d0019);
+}
+
+#register-div button > span {
+    display: -moz-inline-block;
+}
 .container{
+    text-align: center;
     margin:10% 10% 10% 10%;
+    margin-top: 3%;
 }
 #register{
     margin-bottom: -5px;
