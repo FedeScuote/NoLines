@@ -53,6 +53,7 @@ public class RestaurantServiceServlet extends HttpServlet {
 				restaurant.put("logo", lista.get(i).getLogo());
 				restaurant.put("horario", lista.get(i).getHorario());
 				restaurant.put("location", lista.get(i).getLocation());
+				restaurant.put("description",lista.get(i).getDescription());
 				wrapper.add(restaurant)	;
 			}
 			writer.append(wrapper.toJSONString());
@@ -84,3 +85,4 @@ public class RestaurantServiceServlet extends HttpServlet {
 	}
 
 }
+
