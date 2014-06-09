@@ -5,6 +5,8 @@ var platos;
 var idRest;
 var yaAgregados;
 var ret2;
+var timeTotal;
+var priceTotal;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -65,16 +67,21 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             	cantidades=" ";
             	platos=" ";
             	yaAgregados=0;
+            	priceTotal=0;
+            	timeTotal=0;
             	
             	$("#my-cart-list").html(""); //se limpia la lista del carrito.
+            	var btnUNO = document.getElementById("confirm-cart");
+            	btnUNO.style.visibility  = 'visible'; // No se ve
             	
                 var obj=JSON.parse(data);
                 var ret = "";
                 if(obj.length > 0){
                 	for(var i = 0 ; i < obj.length ; i++){
-                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
+                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
                 }else{
+                	btnUNO.style.visibility  = 'hidden'; // No se ve
                 	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
                 }
                 $("#menu-list").html(ret);
@@ -87,9 +94,11 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             })
 }
 
-function addPlate(param,id,name){
+function addPlate(param,id,time,price,name){
+	priceTotal=priceTotal+price;
+	timeTotal=timeTotal+time;
 	idRest=id;
-	ret2=ret2+"<li class='cart-item'><div class='cart-item-div'>"+name+"</div></li>";
+	ret2=ret2+"<li class='cart-item'><div class='cart-item-div'>"+name+" $"+price+"</div></li>";
 	if(yaAgregados>0){
 		platos=platos+","+param;
 		cantidades=cantidades+",1";
@@ -122,23 +131,48 @@ function addPlate(param,id,name){
 }
 
 function verifyOrder(){
- $.ajax({
-     url:"http://localhost:8080/WebServices/UserServiceServlet",
-     type: "POST",
-     crossDomain: true,
-     data:{
-    	 ws : 3,
-         plato: platos,
-         cantidad: cantidades,
-         idRest: idRest
-     }
- })
- 	.done(function(data){
-	 
- })
- .fail(function(jqXHR, textStatus, errorThrown){
+    if (confirm("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.") == true) {
+        $.ajax({
+            url:"http://localhost:8080/WebServices/UserServiceServlet",
+            type: "POST",
+            crossDomain: true,
+            data:{
+                ws : 3,
+                plato: platos,
+                cantidad: cantidades,
+                idRest: idRest
+            }
+        })
+            .done(function(data){
+
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
+
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+
+            })
+    }
+
+
+}
+function getRandomVoucher(){
+    $.ajax({
+        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        type: "GET",
+        crossDomain: true,
+        data:{
+            ws : 4
+        }
+    })
+        .done(function(data){
+
+            var obj = JSON.parse(data);
+            var ret = obj.id;
+            $("#thanks-voucher").html(ret);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
 
         })
- 
-}
 
+}
