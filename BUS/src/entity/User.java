@@ -5,6 +5,8 @@ import java.util.List;
 import dao.UserDao;
 import dao.VoucherDao;
 import dao.exception.DaoException;
+import dao.exception.NoDataFoundException;
+import entity.exception.loginException;
 import entity.exception.voucherErrorException;
 
 public class User {
@@ -67,6 +69,18 @@ public class User {
 			}
 			
 		
+	}
+	
+	public static User login(String user, String password) throws NoDataFoundException, loginException{
+		UserDao userDao;
+		try {
+			userDao = (UserDao) Class.forName("DaoImpl.UserDaoDB").newInstance();
+			return(userDao.validateLogin(user, password));
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | DaoException e) {
+			e.printStackTrace();
+			throw new loginException();
+		}
 	}
 
 }

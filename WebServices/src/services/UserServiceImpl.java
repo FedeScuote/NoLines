@@ -3,20 +3,21 @@ package services;
 import java.util.LinkedList;
 import java.util.List;
 
+import dao.exception.NoDataFoundException;
 import entity.Order;
 import entity.Restaurant;
 import entity.Shop;
 import entity.User;
 import entity.voucher;
 import entity.exception.PersistException;
+import entity.exception.loginException;
 import entity.exception.voucherErrorException;
 
 public class UserServiceImpl implements userService {
 
 	@Override
-	public void login(String username, String password) {
-		// TODO Auto-generated method stub
-
+	public User login(String username, String password) throws NoDataFoundException, loginException {
+		return (User.login(username, password));
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class UserServiceImpl implements userService {
 	}
 
 	@Override
-	public List showVouchers() {
+	public List showVouchers(String user) {
 		List listVouchers;
 		try {
 			listVouchers=voucher.showVouchers("jt.tejeria@gmail.com");
@@ -87,11 +88,12 @@ public class UserServiceImpl implements userService {
 	}
 
 	@Override
-	public void order(String idRestaurant, List plates, List amounts) {
+	public void order(String idRestaurant, List plates, List amounts, String idUser) {
 			Order order = new Order();
 			order.setIdReastaurant(idRestaurant);
 			order.setItems(plates);
 			order.setAmounts(amounts);
+			order.setIdUser(idUser);
 			try {
 				order.persistOrder();
 			} catch (PersistException e) {
@@ -143,7 +145,17 @@ public class UserServiceImpl implements userService {
 		 List platos = new LinkedList<>();
 		 List cants = new LinkedList<>();
 		 userServiceImpl.order(rest, platos, cants);*/
-		 userServiceImpl.register("pepegrillo@adinet.com.uy","pepepepito", "Ing. Pepe Grillo", "http://facebook.com/elGrilloDelCap");
+		// userServiceImpl.register("pepegrillo@adinet.com.uy","pepepepito", "Ing. Pepe Grillo", "http://facebook.com/elGrilloDelCap");
+		 try {
+			User user = userServiceImpl.login("pepegrillo@adinet.com.uy", "pop");
+			System.out.println(user.getEMail());
+		} catch (NoDataFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (loginException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	 }
 
 }

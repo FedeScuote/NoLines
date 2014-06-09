@@ -13,7 +13,16 @@ public class Order {
 	int id;
 	List items;
 	List amounts;
+	String idUser;
 	
+	public String getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(String idUser) {
+		this.idUser = idUser;
+	}
+
 	public List getAmounts() {
 		return amounts;
 	}
@@ -73,7 +82,7 @@ public class Order {
 					plates[i][1] = Integer.parseInt((amounts.get(i).toString()));
 			}
 			OrderDao orderDao = (OrderDao) Class.forName("DaoImpl.OrderDaoDB").newInstance();
-			orderDao.submitOrder("jt.tejeria@gmail.com", 123456, Integer.parseInt(this.getIdReastaurant()), plates);
+			orderDao.submitOrder(this.getIdUser(), 123456, Integer.parseInt(this.getIdReastaurant()), plates);
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NumberFormatException | DaoException e) {
 			e.printStackTrace();

@@ -9,12 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import dao.exception.NoDataFoundException;
 import entity.Restaurant;
+import entity.User;
 import entity.voucher;
+import entity.exception.loginException;
 
 /**
  * Servlet implementation class UserServiceServlet
@@ -37,7 +41,7 @@ public class UserServiceServlet extends HttpServlet {
 			JSONObject voucherJson = loadVoucherJson(v);
 			writer.append(voucherJson.toJSONString());
 		}else if(request.getParameter("ws").equals("5")){
-			List listVouchers=userServiceImpl.showVouchers();
+			List listVouchers=userServiceImpl.showVouchers("jt.tejeria@gmail.com");
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < listVouchers.size(); i++) {
 				JSONObject voucher = loadVoucherJson((voucher) listVouchers.get(i));
@@ -64,8 +68,13 @@ public class UserServiceServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(false);
+		if (session == null){
+		session = request.getSession(true);
+		}
 		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("text/html");
+		final java.io.Writer writer = response.getWriter();
 		if(request.getParameter("ws").equals("3")){
 			String platito=request.getParameter("plato");
 			String cantidades=request.getParameter("cantidad");
@@ -74,8 +83,6 @@ public class UserServiceServlet extends HttpServlet {
 			String idRestaurant = request.getParameter("idRest");
 			List plates = new LinkedList<>();
 			List cants = new LinkedList<>();
-
-			final java.io.Writer writer = response.getWriter();
 			for (int i = 0; i < plato.length; i++) {
 				if(plates.contains(plato[i])){
 					int indice = plates.indexOf(plato[i]);
@@ -85,11 +92,29 @@ public class UserServiceServlet extends HttpServlet {
 					cants.add(cantidad[i]);	
 					}
 			}
-			userServiceImpl.order(idRestaurant, plates, cants);
+			userServiceImpl.order(idRestaurant, plates, cants, "jt.tejeria@gmail.com");
 		}else if(request.getParameter("ws").equals("6")){
-			//registro
+			String username=request.getParameter("mail");
+			String password=request.getParameter("password");
+			String name=request.getParameter("name");
+			String fbAccount=request.getParameter("fb");
+			userServiceImpl.register(username, password, name, fbAccount);
+			
 		}else if(request.getParameter("ws").equals("7")){
-			//login
+			String username=request.getParameter("mail");
+			String password=request.getParameter("password");
+			JSONObject ujson = new JSONObject();
+			try {
+				User u = userServiceImpl.login(username, password);
+				ujson.put("id", u.getEMail());
+				session.setAttribute("user", username);
+			} catch (NoDataFoundException e) {
+				ujson.put("id", "0");
+				e.printStackTrace();
+			} catch (loginException e) {
+				ujson.put("id", "1");
+			}
+			writer.append(ujson.toJSONString());
 		}
 
 	}
