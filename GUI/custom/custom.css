@@ -269,3 +269,10 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 	z-index: 10;
 	
 }
+#thanks{
+    background-color: #EDEDED;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20;
+}

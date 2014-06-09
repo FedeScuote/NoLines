@@ -122,44 +122,48 @@ function addPlate(param,id,name){
 }
 
 function verifyOrder(){
- $.ajax({
-     url:"http://localhost:8080/WebServices/UserServiceServlet",
-     type: "POST",
-     crossDomain: true,
-     data:{
-    	 ws : 3,
-         plato: platos,
-         cantidad: cantidades,
-         idRest: idRest
-     }
- })
- 	.done(function(data){
-
-         mui.viewPort.iScrollRefresh();
-         mui.viewPort.showPage("mui-viewport-page4", "SLIDE_LEFT");
-	 
- })
- .fail(function(jqXHR, textStatus, errorThrown){
-
+    if (confirm("Confirmar la compra") == true) {
+        $.ajax({
+            url:"http://localhost:8080/WebServices/UserServiceServlet",
+            type: "POST",
+            crossDomain: true,
+            data:{
+                ws : 3,
+                plato: platos,
+                cantidad: cantidades,
+                idRest: idRest
+            }
         })
- 
-}
+            .done(function(data){
 
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
+
+            })
+            .fail(function(jqXHR, textStatus, errorThrown){
+
+            })
+    }
+
+
+}
 function getRandomVoucher(){
     $.ajax({
         url:"http://localhost:8080/WebServices/UserServiceServlet",
         type: "GET",
         crossDomain: true,
         data:{
-            ws: 4
+            ws : 4
         }
     })
-    .done(function(data){
+        .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = obj.name;
-            $.("#thanks-voucher").html(ret);
+            var ret = obj.id;
+            $("#thanks-voucher").html(ret);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
 
-    })
+        })
+
 }
-
