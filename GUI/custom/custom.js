@@ -293,7 +293,7 @@ function getRandomVoucher(){
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = obj.id;
+            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img src="+obj.shopImage+"><br>";
             $("#thanks-voucher").html(ret);
         })
         .fail(function(jqXHR, textStatus, errorThrown){
