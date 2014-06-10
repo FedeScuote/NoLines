@@ -36,13 +36,14 @@ public class UserServiceServlet extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("text/event-stream");
 		response.setCharacterEncoding("UTF-8");
+		String userMail = request.getParameter("user");
 		final java.io.Writer writer = response.getWriter();
 		if(request.getParameter("ws").equals("4")){ //el web service 4
-			voucher v= userServiceImpl.getVoucher("jt.tejeria@gmail.com"); //lo hago siempre con el mismo usuatio, cambiar, investigar stateless y statefull 
+			voucher v= userServiceImpl.getVoucher(userMail); //lo hago siempre con el mismo usuatio, cambiar, investigar stateless y statefull 
 			JSONObject voucherJson = loadVoucherJson(v);
 			writer.append(voucherJson.toJSONString());
 		}else if(request.getParameter("ws").equals("5")){
-			List listVouchers=userServiceImpl.showVouchers("jt.tejeria@gmail.com");
+			List listVouchers=userServiceImpl.showVouchers(userMail);
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < listVouchers.size(); i++) {
 				JSONObject voucher = loadVoucherJson((voucher) listVouchers.get(i));
@@ -79,6 +80,7 @@ public class UserServiceServlet extends HttpServlet {
 		}
 		response.setHeader("Access-Control-Allow-Origin","*");
 		response.setContentType("text/html");
+		String userMail = request.getParameter("user");
 		final java.io.Writer writer = response.getWriter();
 		if(request.getParameter("ws").equals("3")){
 			String platito=request.getParameter("plato");
@@ -97,7 +99,7 @@ public class UserServiceServlet extends HttpServlet {
 					cants.add(cantidad[i]);	
 					}
 			}
-			userServiceImpl.order(idRestaurant, plates, cants, "jt.tejeria@gmail.com");
+			userServiceImpl.order(idRestaurant, plates, cants, userMail);
 		}else if(request.getParameter("ws").equals("6")){
 			String username=request.getParameter("mail");
 			String password=request.getParameter("password");

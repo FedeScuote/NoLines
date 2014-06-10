@@ -60,7 +60,7 @@ public class UserServiceImpl implements userService {
 	public List showVouchers(String user) {
 		List listVouchers;
 		try {
-			listVouchers=voucher.showVouchers("jt.tejeria@gmail.com");
+			listVouchers=voucher.showVouchers(user);
 			return listVouchers;
 		} catch (voucherErrorException e) {
 			e.printStackTrace();
