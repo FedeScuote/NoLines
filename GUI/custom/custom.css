@@ -377,6 +377,7 @@ display: -moz-inline-block;
     background-color: white;
     border: black solid 1px;
     text-align: center;
+    font-size: 10px;
 }
 
 #voucher-list{
@@ -423,4 +424,8 @@ display: -moz-inline-block;
 }
 #discount{
     font-size: 24px;
+}
+#imgVoucherCompra{
+	max-height: 150px;
+	max-width: 150px;
 }
