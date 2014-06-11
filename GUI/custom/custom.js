@@ -7,7 +7,7 @@ var yaAgregados;
 var ret2;
 var timeTotal;
 var priceTotal;
-var mail;
+var userLogged;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
@@ -41,6 +41,37 @@ function deviceReady() {
             })
     });
     
+    
+    $("#click3").on("click", function (e) {
+        $.ajax({
+            url: 'http://localhost:8080/WebServices/UserServiceServlet',
+            crossDomain: true,
+            data: {
+                ws: 5,
+                user: userLogged
+            }
+        })
+            .done(function (data) {
+                var obj = JSON.parse(data);
+                var ret = "";
+                if(obj.length > 0){
+                	for (var i = 0; i < obj.length; i++) {
+                        ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
+                    }
+                }else{
+                	ret = "No tiene vouchers";
+                }
+                
+                $("#voucher-list").html(ret);
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+
+            })
+    });
+    
   //muestra el panel con info del restaurant
     $("#info").on("click", function(e) {
     	if (mui.viewPort.panelIsOpen())
@@ -56,6 +87,7 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             crossDomain: true,
             data:{
                 ws: 2,
+                user: userLogged,
                 idRestaurant: param
             }
         })
@@ -142,12 +174,13 @@ function verifyOrder(){
                 ws : 3,
                 plato: platos,
                 cantidad: cantidades,
-                idRest: idRest
+                idRest: idRest,
+                user: userLogged
             }
         })
             .done(function(data){
-
                 mui.viewPort.iScrollRefresh();
+                getRandomVoucher();
                 mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
 
             })
@@ -158,29 +191,11 @@ function verifyOrder(){
 
 
 }
-function getRandomVoucher(){
-    $.ajax({
-        url:"http://localhost:8080/WebServices/UserServiceServlet",
-        type: "GET",
-        crossDomain: true,
-        data:{
-            ws : 4
-        }
-    })
-        .done(function(data){
 
-            var obj = JSON.parse(data);
-            var ret = obj.id;
-            $("#thanks-voucher").html(ret);
-        })
-        .fail(function(jqXHR, textStatus, errorThrown){
-
-        })
-
-}
 function login(){
     var retrievedMail = $("#username-input").val();
     var retrievedPass = $("#password-input").val();
+    userLogged=retrievedMail;
     $.ajax({
         url:"http://localhost:8080/WebServices/UserServiceServlet",
         type: "POST",
@@ -257,13 +272,15 @@ function getRandomVoucher(){
         type: "GET",
         crossDomain: true,
         data:{
-            ws : 4
+            ws : 4,
+            user: userLogged
         }
     })
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = obj.id;
+            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+obj.shopImage+"><br>";
+            $("#thanks-voucher").html("");
             $("#thanks-voucher").html(ret);
         })
         .fail(function(jqXHR, textStatus, errorThrown){
@@ -271,6 +288,7 @@ function getRandomVoucher(){
         })
 
 }
+
 function goHome(){
     mui.history.reset();
     mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");

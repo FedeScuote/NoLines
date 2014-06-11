@@ -6,3 +6,5 @@
 .metadata/.mylyn/repositories.xml.zip
 
 *.snap
+
+*.class

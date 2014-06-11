@@ -60,7 +60,9 @@ public class UserServiceServlet extends HttpServlet {
 		vjson.put("discount", v.getDiscount());
 		vjson.put("generetedTime", v.getGeneratedTime().toString());
 		vjson.put("expirationTime", v.getExpirationTime().toString());
-		vjson.put("shop", (Shop.getShop(v.getShopId())).getName());
+		Shop shop = Shop.getShop(v.getShopId());
+		vjson.put("shop", shop.getName());
+		vjson.put("shopImage", shop.getLogo());
 		if(v.getUsedTime() == null){
 			vjson.put("usedTime", "Sin usar");
 		}else{

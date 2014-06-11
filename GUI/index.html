@@ -84,7 +84,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="mui-clickable  default-button">
+                                <button class="mui-clickable  default-button" id="click3">
                                     Mis Descuentos
                                 </button>
                             </li>
@@ -143,17 +143,19 @@
                 <div class="mui-page-header">
                 </div>
                 <div class="mui-page-body">
-                    <div id="thanks">
-                        Gracias por realizar su compra!<br>
-                        En forma de agradecimiento le ofrecemos<br>
-                        este Voucher de descuento
+                    <div id="thanks-container" class="container">
+                        <div id="thanks">
+                            Gracias por realizar su compra!<br>
+                            En forma de agradecimiento le ofrecemos<br>
+                            este Voucher de descuento
+                        </div>
+                        <div id="thanks-voucher">
+                            <script>getRandomVoucher()</script>
+                        </div>
+                        <button id="return-home" onclick="goHome()">
+                            Volver
+                        </button>
                     </div>
-                    <div id="thanks-voucher" onload="getRandomVoucher()">
-
-                    </div>
-                    <button id="return-home" onclick="">
-                        Volver a la pantalla inicial
-                    </button>
                 </div>
 
             </div>

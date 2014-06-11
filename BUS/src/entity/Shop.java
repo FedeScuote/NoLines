@@ -86,7 +86,7 @@ public class Shop {
 			return restaurants;
 		}
 	}
-	
+
 	public static final List getAllShops(){ //tirar excepxiones y en lo otro decir que no se encontraron
 		List shops = new LinkedList<>();
 		try {
