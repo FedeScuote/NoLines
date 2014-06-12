@@ -276,7 +276,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
-    font-size: 20;
+    font-size: 12px;
 }
 #login{
     background-color: #e04a59;
@@ -289,9 +289,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #login button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 40%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -329,9 +327,7 @@ display: -moz-inline-block;
 #register-div button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 40%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -362,7 +358,7 @@ display: -moz-inline-block;
 .container{
     text-align: center;
     margin:10% 10% 10% 10%;
-    margin-top: 3%;
+    margin-top: 0%;
 }
 #register{
     margin-bottom: -5px;
@@ -392,14 +388,14 @@ display: -moz-inline-block;
 #thanks-container button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 25%;
+    height: 20%;
+    line-height: 70%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
     font-family: Calibri;
-    font-size: 24px;
+    font-size: 120%;
     font-weight: bold;
     font-style: normal;
     text-shadow: none;
@@ -423,9 +419,10 @@ display: -moz-inline-block;
     display: -moz-inline-block;
 }
 #discount{
-    font-size: 24px;
+    font-size: 16px;
+    margin: 1%;
 }
 #imgVoucherCompra{
-	max-height: 150px;
-	max-width: 150px;
+	max-height: 100px;
+	max-width: 100px;
 }

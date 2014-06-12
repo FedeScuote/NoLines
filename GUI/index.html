@@ -39,12 +39,9 @@
                     <div id="login" class="mui-page-body">
                         <div class="container">
                             <img src="images/NoLinesLogoWhite.png"><br>
-                            <input id="username-input" type="text" value="EMail"><br>
-                            <br>
-                            <input id="password-input" type="password" value="password"><br>
-                            <br>
+                            <input id="username-input" type="text" value="User"><br>
+                            <input id="password-input" type="password" value="password"><br><br>
                             <button onclick="login()">Login</button><br>
-                            <br>
                             <p class="error-tag" hidden>ERROR</p>
 
                             <button id="register" onclick="goToRegister()">Register</button>
@@ -54,18 +51,18 @@
 
                 <div id="mui-viewport-page6" class="mui-page">
                     <div class="mui-page-header"></div>
-                    <div id="register-div" class="mui-page-body">
+                    <div id="register-div" class="mui-page-body mui-scrollable">
                         <div class="container">
                             <img src="images/NoLinesLogoWhite.png"><br>
-                            <p>Insert Email</p>
-                            <input id="register-email" type="text" value="EMail"><br>
+                            <p>Insert User</p>
+                            <input id="register-email" type="text" value="User">
                             <p>Insert Name</p>
-                            <input id="register-name" type="text" value="EMail"><br>
+                            <input id="register-name" type="text" value="Name">
                             <p>Insert Password</p>
-                            <input id="register-password" type="password" value="password"><br>
+                            <input id="register-password" type="password" value="password">
                             <p>Confirm Password</p>
-                            <input id="register-confirm" type="password" value="password"><br>
-                            <button onclick="doRegistration()">Register</button><br>
+                            <input id="register-confirm" type="password" value="password"><br><br>
+                            <button onclick="doRegistration()">Register</button>
                             <p class="error-tag" hidden>ERROR</p>
 
                             <button id="login-back" onclick="goBackLogin()">Login</button>
@@ -142,7 +139,7 @@
             <div id='mui-viewport-page4' class="mui-page">
                 <div class="mui-page-header">
                 </div>
-                <div class="mui-page-body">
+                <div class="mui-page-body mui-scrollable">
                     <div id="thanks-container" class="container">
                         <div id="thanks">
                             Gracias por realizar su compra!<br>
