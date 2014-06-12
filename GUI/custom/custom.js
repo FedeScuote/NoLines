@@ -11,7 +11,7 @@ var userLogged;
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
-            url: 'http://localhost:8080/WebServices/RestaurantServiceServlet',
+            url: 'http://54.207.117.3:8080/WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data: {
                 ws: 1
@@ -44,7 +44,7 @@ function deviceReady() {
     
     $("#click3").on("click", function (e) {
         $.ajax({
-            url: 'http://localhost:8080/WebServices/UserServiceServlet',
+            url: 'http://54.207.117.3:8080/WebServices/UserServiceServlet',
             crossDomain: true,
             data: {
                 ws: 5,
@@ -83,7 +83,7 @@ function deviceReady() {
 }
 function restaurantSelection(param, name, location, hr, description, logo) {
         $.ajax({
-            url:'http://localhost:8080/WebServices/RestaurantServiceServlet',
+            url:'http://54.207.117.3:8080/WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data:{
                 ws: 2,
@@ -167,7 +167,7 @@ function addPlate(param,id,time,price,name){
 function verifyOrder(){
     if (confirm("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.") == true) {
         $.ajax({
-            url:"http://localhost:8080/WebServices/UserServiceServlet",
+            url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
             type: "POST",
             crossDomain: true,
             data:{
@@ -197,7 +197,7 @@ function login(){
     var retrievedPass = $("#password-input").val();
     userLogged=retrievedMail;
     $.ajax({
-        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
         type: "POST",
         crossDomain: true,
         data:{
@@ -234,7 +234,7 @@ function doRegistration() {
     var retrievedConfirm = $("#register-confirm").val();
     if (retrievedPass == retrievedConfirm) {
         $.ajax({
-            url: "http://localhost:8080/WebServices/UserServiceServlet",
+            url: "http://54.207.117.3:8080/WebServices/UserServiceServlet",
             type: "POST",
             crossDomain: true,
             data: {
@@ -268,7 +268,7 @@ function goBackLogin() {
 }
 function getRandomVoucher(){
     $.ajax({
-        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
         type: "GET",
         crossDomain: true,
         data:{
