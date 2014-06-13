@@ -63,8 +63,8 @@ function deviceReady() {
                 }
                 
                 $("#voucher-list").html(ret);
-                mui.viewPort.iScrollRefresh();
                 mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+                mui.viewPort.iScrollRefresh();
 
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
@@ -154,8 +154,8 @@ function addPlate(param,id,time,price,name){
 		cantidades[yaAgregados]=1;
 		yaAgregados=yaAgregados+1;
 	}*/
-	
 	$("#my-cart-list").html(ret2);
+	mui.viewPort.iScrollRefresh();
 	
 	//ret='<form method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
 	//cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
@@ -188,9 +188,9 @@ function verifyOrder(){
             }
         })
             .done(function(data){
-                mui.viewPort.iScrollRefresh();
                 getRandomVoucher();
                 mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
+                mui.viewPort.iScrollRefresh();
 
             })
             .fail(function(jqXHR, textStatus, errorThrown){

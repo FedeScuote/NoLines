@@ -166,16 +166,15 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     bottom: 60px;
 }
 #cart-display{
-	position:absolute;
     height: 25%;
     margin-right: 0%;
     top:1%;
     left:10%;
     width:60%;
+
 }
 #my-cart-list{
 	width:60%;
-	position:absolute;
 	font-size:70%;
 	padding:0px;
 }
@@ -231,6 +230,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 }
 
 #menu-list-div{
+	position:absolute;
 	top: 25%;
 	margin-left: 0;
 	height: 80%;
