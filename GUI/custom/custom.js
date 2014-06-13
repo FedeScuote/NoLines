@@ -165,7 +165,16 @@ function addPlate(param,id,time,price,name){
 }
 
 function verifyOrder(){
-    if (confirm("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.") == true) {
+	var apreto=0;
+	mui.confirm(
+			"Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.",
+			function (buttonIndex) {
+				apreto=buttonIndex;
+			},
+			"¿Confirmar compra?",
+			"Confirmar,Cancelar"
+		);
+    if (apreto == 1) {
         $.ajax({
             url:"http://localhost:8080/WebServices/UserServiceServlet",
             type: "POST",
@@ -248,10 +257,10 @@ function doRegistration() {
             .done(function (data) {
                 var obj = JSON.parse(data);
                 if(obj.registro==1){
-                    alert("Registro completo!");
+                    mui.alert("Registro completo!","Felicitaciones");
                     mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
                 }else{
-                    alert("ese mail ya esta en uso");
+                    mui.alert("Ese mail ya esta en uso","Error");
                 }
 
             })
@@ -259,7 +268,7 @@ function doRegistration() {
 
             })
     }else{
-        alert("Los passwords son diferentes");
+        mui.alert("Los passwords no coinciden","Intenten denuevo");
     }
 
 }
