@@ -39,6 +39,70 @@ div#mui-viewport-page1 div.mui-page-header {
 	background-repeat: no-repeat, repeat-x;
 	background-size: 121px 28px;
 }
+div#mui-viewport-page-home div.mui-page-header {
+    background-color: #e04a59;
+    background-image: url('../images/NoLinesLogoWhite.png');
+    background-position: center;
+    background-repeat: no-repeat, repeat-x;
+    background-size: 121px 28px;
+}
+#mui-viewport-page-home li{
+    height: 40%;
+    width: 40%;
+}
+#categories-list button{
+    border-style: none;
+    height: 100%;
+    width: 100%
+}
+#Fast-Food-btn{
+    background-image: url('../images/fast-food.png');
+    background-size: 200% auto;
+    color: #ffffff;
+    font-size: 24px;
+}
+#International-Food-btn{
+    position: relative;
+    bottom: 100%;
+    left: 100%;
+    background-image: url('../images/international-food.jpg');
+    background-size: 200% auto;
+    color: black;
+    font-size: 24px;
+}
+#Pizza-btn{
+    position:relative;
+    bottom:100%;
+    background-image: url('../images/pizza.jpg');
+    background-size: 200% auto;
+    color: #000000;
+    font-size: 24px;
+}
+#Barbecue-btn{
+    position:relative;
+    bottom: 200%;
+    left:100%;
+    background-image: url('../images/barbecue.jpg');
+    background-size: 200% auto;
+    color: #ffffff;
+    font-size: 24px;
+}
+#categories-list{
+    height: 100%;
+    width: 100%;
+}
+#All-btn{
+    border-style: solid;
+    border-color: #000000;
+    height: 20%;
+    position: absolute;
+    left:37%;
+    top:37%;
+    border-radius: 300%;
+    z-index: 500;
+    background-color: #e04a59;
+    color: white;
+}
 
 .default-button {
     border: medium none;
