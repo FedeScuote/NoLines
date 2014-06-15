@@ -220,11 +220,9 @@ function login(){
 
             var obj = JSON.parse(data);
             if(obj.id==1){
-                $(".error-tag").gethtml("Error en el servidor pruebe mas tarde");
-                $(".error-tag").visibility = "visible"
+            	mui.alert("Error en el servidor pruebe mas tarde.");
             }else if(obj.id==0){
-                $(".error-tag").html("Datos incorrectos, ingrese de nuevo");
-                $(".error-tag").visibility = "visible"
+            	mui.alert("Usuario o contraseña invalido.")
             }else{
                 mail=obj.id;
                 mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
