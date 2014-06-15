@@ -8,10 +8,11 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
+var servidor='http://localhost:8080/'
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
-            url: 'http://localhost:8080/WebServices/RestaurantServiceServlet',
+            url: servidor + '/WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data: {
                 ws: 1
@@ -23,7 +24,7 @@ function deviceReady() {
                 if(obj.length > 0){
                 	for (var i = 0; i < obj.length; i++) {
                         ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick='restaurantSelection(" + obj[i].id +",&quot;"+obj[i].name+"&quot;,&quot;"+obj[i].location+"&quot;,&quot;"+obj[i].horario+"&quot;,&quot;"+obj[i].description+"&quot;,&quot;"+obj[i].logo+"&quot;)'><img src="
-                            + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
+                            + servidor + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
                             "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
                             "</button></li>";
                     }
@@ -44,7 +45,7 @@ function deviceReady() {
     
     $("#click3").on("click", function (e) {
         $.ajax({
-            url: 'http://localhost:8080/WebServices/UserServiceServlet',
+            url: servidor + 'WebServices/UserServiceServlet',
             crossDomain: true,
             data: {
                 ws: 5,
@@ -83,7 +84,7 @@ function deviceReady() {
 }
 function restaurantSelection(param, name, location, hr, description, logo) {
         $.ajax({
-            url:'http://localhost:8080/WebServices/RestaurantServiceServlet',
+            url: servidor + 'WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data:{
                 ws: 2,
@@ -92,7 +93,7 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             }
         })
             .done(function(data){
-            	var muestra = "<br><img src="+ logo + " width='50' height='50'><h1>"+name+"</h1><p>"+description+"</p><p>"+location+"</p><p>"+hr+"</p>";
+            	var muestra = "<br><img src="+ servidor + logo + " width='50' height='50'><h1>"+name+"</h1><p>"+description+"</p><p>"+location+"</p><p>"+hr+"</p>";
             	$("#panel1").html(muestra);
             	cart=" ";
             	ret2=" ";
@@ -176,7 +177,7 @@ function verifyOrder(){
 		);
     if (apreto == 1) {
         $.ajax({
-            url:"http://localhost:8080/WebServices/UserServiceServlet",
+            url: servidor + "WebServices/UserServiceServlet",
             type: "POST",
             crossDomain: true,
             data:{
@@ -206,7 +207,7 @@ function login(){
     var retrievedPass = $("#password-input").val();
     userLogged=retrievedMail;
     $.ajax({
-        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        url: servidor + "WebServices/UserServiceServlet",
         type: "POST",
         crossDomain: true,
         data:{
@@ -243,7 +244,7 @@ function doRegistration() {
     var retrievedConfirm = $("#register-confirm").val();
     if (retrievedPass == retrievedConfirm) {
         $.ajax({
-            url: "http://localhost:8080/WebServices/UserServiceServlet",
+            url: servidor + "WebServices/UserServiceServlet",
             type: "POST",
             crossDomain: true,
             data: {
@@ -277,7 +278,7 @@ function goBackLogin() {
 }
 function getRandomVoucher(){
     $.ajax({
-        url:"http://localhost:8080/WebServices/UserServiceServlet",
+        url: servidor + "WebServices/UserServiceServlet",
         type: "GET",
         crossDomain: true,
         data:{
@@ -288,7 +289,7 @@ function getRandomVoucher(){
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+obj.shopImage+"><br>";
+            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+sevidor + obj.shopImage+"><br>";
             $("#thanks-voucher").html("");
             $("#thanks-voucher").html(ret);
         })
