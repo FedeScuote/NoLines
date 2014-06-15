@@ -10,38 +10,7 @@ var priceTotal;
 var userLogged;
 var servidor='http://localhost:8080/'
 function deviceReady() {
-	function buscarRestaurantes(categoria){
-        $.ajax({
-            url: servidor + '/WebServices/RestaurantServiceServlet',
-            crossDomain: true,
-            data: {
-                ws: 1,
-                category: categoria
-            }
-        })
-            .done(function (data) {
-                var obj = JSON.parse(data);
-                var ret = "";
-                if(obj.length > 0){
-                	for (var i = 0; i < obj.length; i++) {
-                        ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick='restaurantSelection(" + obj[i].id +",&quot;"+obj[i].name+"&quot;,&quot;"+obj[i].location+"&quot;,&quot;"+obj[i].horario+"&quot;,&quot;"+obj[i].description+"&quot;,&quot;"+obj[i].logo+"&quot;)'><img src="
-                            + servidor + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
-                            "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
-                            "</button></li>";
-                    }
-                	$("#restaurant-list").html(ret);
-                    mui.viewPort.iScrollRefresh();
-                    mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
-                }else{
-                	mui.alert("No se encuentran restaurantes disponibles para su seleccion, intente con otra categoria.");
-                }
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-
-            })
-    }
-    
-    
+	
     $("#click3").on("click", function (e) {
         $.ajax({
             url: servidor + 'WebServices/UserServiceServlet',
@@ -80,6 +49,38 @@ function deviceReady() {
     });
 
 }
+
+function buscarRestaurantes(categoria){
+    $.ajax({
+        url: servidor + '/WebServices/RestaurantServiceServlet',
+        crossDomain: true,
+        data: {
+            ws: 1,
+            category: categoria
+        }
+    })
+        .done(function (data) {
+            var obj = JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for (var i = 0; i < obj.length; i++) {
+                    ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick='restaurantSelection(" + obj[i].id +",&quot;"+obj[i].name+"&quot;,&quot;"+obj[i].location+"&quot;,&quot;"+obj[i].horario+"&quot;,&quot;"+obj[i].description+"&quot;,&quot;"+obj[i].logo+"&quot;)'><img src="
+                        + servidor + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
+                        "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
+                        "</button></li>";
+                }
+            	$("#restaurant-list").html(ret);
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
+            }else{
+            	mui.alert("No se encuentran restaurantes disponibles para su seleccion, intente con otra categoria.");
+            }
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+
+        })
+}
+
 function restaurantSelection(param, name, location, hr, description, logo) {
         $.ajax({
             url: servidor + 'WebServices/RestaurantServiceServlet',
@@ -123,7 +124,10 @@ function restaurantSelection(param, name, location, hr, description, logo) {
 
             })
 }
-
+function ocultarBarraInferior(){
+	var hola = document.getElementById("footer");
+	hola.style.visibility  = 'hidden'; // No se ve
+}
 function addPlate(param,id,time,price,name){
 	priceTotal=priceTotal+price;
 	timeTotal=timeTotal+time;
@@ -139,26 +143,8 @@ function addPlate(param,id,time,price,name){
         btnUNO.style.visibility  = 'visible'; // No se ve
 	}
 	yaAgregados=yaAgregados+1;
-	
-	/*var encontre=0;
-	for(var i=0 ; i<yaAgregados ; i++){
-		if(platos[i]==param){
-			cantidades[i]=cantidades[i]+1;
-			encontre=1;
-		}
-	}
-	if(encontre == 0){
-		platos[yaAgregados]=param;
-		cantidades[yaAgregados]=1;
-		yaAgregados=yaAgregados+1;
-	}*/
 	$("#my-cart-list").html(ret2);
 	mui.viewPort.iScrollRefresh();
-	
-	//ret='<form method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
-	//cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
-	//ret=ret+cart+'<div id="confirmar"><input type="buttom" onclick=verifyOrder() value="Confirmar" /></div>';
-	//$("#cart-display").html(ret);
 
 }
 
@@ -221,6 +207,8 @@ function login(){
             }else if(obj.id==0){
             	mui.alert("Usuario y/o clave invalido.")
             }else{
+            	var barra = document.getElementById("footer");
+            	barra.style.visibility  = 'visible'; // No se ve
                 mail=obj.id;
                 mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
             }
@@ -284,7 +272,7 @@ function getRandomVoucher(){
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+sevidor + obj.shopImage+"><br>";
+            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+servidor + obj.shopImage+"><br>";
             $("#thanks-voucher").html("");
             $("#thanks-voucher").html(ret);
         })
@@ -296,5 +284,8 @@ function getRandomVoucher(){
 
 function goHome(){
     mui.history.reset();
-    mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
+    mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
+}
+function enConstruccion(){
+	mui.alert("En construccion");
 }

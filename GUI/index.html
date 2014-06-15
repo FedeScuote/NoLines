@@ -147,10 +147,10 @@
                             este Voucher de descuento
                         </div>
                         <div id="thanks-voucher">
-                            
+                            <script>getRandomVoucher()</script>
                         </div>
                         <button id="return-home" onclick="goHome()">
-                            Volver
+                            Inicio
                         </button>
                     </div>
                 </div>
@@ -191,7 +191,7 @@
                         </li>
                     </ul>
                 </div>
-                <button id="All-btn">Todos</button>
+                <button id="All-btn" onclick="buscarRestaurantes(0)">Todos</button>
             </div>
 
             <div id="mui-viewport-page-profile" class="mui-page">
@@ -205,12 +205,13 @@
 
             <div class="mui-tabbar" id="footer">
                 <ul class="mui-tabbar-list">
-                    <li class="muy-tabbar-button mui-clickable" id='info-rest'><span>Como ir</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='info-rest' onclick="enConstruccion()"><span>Como ir</span></li>
                     <li class="muy-tabbar-button mui-clickable" id='click3'><span>Descuentos</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button2'><span>Restaurantes</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button3'><span>Cuenta</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='panel-button2' onclick="goHome()"><span>Restaurantes</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='panel-button3' onclick="enConstruccion()"><span>Cuenta</span></li>
                 </ul>
             </div>
+            <script>ocultarBarraInferior()</script>
 
 
 			
