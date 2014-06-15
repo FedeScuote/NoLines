@@ -15,6 +15,8 @@ import org.json.simple.JSONObject;
 
 import entity.Plate;
 import entity.Restaurant;
+import entity.Shop;
+import entity.voucher;
 
 /**
  * Servlet implementation class RestaurantServiceServlet
@@ -43,17 +45,17 @@ public class RestaurantServiceServlet extends HttpServlet {
 		response.setContentType("text/event-stream");
 		response.setCharacterEncoding("UTF-8");
 		final java.io.Writer writer = response.getWriter();
-		if(request.getParameter("ws").equals("1")){
-			LinkedList<Restaurant> lista = (LinkedList<Restaurant>) restaurantService.getRestaurants();
+		if(request.getParameter("ws").equals("1")){ //Lista de restaurantes 
+			String category=request.getParameter("category");
+			LinkedList<Restaurant> lista;
+			if(category.equals("0")){
+				lista = (LinkedList<Restaurant>) restaurantService.getRestaurants();	
+			}else{
+				lista = (LinkedList<Restaurant>) restaurantService.getRestaurantsByCategory(Integer.parseInt(category));
+			}
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < lista.size(); i++) {
-				JSONObject restaurant = new JSONObject();
-				restaurant.put("id", lista.get(i).getId());
-				restaurant.put("name", lista.get(i).getName());
-				restaurant.put("logo", lista.get(i).getLogo());
-				restaurant.put("horario", lista.get(i).getHorario());
-				restaurant.put("location", lista.get(i).getLocation());
-				restaurant.put("description",lista.get(i).getDescription());
+				JSONObject restaurant = loadRestaurantJson(lista.get(i));
 				wrapper.add(restaurant)	;
 			}
 			writer.append(wrapper.toJSONString());
@@ -73,8 +75,23 @@ public class RestaurantServiceServlet extends HttpServlet {
 			}
 			writer.append(wrapper.toJSONString());
 		}
-		
 	}
+	
+	/**
+	 * Metodo para crear un restaurante json
+	 * @param r restaurant entity
+	 * @return json conteniendo restaurant
+	 */
+	private JSONObject loadRestaurantJson(Restaurant r){
+		JSONObject restaurant = new JSONObject();
+		restaurant.put("id", r.getId());
+		restaurant.put("name", r.getName());
+		restaurant.put("logo", r.getLogo());
+		restaurant.put("horario", r.getHorario());
+		restaurant.put("location", r.getLocation());
+		restaurant.put("description",r.getDescription());
+		return restaurant;
+	} 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
