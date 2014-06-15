@@ -18,6 +18,7 @@ import entity.Shop;
 public class LocalDaoDB implements LocalDao {
 	
 	//Metodo para obtener todos los restaurantes de la base de datos.
+	//int 0 obtiene todos, y sino se busca por su categoria.
 	public LinkedList<Restaurant> getRestaurants() throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -155,11 +156,31 @@ public class LocalDaoDB implements LocalDao {
 		}
 	}
 
-	@Override
+	
 	public List getAllRestaurantsCategory(int category)
 			throws NoDataFoundException, DaoException {
-		// TODO Auto-generated method stub
-		return null;
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local IN (SELECT id_restaurant from category WHERE category.id_category = '"+category+"')";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Restaurant> restaurantes = new LinkedList<Restaurant>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add(loadRestaurant(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
 	}
 
 }
