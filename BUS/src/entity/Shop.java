@@ -123,7 +123,7 @@ public class Shop {
 		}
 	}
  public static void main(String[] args){
-	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();
+	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurantsCategory(1);
 	 System.out.print(lista.getFirst().getName());
  }
 }
