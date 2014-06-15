@@ -21,4 +21,6 @@ public interface LocalDao {
 	//Obtener una lista de todos los locales
 	List getLocals() throws NoDataFoundException, DaoException;
 	
+	List getAllRestaurantsCategory(int category) throws NoDataFoundException, DaoException;
+	
 }

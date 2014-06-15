@@ -185,5 +185,47 @@ public class UserDaoDB implements UserDao {
 	
 }
 
+	@Override
+	public void addLike(String user, int shop) throws DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		String stat = "INSERT INTO `noLines`.`user_likes_local` (`user`, `idLocal`) VALUES ('"+user+"', '"+shop+"');";
+		try {
+			jdbc.modify(stat);
+		} catch (DaoException e) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+		
+	}
+
+	@Override
+	public void removeLike(String user, int shop) throws DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		String stat = "DELETE FROM `noLines`.`user_likes_local` WHERE user='" + user + "' AND idLocal='" + shop + "'";
+		try {
+			jdbc.modify(stat);
+		} catch (DaoException e) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+		
+	}
+
 
 }

@@ -155,5 +155,12 @@ public class LocalDaoDB implements LocalDao {
 		}
 	}
 
+	@Override
+	public List getAllRestaurantsCategory(int category)
+			throws NoDataFoundException, DaoException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 

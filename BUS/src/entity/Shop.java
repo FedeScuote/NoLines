@@ -99,6 +99,18 @@ public class Shop {
 		}
 	}
 	
+	public static final List getAllRestaurantsCategory(int category){ 
+		List shops = new LinkedList<>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			shops = local.getAllRestaurantsCategory(category);
+			return shops;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return shops;
+		}
+	}
+	
 	public static final Shop getShop(int id){ //tirar excepxiones y en lo otro decir que no se encontraron
 		Shop shop;
 		try {
