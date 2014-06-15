@@ -56,17 +56,17 @@ INSERT INTO `restaurant` (`id_restaurant`) VALUES
 --
 
 INSERT INTO `plate` (`plate_id`, `price`, `description`, `foto`, `cook_time`, `name`, `id_restaurant`) VALUES
-(1, 195, 'Incluye hamburguesa, bebida y papas.', 'http://localhost/image/plate/mcdonalds1.png', 4, 'Combo Big Mc', '1'),
-(2, 205, 'Incluye hamburguesa, bebida y papas.', 'http://localhost/image/plate/mcdonalds2.png', 5, 'Combo Cuarto de Libra', '1'),
-(3, 45, 'La tradicional hamburguesa con queso que siempre te gusto!', 'http://localhost/image/plate/mcdonalds3.png', 3, 'Hamburguesa con queso', '1'),
-(4, 45, 'Hamburguesa de pollo, lechuga y la mayonesa!', 'http://localhost/image/plate/mcdonalds4.png', 5, 'Mc Pollo', '1'),
-(5, 210, 'Hamburguesa, bebida y papas!', 'http://localhost/image/plate/mcdonalds5.png', 6, 'Combo Doble Cuarto', '1'),
-(6, 190, 'Incluye hamburguesa whopper jr, bebida y papas!', 'http://localhost/image/plate/burgerking1.png', 6, 'Combo Whopper Jr', '2'),
-(7, 100, 'Hamburguesa Whopper', 'http://localhost/image/plate/burgerking2.png', 5, 'Whopper Jr', '2'),
-(8, 90, 'Milkshake de dulce de leche', 'http://localhost/image/plate/starbucks1.png', 7, 'MilkShake', '6'),
-(9, 50, 'Cafe caliente con vainilla, canela o chocolate a eleccion.', 'http://localhost/image/plate/starbucks2.png', 4, 'Cafe', '6'),
-(11, 170, 'Sandwich con filete de carne cocido en horno con guacamole.', 'http://localhost/image/plate/subway1.png', 6, 'Guacamole Sandwich', '3'),
-(12, 85, 'Un taco con gustos a eleccion', 'http://localhost/image/plate/tacobell1.png', 6, 'Taco', '5');
+(1, 195, 'Incluye hamburguesa, bebida y papas.', 'WebServices/image/plate/mcdonalds1.png', 4, 'Combo Big Mc', '1'),
+(2, 205, 'Incluye hamburguesa, bebida y papas.', 'WebServices/image/plate/mcdonalds2.png', 5, 'Combo Cuarto de Libra', '1'),
+(3, 45, 'La tradicional hamburguesa con queso que siempre te gusto!', 'WebServices/image/plate/mcdonalds3.png', 3, 'Hamburguesa con queso', '1'),
+(4, 45, 'Hamburguesa de pollo, lechuga y la mayonesa!', 'WebServices/image/plate/mcdonalds4.png', 5, 'Mc Pollo', '1'),
+(5, 210, 'Hamburguesa, bebida y papas!', 'WebServices/image/plate/mcdonalds5.png', 6, 'Combo Doble Cuarto', '1'),
+(6, 190, 'Incluye hamburguesa whopper jr, bebida y papas!', 'WebServices/image/plate/burgerking1.png', 6, 'Combo Whopper Jr', '2'),
+(7, 100, 'Hamburguesa Whopper', 'WebServices/image/plate/burgerking2.png', 5, 'Whopper Jr', '2'),
+(8, 90, 'Milkshake de dulce de leche', 'WebServices/image/plate/starbucks1.png', 7, 'MilkShake', '6'),
+(9, 50, 'Cafe caliente con vainilla, canela o chocolate a eleccion.', 'WebServices/image/plate/starbucks2.png', 4, 'Cafe', '6'),
+(11, 170, 'Sandwich con filete de carne cocido en horno con guacamole.', 'WebServices/image/plate/subway1.png', 6, 'Guacamole Sandwich', '3'),
+(12, 85, 'Un taco con gustos a eleccion', 'WebServices/image/plate/tacobell1.png', 6, 'Taco', '5');
 
 --
 -- Dumping data for table `shop`

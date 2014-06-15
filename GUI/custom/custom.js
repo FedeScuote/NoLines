@@ -10,12 +10,13 @@ var priceTotal;
 var userLogged;
 var servidor='http://localhost:8080/'
 function deviceReady() {
-    $("#click2").on("click", function (e) {
+	function buscarRestaurantes(categoria){
         $.ajax({
             url: servidor + '/WebServices/RestaurantServiceServlet',
             crossDomain: true,
             data: {
-                ws: 1
+                ws: 1,
+                category: categoria
             }
         })
             .done(function (data) {
@@ -28,19 +29,17 @@ function deviceReady() {
                             "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
                             "</button></li>";
                     }
+                	$("#restaurant-list").html(ret);
+                    mui.viewPort.iScrollRefresh();
+                    mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
                 }else{
-                	ret = "No hay restaurantes disponibles, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
+                	mui.alert("No se encuentran restaurantes disponibles para su seleccion, intente con otra categoria.");
                 }
-                
-                $("#restaurant-list").html(ret);
-                mui.viewPort.iScrollRefresh();
-                mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
-
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
 
             })
-    });
+    }
     
     
     $("#click3").on("click", function (e) {
@@ -58,14 +57,13 @@ function deviceReady() {
                 if(obj.length > 0){
                 	for (var i = 0; i < obj.length; i++) {
                         ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
-                    }
+                    }         
+                    $("#voucher-list").html(ret);
+                    mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+                    mui.viewPort.iScrollRefresh();
                 }else{
-                	ret = "No tiene vouchers";
+                	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
                 }
-                
-                $("#voucher-list").html(ret);
-                mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
-                mui.viewPort.iScrollRefresh();
 
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
@@ -114,13 +112,12 @@ function restaurantSelection(param, name, location, hr, description, logo) {
                 	for(var i = 0 ; i < obj.length ; i++){
                         ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
+                    $("#menu-list").html(ret);
+                    mui.viewPort.iScrollRefresh();
+                    mui.viewPort.showPage("mui-viewport-page3", "SLIDE_LEFT");
                 }else{
-                	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
+                	mui.alert("Este restaurante no tiene menus disponibles. Intentelo mas tarde.");
                 }
-                $("#menu-list").html(ret);
-                mui.viewPort.iScrollRefresh();
-                mui.viewPort.showPage("mui-viewport-page3", "SLIDE_LEFT");
-
             })
             .fail(function(jqXHR, textStatus, errorThrown){
 
@@ -222,10 +219,10 @@ function login(){
             if(obj.id==1){
             	mui.alert("Error en el servidor pruebe mas tarde.");
             }else if(obj.id==0){
-            	mui.alert("Usuario o contraseña invalido.")
+            	mui.alert("Usuario y/o clave invalido.")
             }else{
                 mail=obj.id;
-                mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
+                mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
