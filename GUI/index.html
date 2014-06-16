@@ -138,6 +138,7 @@
 
             <div id='mui-viewport-page4' class="mui-page">
                 <div class="mui-page-header">
+                	<div class="mui-leftarrow mui-clickable" onclick='goHome();'>Volver</div>
                 </div>
                 <div class="mui-page-body mui-scrollable">
                     <div id="thanks-container" class="container">
@@ -149,9 +150,6 @@
                         <div id="thanks-voucher">
                             <script>getRandomVoucher()</script>
                         </div>
-                        <button id="return-home" onclick="goHome()">
-                            Inicio
-                        </button>
                     </div>
                 </div>
 
@@ -196,7 +194,7 @@
 
             <div id="mui-viewport-page-profile" class="mui-page">
                 <div class="mui-page-header">
-					
+					<div class="mui-leftarrow mui-clickable" onclick='mui.history.back();'>Volver</div>
                 </div>
                 <div class="mui-page-body mui-scrollable">
                 	<div id="perfil-informacion">
@@ -205,13 +203,13 @@
                 			
                 		</ul>
                 	</div>
-                	
+              
                 	<div class="mui-scrollable" id="perfil-gustos">
-
+						
                 	</div>
                 		
                 	<div class="mui-scrollable" id="perfil-nogustos">
-
+						
                 	</div>
                 </div>
             </div>

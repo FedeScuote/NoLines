@@ -146,6 +146,10 @@ div.mui-tabbar ul.mui-tabbar-list li.muy-tabbar-button {
     /*border: #3498db solid 1px;*/
     float: left;
 }
+li.muy-tabbar-button{
+	text-align: center;
+	font-size: 15px;
+}
 /*Botones del tabbar*/
 div.mui-tabbar ul.mui-tabbar-list {
     max-width: 480px;
