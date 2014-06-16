@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2014 at 08:31 PM
+-- Generation Time: Jun 16, 2014 at 05:25 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.19
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   PRIMARY KEY (`order_id`),
   KEY `fk_order_user1_idx` (`user_email`),
   KEY `fk_order_paying_account1_idx` (`paying_account_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=84 ;
 
 -- --------------------------------------------------------
 
@@ -205,6 +205,17 @@ CREATE TABLE IF NOT EXISTS `user_has_taste` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_likes_local`
+--
+
+CREATE TABLE IF NOT EXISTS `user_likes_local` (
+  `email` varchar(255) NOT NULL,
+  `id_local` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `voucher`
 --
 
@@ -218,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `voucher` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`voucher_id`,`id_local`),
   KEY `fk_voucher_local1_idx` (`id_local`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=154 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=319 ;
 
 --
 -- Constraints for dumped tables
