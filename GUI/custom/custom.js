@@ -8,7 +8,7 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
-var servidor='http://54.232.213.242:8080/'
+var servidor='http://54.207.119.194:80/'
 function deviceReady() {
     $("#click2").on("click", function (e) {
         $.ajax({
