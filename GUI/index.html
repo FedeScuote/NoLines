@@ -196,7 +196,23 @@
 
             <div id="mui-viewport-page-profile" class="mui-page">
                 <div class="mui-page-header">
+					
+                </div>
+                <div class="mui-page-body mui-scrollable">
+                	<div id="perfil-informacion">
+                		<button id="btn-logout" onclick="enConstruccion()">Cerrar Sesion</button>
+                		<ul id="user-info">
+                			
+                		</ul>
+                	</div>
+                	
+                	<div class="mui-scrollable" id="perfil-gustos">
 
+                	</div>
+                		
+                	<div class="mui-scrollable" id="perfil-nogustos">
+
+                	</div>
                 </div>
             </div>
 
@@ -208,7 +224,7 @@
                     <li class="muy-tabbar-button mui-clickable" id='info-rest' onclick="enConstruccion()"><span>Como ir</span></li>
                     <li class="muy-tabbar-button mui-clickable" id='click3'><span>Descuentos</span></li>
                     <li class="muy-tabbar-button mui-clickable" id='panel-button2' onclick="goHome()"><span>Restaurantes</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button3' onclick="enConstruccion()"><span>Cuenta</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='panel-button3' onclick="loadCuenta()"><span>Cuenta</span></li>
                 </ul>
             </div>
             <script>ocultarBarraInferior()</script>

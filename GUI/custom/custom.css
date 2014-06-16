@@ -96,7 +96,7 @@ div#mui-viewport-page-home div.mui-page-header {
     border-color: #000000;
     height: 20%;
     position: absolute;
-    left:37%;
+    left:44%;
     top:37%;
     border-radius: 300%;
     z-index: 500;
@@ -489,4 +489,43 @@ display: -moz-inline-block;
 #imgVoucherCompra{
 	max-height: 100px;
 	max-width: 100px;
+}
+#perfil-informacion{
+	width: 100%;
+	height: 20%;
+	margin-top: 2%;
+	border:1px groove #f24537;
+	background-color: whitesmoke;
+}
+#perfil-gustos{
+	width: 100%;
+	height: 35%;
+	top: 23%;
+	background-color: whitesmoke;
+}
+#perfil-nogustos{
+	width: 100%;
+	min-height: 35%;
+	top: 59%;
+	background-color: whitesmoke;
+}
+#btn-logout{
+	margin-left:70%;
+	font-size:11px;	
+	background-color: #e04a59;
+    font-family:Arial;
+	font-weight:bold;
+	font-style:normal;
+	color:#ffffff;
+}
+#div-gustos{
+	margin-left:2px;
+	float:left;
+	max-width:75px;
+	max-heigth:75px;
+}
+#image-gustos{
+	float:left;
+	max-width:75px;
+	max-heigth:75px;
 }

@@ -207,10 +207,12 @@ function login(){
             }else if(obj.id==0){
             	mui.alert("Usuario y/o clave invalido.")
             }else{
-            	var barra = document.getElementById("footer");
-            	barra.style.visibility  = 'visible'; // No se ve
                 mail=obj.id;
+                var info="<li>Usuario : "+mail+"</li><li>Nombre : "+obj.name+"</li>";
+                $("#user-info").html(info);
                 mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
+                var barra = document.getElementById("footer");
+            	barra.style.visibility  = 'visible'; // No se ve
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
@@ -288,4 +290,97 @@ function goHome(){
 }
 function enConstruccion(){
 	mui.alert("En construccion");
+}
+function loadCuenta(){
+	loadLikes();
+	loadNoLikes();
+	mui.viewPort.showPage("mui-viewport-page-profile", "SLIDE_LEFT");
+}
+function loadLikes(){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 8,
+            user: userLogged
+        }
+    })
+        .done(function(data){
+            var obj=JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for(var i = 0 ; i < obj.length ; i++){
+                    ret = ret + "<div id='div-gustos' class='mui-clickable' onclick='dislike("+obj[i].id+")'><img id='image-gustos' src="+servidor+obj[i].logo+"></div>";
+                }
+            }else{
+            	ret="Aun no tiene gustos asignados, seleccione de la lista siguiente presionando sobre sus gustos.";
+            }
+            $("#perfil-gustos").html(ret);
+            mui.viewPort.iScrollRefresh();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function loadNoLikes(){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 9,
+            user: userLogged
+        }
+    })
+        .done(function(data){
+        	var obj=JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for(var i = 0 ; i < obj.length ; i++){
+                    ret = ret + "<div id='div-gustos' class='mui-clickable' onclick='like("+obj[i].id+")'><img id='image-gustos' src="+servidor+obj[i].logo+"></div>";
+                }
+            }else{
+            	ret="No hay locales que no le gusten.";
+            }
+            $("#perfil-nogustos").html(ret);
+            mui.viewPort.iScrollRefresh();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function dislike(id){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 11,
+            user: userLogged,
+            idLocal: id
+        }
+    })
+        .done(function(data){
+        	loadLikes();
+        	loadNoLikes();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function like(id){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 10,
+            user: userLogged,
+            idLocal: id
+        }
+    })
+        .done(function(data){
+        	loadLikes();
+        	loadNoLikes();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
 }

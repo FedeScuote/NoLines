@@ -50,9 +50,44 @@ public class UserServiceServlet extends HttpServlet {
 				wrapper.add(voucher);
 			}
 			writer.append(wrapper.toJSONString());
+		}else if(request.getParameter("ws").equals("8")){
+			String mailLike = request.getParameter("user");
+			List locales=userServiceImpl.getLikedRestaurants(mailLike);
+			JSONArray wrapper = new JSONArray();
+			for (int i = 0; i < locales.size(); i++) {
+				JSONObject restaurant = loadShopJson((Shop)locales.get(i));
+				wrapper.add(restaurant)	;
+			}
+			writer.append(wrapper.toJSONString());
+		}else if(request.getParameter("ws").equals("9")){
+			String mailUnLike = request.getParameter("user");
+			List locales=userServiceImpl.getUnLikedRestaurants(mailUnLike);
+			JSONArray wrapper = new JSONArray();
+			for (int i = 0; i < locales.size(); i++) {
+				JSONObject restaurant = loadShopJson((Shop)locales.get(i));
+				wrapper.add(restaurant)	;
+			}
+			writer.append(wrapper.toJSONString());
+		}else if(request.getParameter("ws").equals("10")){
+			String mailLike = request.getParameter("user");
+			String idLocal = request.getParameter("idLocal");
+			int id = Integer.parseInt(idLocal);
+			userServiceImpl.addLike(mailLike,id);
+		}else if(request.getParameter("ws").equals("11")){
+			String mailUnLike = request.getParameter("user");
+			String idLocal = request.getParameter("idLocal");
+			int id = Integer.parseInt(idLocal);
+			userServiceImpl.removeLike(mailUnLike, id);
 		}
 
 	}
+
+	private JSONObject loadShopJson(Shop s){
+		JSONObject local = new JSONObject();
+		local.put("id", s.getId());
+		local.put("logo", s.getLogo());
+		return local;
+	} 
 	
 	private JSONObject loadVoucherJson(voucher v){
 		JSONObject vjson = new JSONObject();
@@ -123,13 +158,16 @@ public class UserServiceServlet extends HttpServlet {
 			try {
 				User u = userServiceImpl.login(username, password);
 				ujson.put("id", u.getEMail());
+				ujson.put("name", u.getName());
 				session.setAttribute("user", username);
 			} catch (NoDataFoundException e) {
 				ujson.put("id", "0");
+				ujson.put("name", "");
 				e.printStackTrace();
 			} catch (loginException e) {
 				ujson.put("id", "1");
-			}
+				ujson.put("name", "");
+}
 			writer.append(ujson.toJSONString());
 		}
 

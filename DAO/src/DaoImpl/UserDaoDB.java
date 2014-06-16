@@ -177,6 +177,11 @@ public class UserDaoDB implements UserDao {
 		
 		User valido = prueba.validateLogin("pipin@gmail.com","minombre");
 		System.out.println("valido correcto si piping@gmail.com = "+valido.getEMail());
+		
+		prueba.addLike("jt.tejeria@gmail.com", 1);
+		prueba.addLike("jt.tejeria@gmail.com", 2);
+		prueba.addLike("jt.tejeria@gmail.com", 3);
+		prueba.removeLike("jt.tejeria@gmail.com", 1);
 	} catch (NoDataFoundException | DaoException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -195,7 +200,7 @@ public class UserDaoDB implements UserDao {
 		} catch (NoDatabaseConexionException ex) {
 			throw new DaoException();
 		}
-		String stat = "INSERT INTO `noLines`.`user_likes_local` (`user`, `idLocal`) VALUES ('"+user+"', '"+shop+"');";
+		String stat = "INSERT INTO `noLines`.`user_likes_local` (`email`, `id_local`) VALUES ('"+user+"', '"+shop+"');";
 		try {
 			jdbc.modify(stat);
 		} catch (DaoException e) {
@@ -216,7 +221,7 @@ public class UserDaoDB implements UserDao {
 		} catch (NoDatabaseConexionException ex) {
 			throw new DaoException();
 		}
-		String stat = "DELETE FROM `noLines`.`user_likes_local` WHERE user='" + user + "' AND idLocal='" + shop + "'";
+		String stat = "DELETE FROM `noLines`.`user_likes_local` WHERE email='" + user + "' AND id_local='" + shop + "'";
 		try {
 			jdbc.modify(stat);
 		} catch (DaoException e) {
