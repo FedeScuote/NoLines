@@ -102,15 +102,21 @@ public class UserServiceImpl implements userService {
 			}
 	}
 
+	public List getLikedRestaurants(String user) {
+		return Shop.getLikedRestaurants(user);
+	}
+	public List getUnLikedRestaurants(String user) {
+		return Shop.getUnLikedRestaurants(user);
+	}
 	@Override
-	public void addLike() {
-		// TODO Auto-generated method stub
+	public void addLike(String user,int idLocal) {
+		User.like(user, idLocal);
 
 	}
 
 	@Override
-	public void removeLike() {
-		// TODO Auto-generated method stub
+	public void removeLike(String user,int idLocal) {
+		User.disLike(user, idLocal);
 
 	}
 

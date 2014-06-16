@@ -86,12 +86,47 @@ public class Shop {
 			return restaurants;
 		}
 	}
+	public static final List getLikedRestaurants(String user){
+		List locales = new LinkedList<Shop>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			locales = local.getLikedRestaurants(user);
+			return locales;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return locales;
+		}
+	}
+	
+	public static final List getUnLikedRestaurants(String user){
+		List locales = new LinkedList<Shop>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			locales = local.getUnLikedRestaurants(user);
+			return locales;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return locales;
+		}
+	}
 
 	public static final List getAllShops(){ //tirar excepxiones y en lo otro decir que no se encontraron
 		List shops = new LinkedList<>();
 		try {
 			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
 			shops = local.getLocals();
+			return shops;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return shops;
+		}
+	}
+	
+	public static final List getAllRestaurantsCategory(int category){ 
+		List shops = new LinkedList<>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			shops = local.getAllRestaurantsCategory(category);
 			return shops;
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NoDataFoundException | DaoException e) {
@@ -111,7 +146,10 @@ public class Shop {
 		}
 	}
  public static void main(String[] args){
-	 LinkedList<Restaurant> lista =  (LinkedList<Restaurant>) Shop.getAllRestaurants();
-	 System.out.print(lista.getFirst().getName());
+	 LinkedList<Shop> shops =  (LinkedList<Shop>) Shop.getLikedRestaurants("jt.tejeria@gmail.com");
+	 System.out.println(shops.size());
+	 System.out.println(shops.get(0).getName());
+	 System.out.println(shops.get(0).getId());
+	 System.out.println(shops.get(0).getLogo());
  }
 }

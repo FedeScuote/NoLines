@@ -18,11 +18,11 @@ public interface userService {
 	public void changePassword(String username, String oldPassword, String newPassword);
 	public void rankPlate(String idPlate, int ranking);
 	public void rankRestauran(String idRestaurant, int ranking);
-	public void addLike();
-	public void removeLike();
+	public void removeLike(String user, int idLocal);
 	public voucher getVoucher(String user);
 	List showVouchers(String user);
 	void order(String idRestaurant, List plates, List amounts, String idUser);
+	void addLike(String user, int idLocal);
 
 
 }

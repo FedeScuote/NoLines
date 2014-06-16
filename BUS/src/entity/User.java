@@ -82,5 +82,30 @@ public class User {
 			throw new loginException();
 		}
 	}
+	
+	public static void like(String user, int shop){
+		UserDao userDao;
+		try {
+			userDao = (UserDao) Class.forName("DaoImpl.UserDaoDB").newInstance();
+			userDao.addLike(user, shop);
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void disLike(String user, int shop){
+		UserDao userDao;
+		try {
+			userDao = (UserDao) Class.forName("DaoImpl.UserDaoDB").newInstance();
+			userDao.removeLike(user, shop);
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	} 
 
 }

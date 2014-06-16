@@ -8,7 +8,9 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
+var servidor='http://localhost:8080/'
 function deviceReady() {
+<<<<<<< HEAD
     $("#click2").on("click", function (e) {
         $.ajax({
             url: 'http://54.207.117.3:8080/WebServices/RestaurantServiceServlet',
@@ -45,6 +47,12 @@ function deviceReady() {
     $("#click3").on("click", function (e) {
         $.ajax({
             url: 'http://54.207.117.3:8080/WebServices/UserServiceServlet',
+=======
+	
+    $("#click3").on("click", function (e) {
+        $.ajax({
+            url: servidor + 'WebServices/UserServiceServlet',
+>>>>>>> master
             crossDomain: true,
             data: {
                 ws: 5,
@@ -57,14 +65,13 @@ function deviceReady() {
                 if(obj.length > 0){
                 	for (var i = 0; i < obj.length; i++) {
                         ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
-                    }
+                    }         
+                    $("#voucher-list").html(ret);
+                    mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+                    mui.viewPort.iScrollRefresh();
                 }else{
-                	ret = "No tiene vouchers";
+                	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
                 }
-                
-                $("#voucher-list").html(ret);
-                mui.viewPort.iScrollRefresh();
-                mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
 
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
@@ -81,9 +88,45 @@ function deviceReady() {
     });
 
 }
+
+function buscarRestaurantes(categoria){
+    $.ajax({
+        url: servidor + '/WebServices/RestaurantServiceServlet',
+        crossDomain: true,
+        data: {
+            ws: 1,
+            category: categoria
+        }
+    })
+        .done(function (data) {
+            var obj = JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for (var i = 0; i < obj.length; i++) {
+                    ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick='restaurantSelection(" + obj[i].id +",&quot;"+obj[i].name+"&quot;,&quot;"+obj[i].location+"&quot;,&quot;"+obj[i].horario+"&quot;,&quot;"+obj[i].description+"&quot;,&quot;"+obj[i].logo+"&quot;)'><img src="
+                        + servidor + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
+                        "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
+                        "</button></li>";
+                }
+            	$("#restaurant-list").html(ret);
+                mui.viewPort.iScrollRefresh();
+                mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
+            }else{
+            	mui.alert("No se encuentran restaurantes disponibles para su seleccion, intente con otra categoria.");
+            }
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+
+        })
+}
+
 function restaurantSelection(param, name, location, hr, description, logo) {
         $.ajax({
+<<<<<<< HEAD
             url:'http://54.207.117.3:8080/WebServices/RestaurantServiceServlet',
+=======
+            url: servidor + 'WebServices/RestaurantServiceServlet',
+>>>>>>> master
             crossDomain: true,
             data:{
                 ws: 2,
@@ -92,7 +135,7 @@ function restaurantSelection(param, name, location, hr, description, logo) {
             }
         })
             .done(function(data){
-            	var muestra = "<br><img src="+ logo + " width='50' height='50'><h1>"+name+"</h1><p>"+description+"</p><p>"+location+"</p><p>"+hr+"</p>";
+            	var muestra = "<br><img src="+ servidor + logo + " width='50' height='50'><h1>"+name+"</h1><p>"+description+"</p><p>"+location+"</p><p>"+hr+"</p>";
             	$("#panel1").html(muestra);
             	cart=" ";
             	ret2=" ";
@@ -113,19 +156,21 @@ function restaurantSelection(param, name, location, hr, description, logo) {
                 	for(var i = 0 ; i < obj.length ; i++){
                         ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
+                    $("#menu-list").html(ret);
+                    mui.viewPort.iScrollRefresh();
+                    mui.viewPort.showPage("mui-viewport-page3", "SLIDE_LEFT");
                 }else{
-                	ret="No hay un menu disponible, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
+                	mui.alert("Este restaurante no tiene menus disponibles. Intentelo mas tarde.");
                 }
-                $("#menu-list").html(ret);
-                mui.viewPort.iScrollRefresh();
-                mui.viewPort.showPage("mui-viewport-page3", "SLIDE_LEFT");
-
             })
             .fail(function(jqXHR, textStatus, errorThrown){
 
             })
 }
-
+function ocultarBarraInferior(){
+	var hola = document.getElementById("footer");
+	hola.style.visibility  = 'hidden'; // No se ve
+}
 function addPlate(param,id,time,price,name){
 	priceTotal=priceTotal+price;
 	timeTotal=timeTotal+time;
@@ -141,33 +186,28 @@ function addPlate(param,id,time,price,name){
         btnUNO.style.visibility  = 'visible'; // No se ve
 	}
 	yaAgregados=yaAgregados+1;
-	
-	/*var encontre=0;
-	for(var i=0 ; i<yaAgregados ; i++){
-		if(platos[i]==param){
-			cantidades[i]=cantidades[i]+1;
-			encontre=1;
-		}
-	}
-	if(encontre == 0){
-		platos[yaAgregados]=param;
-		cantidades[yaAgregados]=1;
-		yaAgregados=yaAgregados+1;
-	}*/
-	
 	$("#my-cart-list").html(ret2);
-	
-	//ret='<form method="post"><input name="idRest" value="'+id+'" type="hidden"/>';
-	//cart=cart+name+'<input name="plato" value="'+param+'" type="hidden"/><input name="cantidad" value="1" type="hidden"/><br>';
-	//ret=ret+cart+'<div id="confirmar"><input type="buttom" onclick=verifyOrder() value="Confirmar" /></div>';
-	//$("#cart-display").html(ret);
+	mui.viewPort.iScrollRefresh();
 
 }
 
 function verifyOrder(){
-    if (confirm("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.") == true) {
+	var apreto=0;
+	mui.confirm(
+			"Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.",
+			function (buttonIndex) {
+				apreto=buttonIndex;
+			},
+			"¿Confirmar compra?",
+			"Confirmar,Cancelar"
+		);
+    if (apreto == 1) {
         $.ajax({
+<<<<<<< HEAD
             url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
+=======
+            url: servidor + "WebServices/UserServiceServlet",
+>>>>>>> master
             type: "POST",
             crossDomain: true,
             data:{
@@ -179,9 +219,9 @@ function verifyOrder(){
             }
         })
             .done(function(data){
-                mui.viewPort.iScrollRefresh();
                 getRandomVoucher();
                 mui.viewPort.showPage("mui-viewport-page4", "SLIDE_DOWN");
+                mui.viewPort.iScrollRefresh();
 
             })
             .fail(function(jqXHR, textStatus, errorThrown){
@@ -197,7 +237,11 @@ function login(){
     var retrievedPass = $("#password-input").val();
     userLogged=retrievedMail;
     $.ajax({
+<<<<<<< HEAD
         url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
+=======
+        url: servidor + "WebServices/UserServiceServlet",
+>>>>>>> master
         type: "POST",
         crossDomain: true,
         data:{
@@ -210,14 +254,16 @@ function login(){
 
             var obj = JSON.parse(data);
             if(obj.id==1){
-                $(".error-tag").gethtml("Error en el servidor pruebe mas tarde");
-                $(".error-tag").visibility = "visible"
+            	mui.alert("Error en el servidor pruebe mas tarde.");
             }else if(obj.id==0){
-                $(".error-tag").html("Datos incorrectos, ingrese de nuevo");
-                $(".error-tag").visibility = "visible"
+            	mui.alert("Usuario y/o clave invalido.")
             }else{
                 mail=obj.id;
-                mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
+                var info="<li>Usuario : "+mail+"</li><li>Nombre : "+obj.name+"</li>";
+                $("#user-info").html(info);
+                mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
+                var barra = document.getElementById("footer");
+            	barra.style.visibility  = 'visible'; // No se ve
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
@@ -234,7 +280,11 @@ function doRegistration() {
     var retrievedConfirm = $("#register-confirm").val();
     if (retrievedPass == retrievedConfirm) {
         $.ajax({
+<<<<<<< HEAD
             url: "http://54.207.117.3:8080/WebServices/UserServiceServlet",
+=======
+            url: servidor + "WebServices/UserServiceServlet",
+>>>>>>> master
             type: "POST",
             crossDomain: true,
             data: {
@@ -248,10 +298,10 @@ function doRegistration() {
             .done(function (data) {
                 var obj = JSON.parse(data);
                 if(obj.registro==1){
-                    alert("Registro completo!");
+                    mui.alert("Registro completo!","Felicitaciones");
                     mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
                 }else{
-                    alert("ese mail ya esta en uso");
+                    mui.alert("Ese mail ya esta en uso","Error");
                 }
 
             })
@@ -259,7 +309,7 @@ function doRegistration() {
 
             })
     }else{
-        alert("Los passwords son diferentes");
+        mui.alert("Los passwords no coinciden","Intenten denuevo");
     }
 
 }
@@ -268,7 +318,11 @@ function goBackLogin() {
 }
 function getRandomVoucher(){
     $.ajax({
+<<<<<<< HEAD
         url:"http://54.207.117.3:8080/WebServices/UserServiceServlet",
+=======
+        url: servidor + "WebServices/UserServiceServlet",
+>>>>>>> master
         type: "GET",
         crossDomain: true,
         data:{
@@ -279,7 +333,7 @@ function getRandomVoucher(){
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+obj.shopImage+"><br>";
+            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+servidor + obj.shopImage+"><br>";
             $("#thanks-voucher").html("");
             $("#thanks-voucher").html(ret);
         })
@@ -291,5 +345,101 @@ function getRandomVoucher(){
 
 function goHome(){
     mui.history.reset();
-    mui.viewPort.showPage("mui-viewport-page1", "SLIDE_LEFT");
+    mui.viewPort.showPage("mui-viewport-page-home", "SLIDE_LEFT");
+}
+function enConstruccion(){
+	mui.alert("En construccion");
+}
+function loadCuenta(){
+	loadLikes();
+	loadNoLikes();
+	mui.viewPort.showPage("mui-viewport-page-profile", "SLIDE_LEFT");
+}
+function loadLikes(){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 8,
+            user: userLogged
+        }
+    })
+        .done(function(data){
+            var obj=JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for(var i = 0 ; i < obj.length ; i++){
+                    ret = ret + "<div id='div-gustos' class='mui-clickable' onclick='dislike("+obj[i].id+")'><img id='image-gustos' src="+servidor+obj[i].logo+"></div>";
+                }
+            }else{
+            	ret="Aun no tiene gustos asignados, seleccione de la lista siguiente presionando sobre sus gustos.";
+            }
+            $("#perfil-gustos").html(ret);
+            mui.viewPort.iScrollRefresh();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function loadNoLikes(){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 9,
+            user: userLogged
+        }
+    })
+        .done(function(data){
+        	var obj=JSON.parse(data);
+            var ret = "";
+            if(obj.length > 0){
+            	for(var i = 0 ; i < obj.length ; i++){
+                    ret = ret + "<div id='div-gustos' class='mui-clickable' onclick='like("+obj[i].id+")'><img id='image-gustos' src="+servidor+obj[i].logo+"></div>";
+                }
+            }else{
+            	ret="No hay locales que no le gusten.";
+            }
+            $("#perfil-nogustos").html(ret);
+            mui.viewPort.iScrollRefresh();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function dislike(id){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 11,
+            user: userLogged,
+            idLocal: id
+        }
+    })
+        .done(function(data){
+        	loadLikes();
+        	loadNoLikes();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
+}
+function like(id){
+	$.ajax({
+        url: servidor + 'WebServices/UserServiceServlet',
+        crossDomain: true,
+        data:{
+            ws: 10,
+            user: userLogged,
+            idLocal: id
+        }
+    })
+        .done(function(data){
+        	loadLikes();
+        	loadNoLikes();
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+
+        })
 }

@@ -18,6 +18,7 @@ import entity.Shop;
 public class LocalDaoDB implements LocalDao {
 	
 	//Metodo para obtener todos los restaurantes de la base de datos.
+	//int 0 obtiene todos, y sino se busca por su categoria.
 	public LinkedList<Restaurant> getRestaurants() throws NoDataFoundException, DaoException{
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -148,6 +149,87 @@ public class LocalDaoDB implements LocalDao {
 				locales.add(loadShop(rsLocales.getInt("id_local"),rsLocales,jdbc));		
 			}
 			return locales;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
+	
+	public List getAllRestaurantsCategory(int category)
+			throws NoDataFoundException, DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local IN (SELECT id_restaurant from category WHERE category.id_category = '"+category+"')";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Restaurant> restaurantes = new LinkedList<Restaurant>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add(loadRestaurant(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
+	@Override
+	public List getLikedRestaurants(String user) throws NoDataFoundException,
+			DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local IN (SELECT id_local from user_likes_local WHERE user_likes_local.email = '"+user+"')";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Shop> restaurantes = new LinkedList<Shop>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add(loadShop(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
+	@Override
+	public List getUnLikedRestaurants(String user) throws NoDataFoundException,
+			DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local NOT IN (SELECT id_local from user_likes_local WHERE user_likes_local.email = '"+user+"')";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Shop> restaurantes = new LinkedList<Shop>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add(loadShop(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
 		}catch (SQLException ex) {
 			throw new DaoException();
 		} finally {

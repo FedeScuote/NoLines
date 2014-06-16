@@ -20,5 +20,9 @@ public interface UserDao {
     
     //throws noDataFoundException if the user was not validated correctly.
     User validateLogin(String email,String password) throws DaoException, NoDataFoundException;
+
+	void addLike(String user, int shop) throws DaoException;
+
+	void removeLike(String user, int shop) throws DaoException;
     
 }

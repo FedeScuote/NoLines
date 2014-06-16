@@ -39,12 +39,9 @@
                     <div id="login" class="mui-page-body">
                         <div class="container">
                             <img src="images/NoLinesLogoWhite.png"><br>
-                            <input id="username-input" type="text" value="EMail"><br>
-                            <br>
-                            <input id="password-input" type="password" value="password"><br>
-                            <br>
+                            <input id="username-input" type="text" value="User"><br>
+                            <input id="password-input" type="password" value="password"><br><br>
                             <button onclick="login()">Login</button><br>
-                            <br>
                             <p class="error-tag" hidden>ERROR</p>
 
                             <button id="register" onclick="goToRegister()">Register</button>
@@ -54,18 +51,18 @@
 
                 <div id="mui-viewport-page6" class="mui-page">
                     <div class="mui-page-header"></div>
-                    <div id="register-div" class="mui-page-body">
+                    <div id="register-div" class="mui-page-body mui-scrollable">
                         <div class="container">
                             <img src="images/NoLinesLogoWhite.png"><br>
-                            <p>Insert Email</p>
-                            <input id="register-email" type="text" value="EMail"><br>
+                            <p>Insert User</p>
+                            <input id="register-email" type="text" value="User">
                             <p>Insert Name</p>
-                            <input id="register-name" type="text" value="EMail"><br>
+                            <input id="register-name" type="text" value="Name">
                             <p>Insert Password</p>
-                            <input id="register-password" type="password" value="password"><br>
+                            <input id="register-password" type="password" value="password">
                             <p>Confirm Password</p>
-                            <input id="register-confirm" type="password" value="password"><br>
-                            <button onclick="doRegistration()">Register</button><br>
+                            <input id="register-confirm" type="password" value="password"><br><br>
+                            <button onclick="doRegistration()">Register</button>
                             <p class="error-tag" hidden>ERROR</p>
 
                             <button id="login-back" onclick="goBackLogin()">Login</button>
@@ -84,7 +81,7 @@
                                 </button>
                             </li>
                             <li>
-                                <button class="mui-clickable  default-button" id="click3">
+                                <button class="mui-clickable  default-button" id="click100">
                                     Mis Descuentos
                                 </button>
                             </li>
@@ -141,8 +138,9 @@
 
             <div id='mui-viewport-page4' class="mui-page">
                 <div class="mui-page-header">
+                	<div class="mui-leftarrow mui-clickable" onclick='goHome();'>Volver</div>
                 </div>
-                <div class="mui-page-body">
+                <div class="mui-page-body mui-scrollable">
                     <div id="thanks-container" class="container">
                         <div id="thanks">
                             Gracias por realizar su compra!<br>
@@ -152,9 +150,6 @@
                         <div id="thanks-voucher">
                             <script>getRandomVoucher()</script>
                         </div>
-                        <button id="return-home" onclick="goHome()">
-                            Volver
-                        </button>
                     </div>
                 </div>
 
@@ -174,17 +169,63 @@
 
             </div>
 
+            <div id="mui-viewport-page-home" class="mui-page">
+                <div class="mui-page-header">
+
+                </div>
+                <div class="mui-page-body mui-scrollable">
+                    <ul id="categories-list">
+                        <li>
+                            <button id="Fast-Food-btn" onclick="buscarRestaurantes(1)">Comida Rapida</button>
+                        </li>
+                        <li>
+                            <button id="International-Food-btn" onclick="buscarRestaurantes(2)">Comida Internacional</button>
+                        </li>
+                        <li>
+                            <button id="Pizza-btn" onclick="buscarRestaurantes(3)">Pizza</button>
+                        </li>
+                        <li>
+                            <button id="Barbecue-btn" onclick="buscarRestaurantes(4)">Parrillada</button>
+                        </li>
+                    </ul>
+                </div>
+                <button id="All-btn" onclick="buscarRestaurantes(0)">Todos</button>
+            </div>
+
+            <div id="mui-viewport-page-profile" class="mui-page">
+                <div class="mui-page-header">
+					<div class="mui-leftarrow mui-clickable" onclick='mui.history.back();'>Volver</div>
+                </div>
+                <div class="mui-page-body mui-scrollable">
+                	<div id="perfil-informacion">
+                		<button id="btn-logout" onclick="enConstruccion()">Cerrar Sesion</button>
+                		<ul id="user-info">
+                			
+                		</ul>
+                	</div>
+              
+                	<div class="mui-scrollable" id="perfil-gustos">
+						
+                	</div>
+                		
+                	<div class="mui-scrollable" id="perfil-nogustos">
+						
+                	</div>
+                </div>
+            </div>
+
 
 
 
             <div class="mui-tabbar" id="footer">
                 <ul class="mui-tabbar-list">
-                    <li class="muy-tabbar-button mui-clickable" id='info-rest'><span>Informacion</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button1'><span>Descuentos</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button2'><span>Buscar</span></li>
-                    <li class="muy-tabbar-button mui-clickable" id='panel-button3'><span>Cuenta</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='info-rest' onclick="enConstruccion()"><span>Como ir</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='click3'><span>Descuentos</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='panel-button2' onclick="goHome()"><span>Restaurantes</span></li>
+                    <li class="muy-tabbar-button mui-clickable" id='panel-button3' onclick="loadCuenta()"><span>Cuenta</span></li>
                 </ul>
             </div>
+            <script>ocultarBarraInferior()</script>
 
 
 			

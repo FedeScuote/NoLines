@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 02, 2014 at 12:52 AM
+-- Generation Time: Jun 15, 2014 at 08:31 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.19
 
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `noLines` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `noLines`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `id_category` int(11) NOT NULL,
+  `id_restaurant` int(11) NOT NULL,
+  KEY `id_restaurant` (`id_restaurant`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -53,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   PRIMARY KEY (`order_id`),
   KEY `fk_order_user1_idx` (`user_email`),
   KEY `fk_order_paying_account1_idx` (`paying_account_number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=74 ;
 
 -- --------------------------------------------------------
 
@@ -206,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `voucher` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`voucher_id`,`id_local`),
   KEY `fk_voucher_local1_idx` (`id_local`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=154 ;
 
 --
 -- Constraints for dumped tables

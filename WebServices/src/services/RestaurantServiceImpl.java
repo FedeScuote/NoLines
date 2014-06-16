@@ -29,6 +29,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List getRestaurants() {
 		return Shop.getAllRestaurants();
 	}
+	
+	public List getRestaurantsByCategory(int category) {
+		return Shop.getAllRestaurantsCategory(category);
+	}
 
 	public List getMenu(int idRestaurant) {
 		try {
@@ -38,5 +42,6 @@ public class RestaurantServiceImpl implements RestaurantService {
 			return new LinkedList();
 		}
 	}
-
+	
+	
 }

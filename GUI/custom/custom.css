@@ -39,6 +39,70 @@ div#mui-viewport-page1 div.mui-page-header {
 	background-repeat: no-repeat, repeat-x;
 	background-size: 121px 28px;
 }
+div#mui-viewport-page-home div.mui-page-header {
+    background-color: #e04a59;
+    background-image: url('../images/NoLinesLogoWhite.png');
+    background-position: center;
+    background-repeat: no-repeat, repeat-x;
+    background-size: 121px 28px;
+}
+#mui-viewport-page-home li{
+    height: 40%;
+    width: 40%;
+}
+#categories-list button{
+    border-style: none;
+    height: 100%;
+    width: 100%
+}
+#Fast-Food-btn{
+    background-image: url('../images/fast-food.png');
+    background-size: 200% auto;
+    color: #ffffff;
+    font-size: 24px;
+}
+#International-Food-btn{
+    position: relative;
+    bottom: 100%;
+    left: 100%;
+    background-image: url('../images/international-food.jpg');
+    background-size: 200% auto;
+    color: black;
+    font-size: 24px;
+}
+#Pizza-btn{
+    position:relative;
+    bottom:100%;
+    background-image: url('../images/pizza.jpg');
+    background-size: 200% auto;
+    color: #000000;
+    font-size: 24px;
+}
+#Barbecue-btn{
+    position:relative;
+    bottom: 200%;
+    left:100%;
+    background-image: url('../images/barbecue.jpg');
+    background-size: 200% auto;
+    color: #ffffff;
+    font-size: 24px;
+}
+#categories-list{
+    height: 100%;
+    width: 100%;
+}
+#All-btn{
+    border-style: solid;
+    border-color: #000000;
+    height: 20%;
+    position: absolute;
+    left:44%;
+    top:37%;
+    border-radius: 300%;
+    z-index: 500;
+    background-color: #e04a59;
+    color: white;
+}
 
 .default-button {
     border: medium none;
@@ -81,6 +145,10 @@ div.mui-tabbar ul.mui-tabbar-list li.muy-tabbar-button {
     margin: 0px;
     /*border: #3498db solid 1px;*/
     float: left;
+}
+li.muy-tabbar-button{
+	text-align: center;
+	font-size: 15px;
 }
 /*Botones del tabbar*/
 div.mui-tabbar ul.mui-tabbar-list {
@@ -166,16 +234,15 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     bottom: 60px;
 }
 #cart-display{
-	position:absolute;
     height: 25%;
     margin-right: 0%;
     top:1%;
     left:10%;
     width:60%;
+
 }
 #my-cart-list{
 	width:60%;
-	position:absolute;
 	font-size:70%;
 	padding:0px;
 }
@@ -231,6 +298,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 }
 
 #menu-list-div{
+	position:absolute;
 	top: 25%;
 	margin-left: 0;
 	height: 80%;
@@ -276,7 +344,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
-    font-size: 20;
+    font-size: 12px;
 }
 #login{
     background-color: #e04a59;
@@ -289,9 +357,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #login button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 40%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -329,9 +395,7 @@ display: -moz-inline-block;
 #register-div button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 40%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -362,7 +426,7 @@ display: -moz-inline-block;
 .container{
     text-align: center;
     margin:10% 10% 10% 10%;
-    margin-top: 3%;
+    margin-top: 0%;
 }
 #register{
     margin-bottom: -5px;
@@ -392,14 +456,14 @@ display: -moz-inline-block;
 #thanks-container button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 50%;
-    height: 38px;
-    line-height: 38px;
+    width: 25%;
+    height: 20%;
+    line-height: 70%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
     font-family: Calibri;
-    font-size: 24px;
+    font-size: 120%;
     font-weight: bold;
     font-style: normal;
     text-shadow: none;
@@ -423,9 +487,49 @@ display: -moz-inline-block;
     display: -moz-inline-block;
 }
 #discount{
-    font-size: 24px;
+    font-size: 16px;
+    margin: 1%;
 }
 #imgVoucherCompra{
-	max-height: 150px;
-	max-width: 150px;
+	max-height: 100px;
+	max-width: 100px;
+}
+#perfil-informacion{
+	width: 100%;
+	height: 20%;
+	margin-top: 2%;
+	border:1px groove #f24537;
+	background-color: whitesmoke;
+}
+#perfil-gustos{
+	width: 100%;
+	height: 35%;
+	top: 23%;
+	background-color: whitesmoke;
+}
+#perfil-nogustos{
+	width: 100%;
+	min-height: 35%;
+	top: 59%;
+	background-color: whitesmoke;
+}
+#btn-logout{
+	margin-left:70%;
+	font-size:11px;	
+	background-color: #e04a59;
+    font-family:Arial;
+	font-weight:bold;
+	font-style:normal;
+	color:#ffffff;
+}
+#div-gustos{
+	margin-left:2px;
+	float:left;
+	max-width:75px;
+	max-heigth:75px;
+}
+#image-gustos{
+	float:left;
+	max-width:75px;
+	max-heigth:75px;
 }
