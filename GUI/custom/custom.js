@@ -10,7 +10,6 @@ var priceTotal;
 var userLogged;
 var servidor='http://localhost:8080/'
 function deviceReady() {
-	
     $("#click3").on("click", function (e) {
         $.ajax({
             url: servidor + 'WebServices/UserServiceServlet',
@@ -291,6 +290,55 @@ function goHome(){
 function enConstruccion(){
 	mui.alert("En construccion");
 }
+
+function comoIr(){
+		 mui.viewPort.showPage("mui-viewport-ir", "SLIDE_LEFT");
+         mui.viewPort.iScrollRefresh();
+         map = new GMaps({
+   		  div: '#map',
+   		  zoom: 15,
+   		lat: -34.903301,
+      	 lng: -56.136902
+   		});
+        GMaps.geolocate({
+        	  success: function(position) {
+        	    map.setCenter(position.coords.latitude, position.coords.longitude);
+        	    map.addMarker({
+               	 lat: position.coords.latitude,
+             	lng: position.coords.longitude,
+               	  title: 'Tu',
+               	  infoWindow: {
+               		  content: 'Tu ubicacion'
+               		}
+             	});
+        	    map.addMarker({
+        	       	 lat: -34.903301,
+        	       	 lng: -56.136902,
+        	       	  title: 'Shopping',
+        	       	  infoWindow: {
+        	       		  content: 'Shopping'
+        	       		}
+        	     	});
+        	        map.drawRoute({
+        	        	  origin: [position.coords.latitude, position.coords.longitude],
+        	        	  destination: [-34.903301, -56.136902],
+        	        	  travelMode: 'driving',
+        	        	  strokeColor: '#e04a59',
+        	        	  strokeOpacity: 0.6,
+        	        	  strokeWeight: 6
+        	        	});
+        	  },
+        	  error: function(error) {
+        	    alert('Geolocation failed: '+error.message);
+        	  },
+        	  not_supported: function() {
+        	    alert("Your browser does not support geolocation");
+        	  }
+        	});
+
+        
+}
+
 function loadCuenta(){
 	loadLikes();
 	loadNoLikes();
