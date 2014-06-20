@@ -10,45 +10,13 @@ var priceTotal;
 var userLogged;
 var servidor='http://localhost:8080/'
 function deviceReady() {
-    $("#click3").on("click", function (e) {
-        $.ajax({
-            url: servidor + 'WebServices/UserServiceServlet',
-            crossDomain: true,
-            data: {
-                ws: 5,
-                user: userLogged
-            }
-        })
-            .done(function (data) {
-                var obj = JSON.parse(data);
-                var ret = "";
-                if(obj.length > 0){
-                	for (var i = 0; i < obj.length; i++) {
-                        ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
-                    }         
-                    $("#voucher-list").html(ret);
-                    mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
-                    mui.viewPort.iScrollRefresh();
-                }else{
-                	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
-                }
-
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-
-            })
-    });
-    
-  //muestra el panel con info del restaurant
-    $("#info").on("click", function(e) {
+}
+function showRestaurantInfo(){
     	if (mui.viewPort.panelIsOpen())
     		mui.viewPort.closePanel();
     	else
     		mui.viewPort.showPanel('panel1', 'SLIDE_RIGHT');
-    });
-
 }
-
 function buscarRestaurantes(categoria){
     $.ajax({
         url: servidor + '/WebServices/RestaurantServiceServlet',
@@ -431,4 +399,32 @@ function like(id){
         .fail(function(jqXHR, textStatus, errorThrown){
 
         })
+}
+function showDiscounts(){
+	 $.ajax({
+         url: servidor + 'WebServices/UserServiceServlet',
+         crossDomain: true,
+         data: {
+             ws: 5,
+             user: userLogged
+         }
+     })
+         .done(function (data) {
+             var obj = JSON.parse(data);
+             var ret = "";
+             if(obj.length > 0){
+             	for (var i = 0; i < obj.length; i++) {
+                     ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
+                 }         
+                 $("#voucher-list").html(ret);
+                 mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+                 mui.viewPort.iScrollRefresh();
+             }else{
+             	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
+             }
+
+         })
+         .fail(function (jqXHR, textStatus, errorThrown) {
+
+         })
 }
