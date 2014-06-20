@@ -537,3 +537,6 @@ display: -moz-inline-block;
  height: 100%;
     width: 100%;
 }
+.voucherImage{
+    width:50px;
+}
