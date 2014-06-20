@@ -173,21 +173,21 @@ div.mui-tabbar ul.mui-tabbar-list li:HOVER {
     background-color: #CDD8DA;
 }
 
-div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {
-    background-image: url('../images/home.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:FIRST-CHILD {*/
+    /*background-image: url('../images/home.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {
-    background-image: url('../images/agenda.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(2) {*/
+    /*background-image: url('../images/agenda.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {
-    background-image: url('../images/tramite.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(3) {*/
+    /*background-image: url('../images/tramite.png');*/
+/*}*/
 
-div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {
-    background-image: url('../images/contacto.png');
-}
+/*div.mui-tabbar ul.mui-tabbar-list li:nth-child(4) {*/
+    /*background-image: url('../images/contacto.png');*/
+/*}*/
 
 div.mui-tabbar ul.mui-tabbar-list li span {
     font-size: 0.75em;
@@ -344,7 +344,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     margin-top: 20px;
     margin-left: 10%;
     margin-right: 10%;
-    font-size: 12px;
+    font-size: 16px;
 }
 #login{
     background-color: #e04a59;
@@ -357,7 +357,7 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 #login button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 40%;
+    width: 50%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -395,7 +395,7 @@ display: -moz-inline-block;
 #register-div button {
     display: -moz-inline-stack;
     display: inline-block;
-    width: 40%;
+    width: 60%;
     vertical-align: middle;
     text-align: center;
     color: #ffffff;
@@ -437,7 +437,6 @@ display: -moz-inline-block;
 .voucher{
     padding: 0px 0px 0px 0px;
     width: 100%;
-    height: 80px;
     background-color: white;
     border: black solid 1px;
     text-align: center;
