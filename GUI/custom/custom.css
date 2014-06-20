@@ -524,13 +524,13 @@ display: -moz-inline-block;
 #div-gustos{
 	margin-left:2px;
 	float:left;
-	max-width:75px;
-	max-heigth:75px;
+	width:50px;
+	heigth:50px;
 }
 #image-gustos{
 	float:left;
-	max-width:75px;
-	max-heigth:75px;
+	width:50px;
+	heigth:50px;
 }
 #map {
  height: 100%;

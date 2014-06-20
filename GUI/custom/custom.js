@@ -117,15 +117,16 @@ function addPlate(param,id,time,price,name){
 
 function verifyOrder(){
 	var apreto=0;
-	mui.confirm(
+	/*mui.confirm(
 			"Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.",
 			function (buttonIndex) {
 				apreto=buttonIndex;
 			},
 			"¿Confirmar compra?",
 			"Confirmar,Cancelar"
-		);
-    if (apreto == 1) {
+		);*/
+	mui.alert("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.")
+   // if (apreto == 1) {
         $.ajax({
             url: servidor + "WebServices/UserServiceServlet",
             type: "POST",
@@ -136,7 +137,7 @@ function verifyOrder(){
                 cantidad: cantidades,
                 idRest: idRest,
                 user: userLogged
-            }
+          }
         })
             .done(function(data){
                 getRandomVoucher();
@@ -147,7 +148,7 @@ function verifyOrder(){
             .fail(function(jqXHR, textStatus, errorThrown){
 
             })
-    }
+    //}
 
 
 }
