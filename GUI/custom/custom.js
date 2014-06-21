@@ -10,6 +10,7 @@ var priceTotal;
 var userLogged;
 var servidor='http://54.207.119.194:80/'
 function deviceReady() {
+<<<<<<< HEAD
     $("#click2").on("click", function (e) {
         $.ajax({
         	url: servidor + 'WebServices/UserServiceServlet',
@@ -73,14 +74,15 @@ function deviceReady() {
     
   //muestra el panel con info del restaurant
     $("#info").on("click", function(e) {
+=======
+}
+function showRestaurantInfo(){
+>>>>>>> master
     	if (mui.viewPort.panelIsOpen())
     		mui.viewPort.closePanel();
     	else
     		mui.viewPort.showPanel('panel1', 'SLIDE_RIGHT');
-    });
-
 }
-
 function buscarRestaurantes(categoria){
     $.ajax({
         url: servidor + '/WebServices/RestaurantServiceServlet',
@@ -181,15 +183,16 @@ function addPlate(param,id,time,price,name){
 
 function verifyOrder(){
 	var apreto=0;
-	mui.confirm(
+	/*mui.confirm(
 			"Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.",
 			function (buttonIndex) {
 				apreto=buttonIndex;
 			},
 			"Confirmar compra?",
 			"Confirmar,Cancelar"
-		);
-    if (apreto == 1) {
+		);*/
+	mui.alert("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.")
+   // if (apreto == 1) {
         $.ajax({
             url: servidor + "WebServices/UserServiceServlet",
             type: "POST",
@@ -200,7 +203,7 @@ function verifyOrder(){
                 cantidad: cantidades,
                 idRest: idRest,
                 user: userLogged
-            }
+          }
         })
             .done(function(data){
                 getRandomVoucher();
@@ -211,7 +214,7 @@ function verifyOrder(){
             .fail(function(jqXHR, textStatus, errorThrown){
 
             })
-    }
+    //}
 
 
 }
@@ -322,6 +325,55 @@ function goHome(){
 function enConstruccion(){
 	mui.alert("En construccion");
 }
+
+function comoIr(){
+		 mui.viewPort.showPage("mui-viewport-ir", "SLIDE_LEFT");
+         mui.viewPort.iScrollRefresh();
+         map = new GMaps({
+   		  div: '#map',
+   		  zoom: 15,
+   		lat: -34.903301,
+      	 lng: -56.136902
+   		});
+        GMaps.geolocate({
+        	  success: function(position) {
+        	    map.setCenter(position.coords.latitude, position.coords.longitude);
+        	    map.addMarker({
+               	 lat: position.coords.latitude,
+             	lng: position.coords.longitude,
+               	  title: 'Tu',
+               	  infoWindow: {
+               		  content: 'Tu ubicacion'
+               		}
+             	});
+        	    map.addMarker({
+        	       	 lat: -34.903301,
+        	       	 lng: -56.136902,
+        	       	  title: 'Shopping',
+        	       	  infoWindow: {
+        	       		  content: 'Shopping'
+        	       		}
+        	     	});
+        	        map.drawRoute({
+        	        	  origin: [position.coords.latitude, position.coords.longitude],
+        	        	  destination: [-34.903301, -56.136902],
+        	        	  travelMode: 'driving',
+        	        	  strokeColor: '#e04a59',
+        	        	  strokeOpacity: 0.6,
+        	        	  strokeWeight: 6
+        	        	});
+        	  },
+        	  error: function(error) {
+        	    alert('Geolocation failed: '+error.message);
+        	  },
+        	  not_supported: function() {
+        	    alert("Your browser does not support geolocation");
+        	  }
+        	});
+
+        
+}
+
 function loadCuenta(){
 	loadLikes();
 	loadNoLikes();
@@ -414,4 +466,38 @@ function like(id){
         .fail(function(jqXHR, textStatus, errorThrown){
 
         })
+}
+function showDiscounts(){
+	 $.ajax({
+         url: servidor + 'WebServices/UserServiceServlet',
+         crossDomain: true,
+         data: {
+             ws: 5,
+             user: userLogged
+         }
+     })
+         .done(function (data) {
+             var obj = JSON.parse(data);
+             var ret = "";
+             if(obj.length > 0){
+             	for (var i = 0; i < obj.length; i++) {
+                     ret = ret + "<li class='voucher-item'><div class='voucher'><br><div><img class='voucherImage' src='"+servidor+obj[i].shopImage+"'></div><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime +  " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
+                 }         
+                 $("#voucher-list").html(ret);
+                 mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
+                 mui.viewPort.iScrollRefresh();
+             }else{
+             	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
+             }
+
+         })
+         .fail(function (jqXHR, textStatus, errorThrown) {
+
+         })
+}
+function logout(){
+	var barra = document.getElementById("footer");
+	barra.style.visibility  = 'hidden'; // No se ve
+	mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
+    mui.viewPort.iScrollRefresh();
 }
