@@ -8,7 +8,7 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
-var servidor='http://localhost:8080/'
+var servidor='http://54.207.76.93:80/'
 function deviceReady() {
 }
 function showRestaurantInfo(){
