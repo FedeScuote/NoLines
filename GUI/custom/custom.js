@@ -78,7 +78,7 @@ function restaurantSelection(param, name, location, hr, description, logo) {
                 var ret = "";
                 if(obj.length > 0){
                 	for(var i = 0 ; i < obj.length ; i++){
-                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+"<br>$"+obj[i].price+"</div><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
+                        ret = ret + "<li class='menu-selector'><div>"+obj[i].name+" $"+obj[i].price+"</div><img id='imgMenu' src="+servidor + obj[i].picture+"><div class='menu-selector-div'><button class='menu-selector-btn' type='button' onclick='addPlate("+obj[i].id+","+param+","+obj[i].time+","+obj[i].price+",&quot;"+obj[i].name+"&quot;)'>+</button></div></li>";
                     }
                     $("#menu-list").html(ret);
                     mui.viewPort.iScrollRefresh();
@@ -242,7 +242,7 @@ function getRandomVoucher(){
         .done(function(data){
 
             var obj = JSON.parse(data);
-            var ret = "<p id='discount'>"+obj.discount+" % de descuento en la siguiente tienda!</p>"+"<img id='imgVoucherCompra' src="+servidor + obj.shopImage+"><br>";
+            var ret = "<p id='discount'>-"+obj.discount+" %</p><p id='info-discount'>Para disfrutar en: "+obj.shop+"</p>"+"<img id='imgVoucherCompra' src="+servidor + obj.shopImage+"><br>";
             $("#thanks-voucher").html("");
             $("#thanks-voucher").html(ret);
         })

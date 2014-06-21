@@ -263,6 +263,12 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 .menu-selector-div{
     text-align: right;
     position: relative;
+    
+        
+    width:20%;
+    float:right;
+    top:10%;
+    
 }
 .menu-selector-btn{
 	background-color:#f24537;
@@ -286,7 +292,6 @@ div.mui-tabbar ul.mui-tabbar-list li span {
 	
 	height: 100%;
     font-size:1.5em;
-
 
     background-color: #e04a59;
     
@@ -345,6 +350,15 @@ div.mui-tabbar ul.mui-tabbar-list li span {
     margin-left: 10%;
     margin-right: 10%;
     font-size: 16px;
+}
+#thanks-voucher{
+	top:30%;
+	position:absolute;
+	text-align:center;
+	left:5%;
+	width:90%;
+	border:2px solid black;
+	background-color:white;
 }
 #login{
     background-color: #e04a59;
@@ -486,8 +500,9 @@ display: -moz-inline-block;
     display: -moz-inline-block;
 }
 #discount{
-    font-size: 16px;
+    font-size: 30px;
     margin: 1%;
+    color:#f24537;
 }
 #imgVoucherCompra{
 	max-height: 100px;
@@ -567,4 +582,8 @@ display: -moz-inline-block;
 }
 .voucherImage{
     width:50px;
+}
+#imgMenu{
+	max-width:100px;
+	position:relative;
 }
