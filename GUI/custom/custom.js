@@ -429,3 +429,9 @@ function showDiscounts(){
 
          })
 }
+function logout(){
+	var barra = document.getElementById("footer");
+	barra.style.visibility  = 'hidden'; // No se ve
+	mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
+    mui.viewPort.iScrollRefresh();
+}
