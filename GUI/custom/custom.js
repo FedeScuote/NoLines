@@ -8,76 +8,10 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
-var servidor='http://54.207.119.194:80/'
+var servidor='http://54.207.76.93:80/'
 function deviceReady() {
-<<<<<<< HEAD
-    $("#click2").on("click", function (e) {
-        $.ajax({
-        	url: servidor + 'WebServices/UserServiceServlet',
-            crossDomain: true,
-            data: {
-                ws: 1
-            }
-        })
-            .done(function (data) {
-                var obj = JSON.parse(data);
-                var ret = "";
-                if(obj.length > 0){
-                	for (var i = 0; i < obj.length; i++) {
-                        ret = ret + "<li class='restaurant-selector'><button class='mui-clickable default-button' onclick='restaurantSelection(" + obj[i].id +",&quot;"+obj[i].name+"&quot;,&quot;"+obj[i].location+"&quot;,&quot;"+obj[i].horario+"&quot;,&quot;"+obj[i].description+"&quot;,&quot;"+obj[i].logo+"&quot;)'><img src="
-                            + obj[i].logo + " width='50' height='50'><div class='restaurant-title'> " + obj[i].name + "<br> </div>" +
-                            "<div class='restaurant-info'>" + obj[i].location + "<br>" + obj[i].horario + "</div>" +
-                            "</button></li>";
-                    }
-                }else{
-                	ret = "No hay restaurantes disponibles, revise su coneccion a internet. Si el problema persiste, puede deberse a un error en la aplicacion. Saludos de NoLines team.";
-                }
-                
-                $("#restaurant-list").html(ret);
-                mui.viewPort.iScrollRefresh();
-                mui.viewPort.showPage("mui-viewport-page2", "SLIDE_LEFT");
-
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-
-            })
-    });
-
-    $("#click3").on("click", function (e) {
-        $.ajax({
-            url: servidor + 'WebServices/UserServiceServlet',
-            crossDomain: true,
-            data: {
-                ws: 5,
-                user: userLogged
-            }
-        })
-            .done(function (data) {
-                var obj = JSON.parse(data);
-                var ret = "";
-                if(obj.length > 0){
-                	for (var i = 0; i < obj.length; i++) {
-                        ret = ret + "<li class='voucher-item'><div class='voucher'><br><div class='descuento'>-"+obj[i].discount+"%</div><b>En:</b> " + obj[i].shop + " <b>generado:</b> "+ obj[i].generetedTime + " <b>venc:</b> "+ obj[i].expirationTime + " <b>usado:</b> "+ obj[i].usedTime + " <b>voucher numero :</b> "+ obj[i].id +"</div></li>";
-                    }         
-                    $("#voucher-list").html(ret);
-                    mui.viewPort.showPage("mui-viewport-page7", "SLIDE_LEFT");
-                    mui.viewPort.iScrollRefresh();
-                }else{
-                	mui.alert("Usted no tiene ningun voucher activo. Para obtenerlo puede realizar una compra!");
-                }
-
-            })
-            .fail(function (jqXHR, textStatus, errorThrown) {
-
-            })
-    });
-    
-  //muestra el panel con info del restaurant
-    $("#info").on("click", function(e) {
-=======
 }
 function showRestaurantInfo(){
->>>>>>> master
     	if (mui.viewPort.panelIsOpen())
     		mui.viewPort.closePanel();
     	else
@@ -188,7 +122,7 @@ function verifyOrder(){
 			function (buttonIndex) {
 				apreto=buttonIndex;
 			},
-			"Confirmar compra?",
+			"¿Confirmar compra?",
 			"Confirmar,Cancelar"
 		);*/
 	mui.alert("Confirmar compra por $"+priceTotal+". El tiempo estimado es de "+timeTotal+" minutos.")
