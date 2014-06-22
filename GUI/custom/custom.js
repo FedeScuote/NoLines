@@ -8,7 +8,7 @@ var ret2;
 var timeTotal;
 var priceTotal;
 var userLogged;
-var servidor='http://54.207.76.93:80/'
+var servidor='http://localhost:8080/'
 function deviceReady() {
 }
 function showRestaurantInfo(){
@@ -23,7 +23,8 @@ function buscarRestaurantes(categoria){
         crossDomain: true,
         data: {
             ws: 1,
-            category: categoria
+            category: categoria,
+            user: userLogged
         }
     })
         .done(function (data) {
@@ -210,7 +211,7 @@ function doRegistration() {
         })
             .done(function (data) {
                 var obj = JSON.parse(data);
-                if(obj.registro==1){
+                if(obj.registro=='1'){
                     mui.alert("Registro completo!","Felicitaciones");
                     mui.viewPort.showPage("mui-viewport-page5", "SLIDE_LEFT");
                 }else{

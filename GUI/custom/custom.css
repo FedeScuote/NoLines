@@ -591,3 +591,15 @@ display: -moz-inline-block;
 #mui-screen-page{
 	background-color: #e04a59;
 }
+#busqueda-megusta{
+	position:absolute;
+	width:75%;
+	top:85%;
+	text-align:center;
+	height:10%;
+	font-size:18px;
+	padding-top:4%;
+	background-color:#e04a59;
+	color:white;
+	left:15%;
+}

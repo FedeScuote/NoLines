@@ -64,7 +64,6 @@ public class User {
 				return true;
 			} catch (InstantiationException | IllegalAccessException
 					| ClassNotFoundException | DaoException e) {
-				e.printStackTrace();
 				return false;
 			}
 			

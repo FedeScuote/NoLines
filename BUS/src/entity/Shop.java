@@ -86,23 +86,34 @@ public class Shop {
 			return restaurants;
 		}
 	}
-	public static final List getLikedRestaurants(String user){
+	public static final List getLikedLocals(String user){
 		List locales = new LinkedList<Shop>();
 		try {
 			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
-			locales = local.getLikedRestaurants(user);
+			locales = local.getLikedLocals(user);
 			return locales;
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NoDataFoundException | DaoException e) {
 			return locales;
 		}
 	}
+	public static final List getLikedRestaurants(String user){
+		List restaurants = new LinkedList<Restaurant>();
+		try {
+			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
+			restaurants = local.getLikedRestaurants(user);
+			return restaurants;
+		} catch (InstantiationException | IllegalAccessException
+				| ClassNotFoundException | NoDataFoundException | DaoException e) {
+			return restaurants;
+		}
+	}
 	
-	public static final List getUnLikedRestaurants(String user){
+	public static final List getUnLikedLocals(String user){
 		List locales = new LinkedList<Shop>();
 		try {
 			LocalDao local = (LocalDao) Class.forName("DaoImpl.LocalDaoDB").newInstance();
-			locales = local.getUnLikedRestaurants(user);
+			locales = local.getUnLikedLocals(user);
 			return locales;
 		} catch (InstantiationException | IllegalAccessException
 				| ClassNotFoundException | NoDataFoundException | DaoException e) {

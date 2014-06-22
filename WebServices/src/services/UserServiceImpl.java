@@ -102,11 +102,11 @@ public class UserServiceImpl implements userService {
 			}
 	}
 
-	public List getLikedRestaurants(String user) {
-		return Shop.getLikedRestaurants(user);
+	public List getLikedLocals(String user) {
+		return Shop.getLikedLocals(user);
 	}
-	public List getUnLikedRestaurants(String user) {
-		return Shop.getUnLikedRestaurants(user);
+	public List getUnLikedLocals(String user) {
+		return Shop.getUnLikedLocals(user);
 	}
 	@Override
 	public void addLike(String user,int idLocal) {

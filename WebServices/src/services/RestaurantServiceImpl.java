@@ -33,7 +33,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public List getRestaurantsByCategory(int category) {
 		return Shop.getAllRestaurantsCategory(category);
 	}
-
+	public List getLikedRestaurants(String user){
+		return Shop.getLikedRestaurants(user);
+	}
 	public List getMenu(int idRestaurant) {
 		try {
 			return Restaurant.getMenu(idRestaurant);

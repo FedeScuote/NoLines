@@ -50,6 +50,8 @@ public class RestaurantServiceServlet extends HttpServlet {
 			LinkedList<Restaurant> lista;
 			if(category.equals("0")){
 				lista = (LinkedList<Restaurant>) restaurantService.getRestaurants();	
+			}else if(category.equals("5")){
+				lista=(LinkedList<Restaurant>) restaurantService.getLikedRestaurants(request.getParameter("user"));
 			}else{
 				lista = (LinkedList<Restaurant>) restaurantService.getRestaurantsByCategory(Integer.parseInt(category));
 			}

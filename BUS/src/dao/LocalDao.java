@@ -23,7 +23,9 @@ public interface LocalDao {
 	
 	List getAllRestaurantsCategory(int category) throws NoDataFoundException, DaoException;
 	
-	List getLikedRestaurants(String user) throws NoDataFoundException, DaoException;
+	List getLikedLocals(String user) throws NoDataFoundException, DaoException;
 	
-	List getUnLikedRestaurants(String user) throws NoDataFoundException, DaoException;
+	List getUnLikedLocals(String user) throws NoDataFoundException, DaoException;
+
+	List getLikedRestaurants(String user) throws NoDataFoundException, DaoException;
 }

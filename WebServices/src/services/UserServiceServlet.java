@@ -52,7 +52,7 @@ public class UserServiceServlet extends HttpServlet {
 			writer.append(wrapper.toJSONString());
 		}else if(request.getParameter("ws").equals("8")){
 			String mailLike = request.getParameter("user");
-			List locales=userServiceImpl.getLikedRestaurants(mailLike);
+			List locales=userServiceImpl.getLikedLocals(mailLike);
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < locales.size(); i++) {
 				JSONObject restaurant = loadShopJson((Shop)locales.get(i));
@@ -61,7 +61,7 @@ public class UserServiceServlet extends HttpServlet {
 			writer.append(wrapper.toJSONString());
 		}else if(request.getParameter("ws").equals("9")){
 			String mailUnLike = request.getParameter("user");
-			List locales=userServiceImpl.getUnLikedRestaurants(mailUnLike);
+			List locales=userServiceImpl.getUnLikedLocals(mailUnLike);
 			JSONArray wrapper = new JSONArray();
 			for (int i = 0; i < locales.size(); i++) {
 				JSONObject restaurant = loadShopJson((Shop)locales.get(i));
@@ -142,7 +142,7 @@ public class UserServiceServlet extends HttpServlet {
 			String password=request.getParameter("password");
 			String name=request.getParameter("name");
 			String fbAccount=request.getParameter("fb");
-			boolean registro =userServiceImpl.register(username, password, name, fbAccount);
+			boolean registro=userServiceImpl.register(username, password, name, fbAccount);
 			JSONObject registroJson= new JSONObject();
 			if(registro){
 				registroJson.put("registro", "1");

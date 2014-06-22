@@ -184,7 +184,7 @@ public class LocalDaoDB implements LocalDao {
 	}
 
 	@Override
-	public List getLikedRestaurants(String user) throws NoDataFoundException,
+	public List getLikedLocals(String user) throws NoDataFoundException,
 			DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -211,7 +211,7 @@ public class LocalDaoDB implements LocalDao {
 	}
 
 	@Override
-	public List getUnLikedRestaurants(String user) throws NoDataFoundException,
+	public List getUnLikedLocals(String user) throws NoDataFoundException,
 			DaoException {
 		ConexionDB conexion = new ConexionDB();
 		conexion.connect();
@@ -228,6 +228,33 @@ public class LocalDaoDB implements LocalDao {
 		try{
 			while (rsRestaurants.next()){
 				restaurantes.add(loadShop(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
+			}
+			return restaurantes;
+		}catch (SQLException ex) {
+			throw new DaoException();
+		} finally {
+			conexion.disconnect();
+		}
+	}
+
+	@Override
+	public List getLikedRestaurants(String user) throws NoDataFoundException,
+			DaoException {
+		ConexionDB conexion = new ConexionDB();
+		conexion.connect();
+		AccesoJDBC jdbc = null;
+		try {
+			jdbc = conexion.getAccesoJDBC();
+		} catch (NoDatabaseConexionException ex) {
+			throw new DaoException();
+		}
+		
+		String getRestaurants = "SELECT * FROM local WHERE local.id_local IN (SELECT id_restaurant FROM restaurant WHERE restaurant.id_restaurant IN (SELECT id_local from user_likes_local WHERE user_likes_local.email = '"+user+"'))";
+		ResultSet rsRestaurants = jdbc.select(getRestaurants);
+		LinkedList<Shop> restaurantes = new LinkedList<Shop>();
+		try{
+			while (rsRestaurants.next()){
+				restaurantes.add(loadRestaurant(rsRestaurants.getInt("id_local"),rsRestaurants,jdbc));		
 			}
 			return restaurantes;
 		}catch (SQLException ex) {
