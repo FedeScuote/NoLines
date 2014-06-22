@@ -29,6 +29,7 @@ public class AccesoJDBC {
       }
       catch (SQLException ex) {
         ex.printStackTrace();
+        throw new DaoException();
       }
     }
     else {
