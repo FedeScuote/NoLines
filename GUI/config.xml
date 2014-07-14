@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns='http://www.w3.org/ns/widgets' xmlns:gap = 'http://phonegap.com/ns/1.0' id="org.mobileui.mui" version="0.0.1">
     
-    <name>MobileUI</name>
+    <name>NoLines</name>
 
     <description>
-        MobileUI Test
+        NoLines 1.0
     </description>
 
-    <author href="http://www.mobileui.org" email="ggretter@gmail.com">
-        Gustavo Gretter
+    <author href="http://www.mobileui.org" email="jt.tejeria@gmail.com">
+        Juan Tejeria
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
@@ -44,5 +44,18 @@
 	<gap:plugin name="com.adobe.plugins.pushplugin" />
         <gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
         <gap:plugin name="org.apache.cordova.splashscreen" />
+        
+        <gap:plugin name="org.apache.cordova.vibration" />
+	<gap:plugin name="org.apache.cordova.dialogs" />
+	<gap:plugin name="org.apache.cordova.device" />
+	<gap:plugin name="org.apache.cordova.network-information" />
+	<gap:plugin name="org.apache.cordova.inappbrowser" />
+	<gap:plugin name="com.adobe.plugins.gaplugin" />
+	<gap:plugin name="de.appplant.cordova.plugin.hidden-statusbar-overlay" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<gap:plugin name="org.apache.cordova.geolocation" />
+	<gap:plugin name="org.apache.cordova.media" />
+	<gap:plugin name="com.phonegap.plugins.pushplugin" />
+	<gap:plugin name="nl.x-services.plugins.toast" />
 	
 </widget>
